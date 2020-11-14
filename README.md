@@ -17,7 +17,7 @@ NUSH Modules helps incoming Primary 6 students explore the range of modules offe
 
 ## Motivation
 
-/INSERT MOTIVATION HERE/
+We realised that the NUS High's website only displays the subjects taught, but do not go in depth into the modules offered. The only way to understand the modules offered is by viewing the 98-paged Programme of Studies PDF, which most students and parents do not read. Developing a service to explore the modules offered increases the awareness of the modules offered in NUS High.
 
 ## Open sourced
 
