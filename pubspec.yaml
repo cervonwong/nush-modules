@@ -1,7 +1,7 @@
 name: nush_modules
 description: A PWA to explore modules in NUS High.
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 
 version: 0.1.0
 
