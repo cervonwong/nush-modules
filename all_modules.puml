@@ -1,0 +1,435 @@
+@startuml
+
+' !!! DO NOT TOUCH ANY CONFIG STATEMENTS BELOW !!!
+
+hide circle
+hide methods
+hide fields
+
+skinparam maxMessageSize 50
+skinparam minClassWidth 110
+
+skinparam class {
+	BorderColor black
+	BackgroundColor lightcyan
+	BackgroundColor<< Elective >> wheat
+	BackgroundColor<< Enrichment >> lightyellow
+	BackgroundColor<< Major >> #c2fcae
+	BackgroundColor<< Honours >> thistle
+}
+
+' !!! DO NOT TOUCH ANY CONFIG STATEMENTS ABOVE !!!
+
+' TERM              ARROW   DESCRIPTION
+' =====================================================================================================================
+' PRE-REQUISITES	-->		Modules which have to be satisfactorily completed in order to qualify to read the module
+'							that the student wants to register for.
+' CO-REQUISITES		--^		Modules that are to be taken concurrently.
+' PRECLUSIONS		--x		Modules which have similar emphases and should not be taken together within a student's
+'							candidature.
+
+' MATHEMATICS AND STATISTICS
+
+'class MA1131
+'class MA1231
+'class MA1132
+'class MA1232
+'class MA1232V
+'
+'MA1131 --> MA1231
+'MA1131 --> MA1132
+'MA1231 --> MA1232
+'MA1232 --^ MA1232V
+
+package "COMPUTER SCIENCE" << Node >> {
+	class CS1131
+	class CS2231<< Elective >>
+	class CS2233<< Elective >>
+	class CS3231<< Elective -> Core >>
+	class CS3232<< Elective >>
+	class CS3233<< Elective -> Core >>
+	class CS3234<< Elective >>
+
+	CS1131 --> CS2231
+	CS2231 --> CS2233
+	CS2231 --> CS3231
+	CS2233 --> CS3232
+	CS3232 -right-^ CS3231 : must take
+	CS3231 --> CS3233
+	CS3232 --> CS3234
+	CS3234 -right-^ CS3233 : must take
+
+	class CS4131<< Major >>
+	class CS4231<< Elective >>
+	class CS4132<< Major >>
+	class CS5131<< Major >>
+	class CS5132<< Major >>
+	class CS6131<< Major >>
+	class CS6132<< Major >>
+
+	CS3233 --> CS4131
+	CS3234 --> CS4231
+	CS4231 -right-^ CS4131 : must take
+	CS4131 --> CS4132
+	CS4132 --> CS5131
+	CS5131 --> CS5132
+	CS5132 --> CS6131
+	CS6131 --> CS6132
+
+	package "NUS track" << Rectangle >> {
+		class CS4133V<< Major >>
+		CS4131 --> CS4133V
+		CS4132 x-x CS4133V : OR
+		CS4133V --> CS5131
+		CS4133V --> CS5431V
+	    CS4133V --> CS6431V
+
+	    class CS6431V<< Honours >>
+		CS6431V --> CS6432V
+
+		class CS5431V<< Honours >>
+		class CS6432V<< Honours >>
+
+        package "NUS School of Computing" <<Cloud>> {
+        }
+        note as n1
+        	at least 2
+        endnote
+        CS5431V --> n1
+        CS6431V --> n1
+        CS6432V --> n1
+        n1 --> "NUS School of Computing"
+	}
+
+	package "DigiPen track" << Rectangle >> {
+		class CS4134V<< Major >>
+		CS4131 --> CS4134V
+		CS4132 x-x CS4134V : OR
+		CS4134V --> CS5131
+		CS4134V --> CS5432V
+		CS4134V --> CS6434V
+
+		class CS6434V<< Honours >>
+		class CS6433V<< Honours >>
+
+		class CS5432V<< Honours >>
+		CS5432V --> CS6433V
+
+    	package "DigiPen Institute of Technology Singapore" << Cloud >> {
+    	}
+    	note as n2
+        	at least 2
+        endnote
+    	CS5432V --> n2
+    	CS6433V --> n2
+    	CS6434V --> n2
+    	n2 --> "DigiPen Institute of Technology Singapore"
+	}
+
+
+}
+
+package BIOLOGY << Node >> {
+	class BL1131\nSem1
+	class BL1131\nSem2
+	class BL1231<< Elective >>
+	class BL2131\nSem1
+	class BL2131\nSem2
+	class BL2231<< Elective >>
+	class BL2232<< Elective >>
+	class BL3131\nSem1
+	class BL3131\nSem2
+	class BL3231<< Elective >>
+	class BL3232<< Elective >>
+
+	BL1131\nSem1 --> BL1131\nSem2
+	BL1131\nSem2 --> BL2131\nSem1
+	BL2131\nSem1 --> BL2131\nSem2
+	BL2131\nSem2 --> BL3131\nSem1
+	BL3131\nSem1 --> BL3131\nSem2
+
+	BL1131\nSem1 --> BL1231 : DA
+	BL1231 -right-^ BL1131\nSem2 : must take
+	BL1131\nSem2 --> BL2231 : DA
+	BL2231 -right-^ BL2131\nSem1 : must take
+	BL2131\nSem1 --> BL2232 : DA
+	BL2232 -right-^ BL2131\nSem2 : must take
+	BL2131\nSem2 --> BL3231 : DA
+	BL3231 -right-^ BL3131\nSem1 : must take
+	BL3131\nSem1 --> BL3232 : DA
+	BL3232 -right-^ BL3131\nSem2 : must take
+
+	class BL3331<< Enrichment >>
+
+	class BL4131\nSem1<< Major >>
+	class BL4131\nSem2<< Major >>
+	class BL5131\nSem1<< Major >>
+	class BL5131\nSem2<< Major >>
+	class BL6131\nSem1<< Major >>
+	class BL6131\nSem2<< Major >>
+
+	class BL4231<< Elective >>
+	class BL4232<< Elective >>
+	class BL5231<< Elective >>
+	class BL5232<< Elective >>
+	class BL5431<< Honours >>
+
+	package "Biology's Year 3 Intake" << Cloud >> {
+	}
+
+    "Biology's Year 3 Intake" --> BL3331
+	BL3331 ..> BL4131\nSem1 : bridge
+	BL3131\nSem2 --> BL4131\nSem1
+	BL4131\nSem1 --> BL4131\nSem2
+	BL4131\nSem2 --> BL5131\nSem1
+	BL5131\nSem1 --> BL5131\nSem2
+	BL5131\nSem2 --> BL6131\nSem1
+    BL6131\nSem1 --> BL6131\nSem2
+
+    BL3131\nSem2 --> BL4231 : DA
+    BL4231 -right-^ BL4131\nSem1 : must take
+    BL4131\nSem1 --> BL4232 : DA
+    BL4232 -right-^ BL4131\nSem2 : must take
+    BL4131\nSem2 --> BL5231 : DA
+    BL5231 -right-^ BL5131\nSem1 : must take
+	BL5131\nSem1 --> BL5232 : DA
+	BL5232 -right-^ BL5131\nSem2 : must take
+
+	BL4131\nSem2 --> BL5431
+	BL5431 --^ BL5131\nSem1 : must take
+
+	package "Year 5 Sem 2 Honours (choose one)" << Rectangle >> {
+		class BL5432<< Honours >>
+        class BL5433V as "BL5433V\n(NUS/LSM1105)" << Honours >>
+	}
+	BL5431 --> "Year 5 Sem 2 Honours (choose one)"
+	"Year 5 Sem 2 Honours (choose one)" -left-^ BL5131\nSem2 : must take
+
+	package "Year 6 Sem 1 Honours (choose one)" << Rectangle >> {
+		class BL6431<< Honours >>
+		class BL6433V as "BL6433V\n(NUS/LSM1106)" << Honours >>
+	}
+	"Year 6 Sem 1 Honours (choose one)" -left-^ BL6131\nSem1 : must take
+
+	package "Year 6 Sem 2 Honours (choose one)" << Rectangle >> {
+		class BL6432<< Honours >>
+        class BL6434V<< Honours >>
+	}
+	"Year 6 Sem 2 Honours (choose one)" -left-^ BL6131\nSem2 : must take
+
+	"Year 5 Sem 2 Honours (choose one)" --> "Year 6 Sem 1 Honours (choose one)"
+	"Year 6 Sem 1 Honours (choose one)" --> "Year 6 Sem 2 Honours (choose one)"
+}
+
+package CHEMISTRY << Node >> {
+	class CM1131\nSem1
+	class CM1131\nSem2
+	class CM1331<< Enrichment >>
+	class CM2131\nSem1
+	class CM2131\nSem2
+	class CM2231<< Elective >>
+	class CM23311 as "CM2331\n(taken in Sem1)"<< Enrichment >>
+	class CM23312 as "CM2331\n(taken in Sem2)"<< Enrichment >>
+	class CM3131\nSem1
+	class CM3131\nSem2
+	class CM3231<< Elective >>
+	class CM3232<< Elective >>
+	class CM3332<< Enrichment >>
+
+	package "Chemistry's Year 3 Intake" << Cloud >> {
+	}
+
+    class CM3332<< Enrichment >>
+    "Chemistry's Year 3 Intake" --> CM3332
+	CM3332 ..> CM4131 : bridge
+
+	CM1131\nSem1 --> CM1131\nSem2
+	CM1131\nSem2 --> CM2131\nSem1
+	CM2131\nSem1 --> CM2131\nSem2
+	CM2131\nSem2 --> CM3131\nSem1
+	CM3131\nSem1 --> CM3131\nSem2
+
+	CM1331 -right-^ CM1131\nSem1 : must take
+	CM1131\nSem2 --> CM23311
+	CM23311 -left-^ CM2131\nSem1 : must take
+	CM2131\nSem1 --> CM23312
+	CM23312 -left-^ CM2131\nSem2 : must take
+
+	CM2131\nSem1 --> CM2231 : DA
+	CM2231 -right-^ CM2131\nSem2 : must take
+	CM2131\nSem2 --> CM3231 : DA
+	CM3231 -right-^ CM3131\nSem1 : must take
+	CM3131\nSem1 --> CM3232 : DA
+	CM3232 -right-^ CM3131\nSem2 : must take
+
+	class CM4131<< Major >>
+	class CM4132<< Major >>
+	class CM4231<< Elective >>
+	class CM4232<< Elective >>
+	class CM42341 as "CM4234\n(taken in Sem1)"<< Elective >>
+	class CM42342 as "CM4234\n(taken in Sem2)"<< Elective >>
+	class CM5131<< Major >>
+	class CM5132<< Major >>
+	class CM5231<< Elective >>
+	class CM5232<< Elective >>
+	class CM5431<< Honours >>
+	class CM5434V<< Honours >>
+
+	class CM6131<< Major >>
+	class CM6132<< Major >>
+	class CM62311 as "CM6231\n(taken in Sem1)"<< Elective >>
+	class CM62312 as "CM6231\n(taken in Sem2)"<< Elective >>
+	class CM62321 as "CM6232\n(taken in Sem1)"<< Elective >>
+	class CM62322 as "CM6232\n(taken in Sem2)"<< Elective >>
+	class CM6431<< Honours >>
+	class CM6434V<< Honours >>
+
+	CM3131\nSem2 --> CM4131
+	CM4131 --> CM4132
+	CM4132 --> CM5131
+	CM5131 --> CM5132
+	CM5132 --> CM6131
+	CM6131 --> CM6132
+
+	CM3131\nSem2 --> CM4231 : DA
+	CM4231 --^ CM4131 : must take
+	CM4131 --> CM4232 : DA
+   	CM4232 --^ CM4132 : must take
+	CM4132 --> CM5231 : DA
+	CM5231 --^ CM5131 : must take
+	CM5131 --> CM5232 : DA
+	CM5232 --^ CM5132 : must take
+
+	CM42341 --^ CM4131 : must take
+	CM3131\nSem2 --> CM42341
+	CM42342 --^ CM4132 : must take
+	CM4131 --> CM42342
+
+	CM4132 --> CM5431
+	CM5431 --^ CM5131 : must take
+	CM5131 --> CM5434V : DA
+	CM5434V --^ CM5132 : must take
+
+	CM5132 --> CM62311
+	CM62311 --^ CM6131 : must take
+	CM6131 --> CM62312
+	CM62312 --^ CM6132 : must take
+
+	CM5132 --> CM62321
+	CM62321 --^ CM6131 : must take
+	CM6131 --> CM62322
+	CM62322 --^ CM6132 : must take
+
+   'put all the classes common to both track outside here.
+	package "NUSHS Honours Track" << Rectangle >> {
+	' put all the classes which are unique to the NUSHS track in here.
+		package "Year 5 Sem 2 NUSHS Honours Track (choose one)" << Rectangle >> {
+			class CM5432<< Honours >>
+            class CM5433<< Honours >>
+		}
+
+		CM5431 --> "Year 5 Sem 2 NUSHS Honours Track (choose one)"
+        CM5131 --> "Year 5 Sem 2 NUSHS Honours Track (choose one)"
+        "Year 5 Sem 2 NUSHS Honours Track (choose one)" --^ CM5132 : must take
+
+		package "Year 6 Sem 1 NUSHS Honours Track (choose one)" << Rectangle >> {
+			class CM6432<< Honours >>
+    		class CM6433<< Honours >>
+		}
+
+		"Year 5 Sem 2 NUSHS Honours Track (choose one)" --> "Year 6 Sem 1 NUSHS Honours Track (choose one)"
+        CM5132 --> "Year 6 Sem 1 NUSHS Honours Track (choose one)"
+        "Year 6 Sem 1 NUSHS Honours Track (choose one)" --^ CM6131 : must take
+	}
+
+	package "Hybrid Honours Track (choose one)" << Rectangle >> {
+	    'put all the classes which are unique to the hybrid track in here.
+        class CM1111 as "CM1111\n(Year 5 Semester 2 NUS)" << Honours >>
+		class CM1121 as "CM1121\n(Year 6 Semester 1 NUS)" << Honours >>
+	}
+
+	CM5431 --> "Hybrid Honours Track (choose one)"
+    CM5131 --> "Hybrid Honours Track (choose one)"
+    "Hybrid Honours Track (choose one)" --^ CM5132 : must take
+    "Hybrid Honours Track (choose one)" --^ CM6131 : must take
+
+    "Hybrid Honours Track (choose one)" --> CM6431
+    "NUSHS Honours Track" --> CM6431
+    CM6431 --^ CM6132 : must take
+}
+
+package PHYSICS {
+	class PC1131\nSem1
+	class PC1131\nSem2
+	class PC1331<< Enrichment >>
+	class PC1332<< Enrichment >>
+	class PC1333<< Enrichment >>
+	class PC2131\nSem1
+	class PC2131\nSem2
+	class PC2231<< Elective >>
+	class PC2331<< Enrichment >>
+	class PC2332<< Enrichment >>
+	class PC2333<< Enrichment >>
+	class PC3131\nSem1
+	class PC3131\nSem2
+	class PC3231<< Elective >>
+	class PC3232<< Elective >>
+	class PC3331<< Enrichment >>
+
+	package "Physics's Year 3 Intake" << Cloud >> {
+	}
+
+	class PC4131<< Major >>
+	class PC4132<< Major >>
+	class PC4231<< Elective >>
+	class PC4232<< Elective >>
+	class PC4331<< Enrichment >>
+	class PC5131<< Major >>
+	class PC5132<< Major >>
+	class PC5231<< Elective >>
+	class PC5232<< Elective >>
+	class PC5233<< Elective >>
+	class PC6131<< Major >>
+	class PC6132<< Major >>
+
+	class PC3333<< Enrichment >>
+    "Physics's Year 3 Intake" --> PC3333
+	PC3333 ..> PC4131 : bridge
+
+	PC1131\nSem1 --> PC1131\nSem2
+	PC1131\nSem2 --> PC2131\nSem1
+	PC2131\nSem1 --> PC2131\nSem2
+	PC2131\nSem2 --> PC3131\nSem1
+	PC3131\nSem1 --> PC3131\nSem2
+	PC3131\nSem2 --> PC4131
+	PC4131 --> PC4132
+	PC4132 --> PC5131
+	PC5131 --> PC5132
+	PC5132 --> PC6131
+	PC6131 --> PC6132
+
+	PC1331 -left-^ PC1131\nSem1 : must take
+	PC1131\nSem1 --> PC1332 : DA
+	PC1332 -right-^ PC1131\nSem2 : must take
+	PC1131\nSem1 --> PC1333 : DA
+	PC1333 -left-^ PC1131\nSem2 : must take
+	PC1131\nSem2 --> PC2331 : DA
+	PC2331 -right-^ PC2131\nSem1 : must take
+	PC1131\nSem2 --> PC2333 : DA
+	PC2333 -left-^ PC2131\nSem1 : must take
+	PC2131\nSem1 --> PC2231 : DA
+	PC2131\nSem1 --> PC2332 : DA
+	PC2231 -right-^ PC2131\nSem2 : must take
+	PC2332 -left-^ PC2131\nSem2 : must take
+	PC2231 --> PC3231
+	PC3231 -right-^ PC3131\nSem1 : must take
+	PC3131\nSem1 --> PC3331 : DA
+	PC3331 -right-^ PC3131\nSem2 : must take
+	PC3231 --> PC3232
+	PC3232 -left-^ PC3131\nSem2 : must take
+	PC3232 --> PC4231
+	PC4231 -left-^ PC4131 : must take
+}
+
+
+@enduml
