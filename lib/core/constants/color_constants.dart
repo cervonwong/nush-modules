@@ -1,5 +1,5 @@
 /*
- * NUSH Modules is a web app to help you explore the modules offered by
+ * NUSH Modules is a web app that helps you explore modules offered by
  * NUS High School of Math and Science.
  * Copyright (C) 2020 Cervon Wong, Lee I-Shiang, and Tia Shi Wei
  *
