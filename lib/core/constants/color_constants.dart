@@ -32,8 +32,8 @@ const Color kPrimaryColorLight = Color(0xffdbeafe); // Also kBlueColor100.
 const Color kPrimaryColorDark = Color(0xff1e3a8a); // Also kBlueColor900.
 
 const Color kSecondaryColor = Color(0xfffacc15); // Also kYellowColor400.
-const Color kSecondaryColorLight = Color(0xfffde047); // Also kYellowColor100.
-const Color kSecondaryColorDark = Color(0xfffacc15); // Also kYellowColor600.
+const Color kSecondaryColorLight = Color(0xfffef9c3); // Also kYellowColor100.
+const Color kSecondaryColorDark = Color(0xffeab308); // Also kYellowColor600.
 
 const Color kSuccessColor = Color(0xff34d399); // Also kEmeraldColor400.
 const Color kWarningColor = Color(0xfffb923c); // Also kYellowColor400.
@@ -185,9 +185,9 @@ const Color kLimeColor900 = Color(0xff365314);
 const Color kYellowColor050 = Color(0xfffefce8);
 const Color kYellowColor100 = Color(0xfffef9c3); // Also kSecondaryColorLight.
 const Color kYellowColor200 = Color(0xfffef08a);
-const Color kYellowColor300 = Color(0xfffde047); // Also kSecondaryColor.
-const Color kYellowColor400 = Color(0xfffacc15); // Also kSecondaryColorDark.
-const Color kYellowColor500 = Color(0xffeab308);
+const Color kYellowColor300 = Color(0xfffde047);
+const Color kYellowColor400 = Color(0xfffacc15); // Also kSecondaryColor.
+const Color kYellowColor500 = Color(0xffeab308); // Also kSecondaryColorDark.
 const Color kYellowColor600 = Color(0xffca8a04);
 const Color kYellowColor700 = Color(0xffa16207);
 const Color kYellowColor800 = Color(0xff854d0e);
