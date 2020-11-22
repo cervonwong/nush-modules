@@ -39,6 +39,22 @@ const Color kSuccessColor = Color(0xff34d399); // Also kEmeraldColor400.
 const Color kWarningColor = Color(0xfffb923c); // Also kYellowColor400.
 const Color kErrorColor = Color(0xfffb7185); // Also kRoseColor400.
 
+// Dark text colors use kGrayColor900 as a base.
+const double kDarkHighEmphasisOpacity = 0.90;
+const Color kDarkHighEmphasisTextColor = Color(0xe60f172a); // E6 --> 90%.
+const double kDarkMediumEmphasisOpacity = 0.65;
+const Color kDarkMediumEmphasisTextColor = Color(0xa60f172a); // A6 --> 65%.
+const double kDarkLowEmphasisOpacity = 0.30;
+const Color kDarkLowEmphasisTextColor = Color(0x4d0f172a); // 4D --> 30%.
+const double kLightHighEmphasisOpacity = 1.00;
+const Color kLightHighEmphasisTextColor = Color(0xffffffff); // FF --> 100%.
+const double kLightMediumEmphasisOpacity = 0.70;
+const Color kLightMediumEmphasisTextColor = Color(0xb3ffffff); // B3 --> 70%.
+const double kLightLowEmphasisOpacity = 0.35;
+const Color kLightLowEmphasisTextColor = Color(0x59ffffff); // 59 --> 35%.
+
+const Color kBorderColor = Color(0xffcbd5e1); // Also kGrayColor300.
+
 const Color kRoseColor050 = Color(0xfffff1f2);
 const Color kRoseColor100 = Color(0xffffe4e6);
 const Color kRoseColor200 = Color(0xfffecdd3);
@@ -229,10 +245,10 @@ const Color kRedColor900 = Color(0xff7f1d1d);
 const Color kGrayColor050 = Color(0xfff8fafc);
 const Color kGrayColor100 = Color(0xfff1f5f9);
 const Color kGrayColor200 = Color(0xffe2e8f0);
-const Color kGrayColor300 = Color(0xffcbd5e1);
+const Color kGrayColor300 = Color(0xffcbd5e1); // Also kBorderColor.
 const Color kGrayColor400 = Color(0xff94a3b8);
 const Color kGrayColor500 = Color(0xff64748b);
 const Color kGrayColor600 = Color(0xff475569);
 const Color kGrayColor700 = Color(0xff334155);
 const Color kGrayColor800 = Color(0xff1e293b);
-const Color kGrayColor900 = Color(0xff0f172a);
+const Color kGrayColor900 = Color(0xff0f172a); // Also used in text colors.

@@ -17,21 +17,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import 'package:flutter/material.dart';
-
-import 'core/theme/theme_data.dart' as theme_data;
+import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'NUSH Modules',
-      theme: theme_data.init(),
-      home: Container(),
-    );
-  }
+  test('Placeholder test so that there exists at least one test', () {});
 }

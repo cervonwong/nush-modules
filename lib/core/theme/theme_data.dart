@@ -19,19 +19,28 @@
 
 import 'package:flutter/material.dart';
 
-import 'core/theme/theme_data.dart' as theme_data;
+import '../constants/color_constants.dart';
 
-void main() {
-  runApp(MyApp());
+ThemeData init() {
+  return ThemeData(
+    colorScheme: _createColorScheme(),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'NUSH Modules',
-      theme: theme_data.init(),
-      home: Container(),
-    );
-  }
+ColorScheme _createColorScheme() {
+  return ColorScheme(
+    primary: kPrimaryColor,
+    primaryVariant: kPrimaryColorLight,
+    secondary: kSecondaryColor,
+    secondaryVariant: kSecondaryColorLight,
+    surface: Colors.white,
+    background: Colors.white,
+    error: kErrorColor,
+    onPrimary: kLightHighEmphasisTextColor,
+    onSecondary: kDarkHighEmphasisTextColor,
+    onSurface: kDarkHighEmphasisTextColor,
+    onBackground: kDarkHighEmphasisTextColor,
+    onError: kLightHighEmphasisTextColor,
+    brightness: Brightness.light,
+  );
 }
