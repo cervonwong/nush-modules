@@ -24,6 +24,7 @@ import '../constants/color_constants.dart';
 ThemeData init() {
   return ThemeData(
     colorScheme: _createColorScheme(),
+    textTheme: _createTextTheme(),
   );
 }
 
@@ -42,5 +43,66 @@ ColorScheme _createColorScheme() {
     onBackground: kDarkHighEmphasisTextColor,
     onError: kLightHighEmphasisTextColor,
     brightness: Brightness.light,
+  );
+}
+
+TextTheme _createTextTheme() {
+  return TextTheme(
+    headline1: TextStyle(
+      fontWeight: FontWeight.w300,
+      fontSize: 96.0,
+    ),
+    headline2: TextStyle(
+      fontWeight: FontWeight.w700,
+      fontSize: 60.0,
+    ),
+    headline3: TextStyle(
+      fontWeight: FontWeight.w400,
+      fontSize: 48.0,
+    ),
+    headline4: TextStyle(
+      fontWeight: FontWeight.w700,
+      fontSize: 34.0,
+    ),
+    headline5: TextStyle(
+      fontWeight: FontWeight.w700,
+      fontSize: 24.0,
+    ),
+    headline6: TextStyle(
+      fontWeight: FontWeight.w500,
+      fontSize: 20.0,
+    ),
+    subtitle1: TextStyle(
+      fontWeight: FontWeight.w600,
+      fontSize: 16.0,
+    ),
+    subtitle2: TextStyle(
+      fontWeight: FontWeight.w600,
+      fontSize: 14.0,
+    ),
+    bodyText1: TextStyle(
+      fontWeight: FontWeight.w400,
+      fontSize: 17.0,
+    ),
+    bodyText2: TextStyle(
+      fontWeight: FontWeight.w400,
+      fontSize: 15.0,
+    ),
+    button: TextStyle(
+      fontWeight: FontWeight.w600,
+      fontSize: 14.0,
+    ),
+    caption: TextStyle(
+      fontWeight: FontWeight.w400,
+      fontSize: 12,
+    ),
+    overline: TextStyle(
+      fontWeight: FontWeight.w500,
+      fontSize: 10,
+    ),
+  ).apply(
+    fontFamily: 'Poppins',
+    bodyColor: kDarkHighEmphasisTextColor,
+    displayColor: kDarkHighEmphasisTextColor,
   );
 }
