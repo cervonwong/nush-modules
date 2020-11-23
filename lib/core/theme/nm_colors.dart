@@ -23,10 +23,13 @@ import 'package:meta/meta.dart';
 
 import '../constants/color_constants.dart';
 
+@immutable
 class NMColor {
   final Color s050, s100, s200, s300, s400, s500, s600, s700, s800, s900;
 
-  const NMColor({
+  // This class is not meant to be instantiated by other libraries; a private
+  // constructor is used.
+  const NMColor._({
     @required this.s050,
     @required this.s100,
     @required this.s200,
@@ -76,7 +79,7 @@ class NMColors {
     // example, assign a color for a module. The gray may make it seem disabled.
   ];
 
-  static const rose = NMColor(
+  static const rose = NMColor._(
     s050: kRoseColor050,
     s100: kRoseColor100,
     s200: kRoseColor200,
@@ -89,7 +92,7 @@ class NMColors {
     s900: kRoseColor900,
   );
 
-  static const pink = NMColor(
+  static const pink = NMColor._(
     s050: kPinkColor050,
     s100: kPinkColor100,
     s200: kPinkColor200,
@@ -102,7 +105,7 @@ class NMColors {
     s900: kPinkColor900,
   );
 
-  static const fuchsia = NMColor(
+  static const fuchsia = NMColor._(
     s050: kFuchsiaColor050,
     s100: kFuchsiaColor100,
     s200: kFuchsiaColor200,
@@ -115,7 +118,7 @@ class NMColors {
     s900: kFuchsiaColor900,
   );
 
-  static const purple = NMColor(
+  static const purple = NMColor._(
     s050: kPurpleColor050,
     s100: kPurpleColor100,
     s200: kPurpleColor200,
@@ -128,7 +131,7 @@ class NMColors {
     s900: kPurpleColor900,
   );
 
-  static const violet = NMColor(
+  static const violet = NMColor._(
     s050: kVioletColor050,
     s100: kVioletColor100,
     s200: kVioletColor200,
@@ -141,7 +144,7 @@ class NMColors {
     s900: kVioletColor900,
   );
 
-  static const indigo = NMColor(
+  static const indigo = NMColor._(
     s050: kIndigoColor050,
     s100: kIndigoColor100,
     s200: kIndigoColor200,
@@ -154,7 +157,7 @@ class NMColors {
     s900: kIndigoColor900,
   );
 
-  static const blue = NMColor(
+  static const blue = NMColor._(
     s050: kBlueColor050,
     s100: kBlueColor100,
     s200: kBlueColor200,
@@ -167,7 +170,7 @@ class NMColors {
     s900: kBlueColor900,
   );
 
-  static const sky = NMColor(
+  static const sky = NMColor._(
     s050: kSkyColor050,
     s100: kSkyColor100,
     s200: kSkyColor200,
@@ -180,7 +183,7 @@ class NMColors {
     s900: kSkyColor900,
   );
 
-  static const cyan = NMColor(
+  static const cyan = NMColor._(
     s050: kCyanColor050,
     s100: kCyanColor100,
     s200: kCyanColor200,
@@ -193,7 +196,7 @@ class NMColors {
     s900: kCyanColor900,
   );
 
-  static const teal = NMColor(
+  static const teal = NMColor._(
     s050: kTealColor050,
     s100: kTealColor100,
     s200: kTealColor200,
@@ -206,7 +209,7 @@ class NMColors {
     s900: kTealColor900,
   );
 
-  static const emerald = NMColor(
+  static const emerald = NMColor._(
     s050: kEmeraldColor050,
     s100: kEmeraldColor100,
     s200: kEmeraldColor200,
@@ -219,7 +222,7 @@ class NMColors {
     s900: kEmeraldColor900,
   );
 
-  static const green = NMColor(
+  static const green = NMColor._(
     s050: kGreenColor050,
     s100: kGreenColor100,
     s200: kGreenColor200,
@@ -232,7 +235,7 @@ class NMColors {
     s900: kGreenColor900,
   );
 
-  static const lime = NMColor(
+  static const lime = NMColor._(
     s050: kLimeColor050,
     s100: kLimeColor100,
     s200: kLimeColor200,
@@ -245,7 +248,7 @@ class NMColors {
     s900: kLimeColor900,
   );
 
-  static const yellow = NMColor(
+  static const yellow = NMColor._(
     s050: kYellowColor050,
     s100: kYellowColor100,
     s200: kYellowColor200,
@@ -258,7 +261,7 @@ class NMColors {
     s900: kYellowColor900,
   );
 
-  static const amber = NMColor(
+  static const amber = NMColor._(
     s050: kAmberColor050,
     s100: kAmberColor100,
     s200: kAmberColor200,
@@ -271,7 +274,7 @@ class NMColors {
     s900: kAmberColor900,
   );
 
-  static const orange = NMColor(
+  static const orange = NMColor._(
     s050: kOrangeColor050,
     s100: kOrangeColor100,
     s200: kOrangeColor200,
@@ -284,7 +287,7 @@ class NMColors {
     s900: kOrangeColor900,
   );
 
-  static const red = NMColor(
+  static const red = NMColor._(
     s050: kRedColor050,
     s100: kRedColor100,
     s200: kRedColor200,
@@ -297,7 +300,7 @@ class NMColors {
     s900: kRedColor900,
   );
 
-  static const gray = NMColor(
+  static const gray = NMColor._(
     s050: kGrayColor050,
     s100: kGrayColor100,
     s200: kGrayColor200,
