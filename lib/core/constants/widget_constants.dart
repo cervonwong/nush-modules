@@ -20,5 +20,5 @@
 const double kMaxContentWidth = 1280.0;
 const double kMinContentPadding = 32.0;
 
-const double kSmallCornerRadius = 4.0;
+const double kSmallCornerRadius = 8.0;
 const double kMediumCornerRadius = 16.0;
