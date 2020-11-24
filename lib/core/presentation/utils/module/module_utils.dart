@@ -19,7 +19,7 @@
 
 import 'package:meta/meta.dart';
 
-import '../../domain/module.dart';
+import '../../../domain/module/module.dart';
 
 String getLevelsText({@required Module module}) {
   assert(module != null);

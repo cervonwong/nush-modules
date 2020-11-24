@@ -23,8 +23,8 @@ import 'package:flutter/material.dart';
 
 import '../../../constants/color_constants.dart';
 import '../../../constants/widget_constants.dart';
-import '../../domain/module.dart';
-import '../utils/module_utils.dart';
+import '../../../domain/module/module.dart';
+import '../../utils/module/module_utils.dart';
 
 class ModuleCard extends StatelessWidget {
   ModuleCard({

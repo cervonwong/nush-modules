@@ -19,8 +19,8 @@
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:nush_modules/core/module/domain/module.dart';
-import 'package:nush_modules/core/module/presentation/utils/module_utils.dart';
+import 'package:nush_modules/core/domain/module/module.dart';
+import 'package:nush_modules/core/presentation/utils/module/module_utils.dart';
 
 // ignore: must_be_immutable
 class MockModule extends Mock implements Module {}
