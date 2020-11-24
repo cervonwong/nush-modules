@@ -17,12 +17,15 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
+import 'package:validators/validators.dart';
 
 import '../../../theme/nm_colors.dart';
 
 @immutable
-class Module {
+class Module extends Equatable {
+  /// Unique identifier.
   final ModuleCode code;
   final String name;
   final String description;
@@ -58,16 +61,20 @@ class Module {
         assert(moduleType != null),
         assert(modularCredits != null),
         assert(workload != null),
+        assert(!levels.contains(null)),
         assert(levels.isNotEmpty),
         assert(levels.length < 3),
         assert(modularCredits >= 0),
         assert(workload > 0);
+
+  @override
+  List<Object> get props => [code];
 }
 
 /// Represents the unique module code of each module.
 /// E.g. MA1232V
 @immutable
-class ModuleCode {
+class ModuleCode extends Equatable {
   /// E.g. MA
   final String prefixChars;
 
@@ -85,15 +92,21 @@ class ModuleCode {
   })  : assert(prefixChars != null),
         assert(digits != null),
         assert(prefixChars.length == 2),
+        assert(isUppercase(prefixChars) && isAlpha(prefixChars)),
         assert(digits > 999 && digits < 7000),
-        assert(suffixChar == null || suffixChar.length == 1);
+        assert(suffixChar == null || suffixChar.length == 1),
+        assert(suffixChar == null ||
+            (isUppercase(suffixChar) && isAlpha(suffixChar)));
 
   @override
   String toString() => '$prefixChars$digits${suffixChar ?? ''}';
+
+  @override
+  List<Object> get props => [prefixChars, digits, suffixChar];
 }
 
 @immutable
-class Subject {
+class Subject extends Equatable {
   final String prefixChars;
   final String name;
   final NMColor nmColor;
@@ -108,6 +121,9 @@ class Subject {
         assert(name != null),
         assert(nmColor != null),
         assert(prefixChars.length == 2);
+
+  @override
+  List<Object> get props => [prefixChars, name, nmColor];
 }
 
 class Subjects {
