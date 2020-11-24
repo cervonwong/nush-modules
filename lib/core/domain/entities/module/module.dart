@@ -19,7 +19,7 @@
 
 import 'package:meta/meta.dart';
 
-import '../../theme/nm_colors.dart';
+import '../../../theme/nm_colors.dart';
 
 @immutable
 class Module {
