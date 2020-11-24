@@ -20,12 +20,15 @@
 import 'package:flutter/material.dart';
 
 import '../constants/color_constants.dart';
+import '../constants/widget_constants.dart';
 
 ThemeData init() {
   return ThemeData(
     scaffoldBackgroundColor: Colors.white,
     colorScheme: _createColorScheme(),
     textTheme: _createTextTheme(),
+    textButtonTheme: _createTextButtonTheme(),
+    elevatedButtonTheme: _createElevatedButtonTheme(),
   );
 }
 
@@ -106,5 +109,35 @@ TextTheme _createTextTheme() {
     fontFamily: 'Poppins',
     bodyColor: kDarkHighEmphasisTextColor,
     displayColor: kDarkHighEmphasisTextColor,
+  );
+}
+
+TextButtonThemeData _createTextButtonTheme() {
+  return TextButtonThemeData(
+    style: ButtonStyle(
+      shape: MaterialStateProperty.all(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(kSmallCornerRadius),
+        ),
+      ),
+      textStyle: MaterialStateProperty.all<TextStyle>(
+        _createTextTheme().button,
+      ),
+    ),
+  );
+}
+
+ElevatedButtonThemeData _createElevatedButtonTheme() {
+  return ElevatedButtonThemeData(
+    style: ButtonStyle(
+      shape: MaterialStateProperty.all(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(kSmallCornerRadius),
+        ),
+      ),
+      textStyle: MaterialStateProperty.all<TextStyle>(
+        _createTextTheme().button,
+      ),
+    ),
   );
 }

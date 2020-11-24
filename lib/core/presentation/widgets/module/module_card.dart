@@ -41,14 +41,14 @@ class ModuleCard extends StatelessWidget {
       child: Material(
         color: Theme.of(context).colorScheme.surface,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(kSmallCornerRadius),
+          borderRadius: BorderRadius.circular(kMediumCornerRadius),
         ),
         child: Container(
           height: _cardHeight,
           padding: const EdgeInsets.symmetric(vertical: 16.0),
           decoration: BoxDecoration(
             border: Border.all(color: kBorderColor, width: 1.0),
-            borderRadius: BorderRadius.circular(kSmallCornerRadius),
+            borderRadius: BorderRadius.circular(kMediumCornerRadius),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

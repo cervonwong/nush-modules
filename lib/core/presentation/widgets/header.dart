@@ -20,32 +20,31 @@
 import 'package:flutter/material.dart';
 
 import '../../constants/color_constants.dart';
+import '../../constants/widget_constants.dart';
 
 enum Destination { overview, catalogue, timetable, settings }
 
 class Header extends StatelessWidget {
   /// This is nullable.
-  final currentDestination;
+  /// If null, it represents that the user is in a top-level navigation
+  /// destination that is not part of [Destination].
+  /// E.g. AboutScreen.
+  final Destination activeDestination;
 
   Header({
-    this.currentDestination,
+    this.activeDestination,
   });
 
   @override
   Widget build(BuildContext context) {
-    const appBarHeight = 64.0;
-
     final _themeData = ThemeData(
       elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ButtonStyle(
+        style: Theme.of(context).elevatedButtonTheme.style.copyWith(
           backgroundColor: MaterialStateProperty.all<Color>(
             Theme.of(context).colorScheme.secondary,
           ),
           foregroundColor: MaterialStateProperty.all<Color>(
             kDarkHighEmphasisTextColor,
-          ),
-          textStyle: MaterialStateProperty.all<TextStyle>(
-            Theme.of(context).textTheme.button,
           ),
           minimumSize: MaterialStateProperty.all<Size>(Size(100.0, 40.0)),
           elevation: MaterialStateProperty.resolveWith<double>(
@@ -60,7 +59,7 @@ class Header extends StatelessWidget {
         ),
       ),
       textButtonTheme: TextButtonThemeData(
-        style: ButtonStyle(
+        style: Theme.of(context).textButtonTheme.style.copyWith(
           foregroundColor: MaterialStateProperty.resolveWith<Color>(
               (Set<MaterialState> states) {
             if (states.contains(MaterialState.hovered) ||
@@ -73,6 +72,9 @@ class Header extends StatelessWidget {
           textStyle: MaterialStateProperty.all<TextStyle>(
             Theme.of(context).textTheme.bodyText1,
           ),
+          shape: MaterialStateProperty.all<OutlinedBorder>(
+            RoundedRectangleBorder(),
+          ),
         ),
       ),
     );
@@ -80,7 +82,7 @@ class Header extends StatelessWidget {
     return Theme(
       data: _themeData,
       child: SliverAppBar(
-        toolbarHeight: appBarHeight,
+        toolbarHeight: kAppBarHeight,
         floating: true,
         pinned: true,
         snap: false,
@@ -88,7 +90,7 @@ class Header extends StatelessWidget {
         title: Stack(
           children: [
             Container(
-              height: appBarHeight,
+              height: kAppBarHeight,
               alignment: Alignment.centerRight,
               child: ElevatedButton(
                 child: Text('Connect'),
@@ -98,86 +100,64 @@ class Header extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(
-                  height: appBarHeight,
-                  child: TextButton(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: Text(
-                        'Overview',
-                        style: currentDestination == Destination.overview
-                            ? Theme.of(context).textTheme.bodyText1.copyWith(
-                                  fontWeight: FontWeight.w600,
-                                  color:
-                                      Theme.of(context).colorScheme.secondary,
-                                )
-                            : null,
-                      ),
-                    ),
-                    onPressed: () {},
-                  ),
+                _DestinationButton(
+                  text: 'Overview',
+                  isActive: activeDestination == Destination.overview,
+                  onPressed: () {},
                 ),
-                Container(
-                  height: appBarHeight,
-                  child: TextButton(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: Text(
-                        'Catalogue',
-                        style: currentDestination == Destination.catalogue
-                            ? Theme.of(context).textTheme.bodyText1.copyWith(
-                                  fontWeight: FontWeight.w600,
-                                  color:
-                                      Theme.of(context).colorScheme.secondary,
-                                )
-                            : null,
-                      ),
-                    ),
-                    onPressed: () {},
-                  ),
+                _DestinationButton(
+                  text: 'Catalogue',
+                  isActive: activeDestination == Destination.catalogue,
+                  onPressed: () {},
                 ),
-                Container(
-                  height: appBarHeight,
-                  child: TextButton(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: Text(
-                        'Timetable',
-                        style: currentDestination == Destination.timetable
-                            ? Theme.of(context).textTheme.bodyText1.copyWith(
-                                  fontWeight: FontWeight.w600,
-                                  color:
-                                      Theme.of(context).colorScheme.secondary,
-                                )
-                            : null,
-                      ),
-                    ),
-                    onPressed: () {},
-                  ),
+                _DestinationButton(
+                  text: 'Timetable',
+                  isActive: activeDestination == Destination.timetable,
+                  onPressed: () {},
                 ),
-                Container(
-                  height: appBarHeight,
-                  child: TextButton(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: Text(
-                        'Settings',
-                        style: currentDestination == Destination.settings
-                            ? Theme.of(context).textTheme.bodyText1.copyWith(
-                                  fontWeight: FontWeight.w600,
-                                  color:
-                                      Theme.of(context).colorScheme.secondary,
-                                )
-                            : null,
-                      ),
-                    ),
-                    onPressed: () {},
-                  ),
+                _DestinationButton(
+                  text: 'Settings',
+                  isActive: activeDestination == Destination.settings,
+                  onPressed: () {},
                 ),
               ],
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _DestinationButton extends StatelessWidget {
+  final String text;
+  final bool isActive;
+  final VoidCallback onPressed;
+
+  _DestinationButton({
+    @required this.text,
+    @required this.isActive,
+    @required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final _activeTextStyle = Theme.of(context).textTheme.bodyText1.copyWith(
+          fontWeight: FontWeight.w600,
+          color: Theme.of(context).colorScheme.secondary,
+        );
+
+    return Container(
+      height: kAppBarHeight,
+      child: TextButton(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Text(
+            text,
+            style: isActive ? _activeTextStyle : null,
+          ),
+        ),
+        onPressed: onPressed,
       ),
     );
   }
