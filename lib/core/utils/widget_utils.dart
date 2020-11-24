@@ -19,21 +19,13 @@
 
 import 'package:flutter/material.dart';
 
-import 'core/theme/theme_data.dart' as theme_data;
-import 'screens/about_screen.dart';
+import '../constants/widget_constants.dart';
 
-void main() {
-  runApp(MyApp());
-}
+EdgeInsets getContentHorizontalPadding(BuildContext context) {
+  var screenWidth = MediaQuery.of(context).size.width;
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'NUSH Modules',
-      theme: theme_data.init(),
-      debugShowCheckedModeBanner: false,
-      home: AboutScreen(),
-    );
-  }
+  return EdgeInsets.symmetric(
+      horizontal: (screenWidth >= (kMaxContentWidth + 2 * kMinContentPadding))
+          ? (screenWidth - kMaxContentWidth) / 2
+          : kMinContentPadding);
 }

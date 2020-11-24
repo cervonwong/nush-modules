@@ -17,7 +17,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-const double kMaxContentWidth = 1280.0;
+const double kMaxContentWidth = 1024.0;
 const double kMinContentPadding = 32.0;
 
 const double kSmallCornerRadius = 8.0;

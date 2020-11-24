@@ -54,6 +54,7 @@ const double kLightLowEmphasisOpacity = 0.35;
 const Color kLightLowEmphasisTextColor = Color(0x59ffffff); // 59 --> 35%.
 
 const Color kBorderColor = Color(0xffcbd5e1); // Also kGrayColor300.
+const Color kBackgroundColorAlt = Color(0xfff1f5f9); // Also kGrayColor100.
 
 const Color kRoseColor050 = Color(0xfffff1f2);
 const Color kRoseColor100 = Color(0xffffe4e6);
@@ -243,7 +244,7 @@ const Color kRedColor800 = Color(0xff991b1b);
 const Color kRedColor900 = Color(0xff7f1d1d);
 
 const Color kGrayColor050 = Color(0xfff8fafc);
-const Color kGrayColor100 = Color(0xfff1f5f9);
+const Color kGrayColor100 = Color(0xfff1f5f9); // Also kBackgroundColorAlt.
 const Color kGrayColor200 = Color(0xffe2e8f0);
 const Color kGrayColor300 = Color(0xffcbd5e1); // Also kBorderColor.
 const Color kGrayColor400 = Color(0xff94a3b8);

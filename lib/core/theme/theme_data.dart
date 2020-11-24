@@ -23,6 +23,7 @@ import '../constants/color_constants.dart';
 
 ThemeData init() {
   return ThemeData(
+    scaffoldBackgroundColor: Colors.white,
     colorScheme: _createColorScheme(),
     textTheme: _createTextTheme(),
   );
@@ -55,6 +56,7 @@ TextTheme _createTextTheme() {
     headline2: TextStyle(
       fontWeight: FontWeight.w700,
       fontSize: 60.0,
+      height: 1.3,
     ),
     headline3: TextStyle(
       fontWeight: FontWeight.w400,
