@@ -20,7 +20,7 @@
 import 'package:flutter/material.dart';
 
 import '../../constants/color_constants.dart';
-import '../../utils/widget_utils.dart';
+import 'module/widget_utils.dart';
 
 class Footer extends StatelessWidget {
   @override

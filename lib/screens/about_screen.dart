@@ -22,7 +22,7 @@ import 'package:flutter/material.dart';
 import '../core/constants/color_constants.dart';
 import '../core/presentation/widgets/footer.dart';
 import '../core/presentation/widgets/header.dart';
-import '../core/utils/widget_utils.dart';
+import '../core/presentation/widgets/module/widget_utils.dart';
 
 class AboutScreen extends StatelessWidget {
   @override

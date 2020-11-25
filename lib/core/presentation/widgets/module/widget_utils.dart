@@ -19,7 +19,7 @@
 
 import 'package:flutter/material.dart';
 
-import '../constants/widget_constants.dart';
+import '../../../constants/widget_constants.dart';
 
 EdgeInsets getContentHorizontalPadding(BuildContext context) {
   var screenWidth = MediaQuery.of(context).size.width;
