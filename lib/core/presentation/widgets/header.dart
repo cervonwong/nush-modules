@@ -37,7 +37,7 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _themeData = ThemeData(
+    final _themeData = Theme.of(context).copyWith(
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: Theme.of(context).elevatedButtonTheme.style.copyWith(
           backgroundColor: MaterialStateProperty.all<Color>(
