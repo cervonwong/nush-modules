@@ -25,18 +25,21 @@ import 'module/widget_utils.dart';
 class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    const verticalPadding = 32.0;
+    const verticalSpacing = 16.0;
+
     return Container(
       color: Theme.of(context).colorScheme.primary,
       padding: getContentHorizontalPadding(context),
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 32.0),
+        padding: const EdgeInsets.symmetric(vertical: verticalPadding),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _LinkButtonBar(),
-            SizedBox(height: 16.0),
+            SizedBox(height: verticalSpacing),
             _ContentSection(),
-            SizedBox(height: 16.0),
+            SizedBox(height: verticalSpacing),
             _CopyrightSection(),
           ],
         ),
@@ -48,32 +51,8 @@ class Footer extends StatelessWidget {
 class _LinkButtonBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final _themeData = Theme.of(context).copyWith(
-      textButtonTheme: TextButtonThemeData(
-        style: ButtonStyle(
-          foregroundColor: MaterialStateProperty.resolveWith<Color>(
-              (Set<MaterialState> states) {
-            if (states.contains(MaterialState.hovered)) {
-              return Theme.of(context).colorScheme.secondary;
-            }
-            return kLightHighEmphasisTextColor;
-          }),
-          overlayColor: MaterialStateProperty.all<Color>(
-            Colors.transparent,
-          ),
-          textStyle: MaterialStateProperty.all<TextStyle>(
-            Theme.of(context).textTheme.bodyText2.copyWith(
-                  decoration: TextDecoration.underline,
-                ),
-          ),
-          minimumSize: MaterialStateProperty.all<Size>(Size.zero),
-          animationDuration: Duration(milliseconds: 150),
-        ),
-      ),
-    );
-
     return Theme(
-      data: _themeData,
+      data: _createThemeData(context),
       child: Wrap(
         spacing: 16.0,
         runSpacing: 16.0,
@@ -111,6 +90,38 @@ class _LinkButtonBar extends StatelessWidget {
             onPressed: () {},
           ),
         ],
+      ),
+    );
+  }
+
+  ThemeData _createThemeData(BuildContext context) {
+    final foregroundColor = MaterialStateProperty.resolveWith<Color>(
+              (Set<MaterialState> states) {
+            if (states.contains(MaterialState.hovered)) {
+              return Theme.of(context).colorScheme.secondary;
+            }
+            return kLightHighEmphasisTextColor;
+          });
+    final overlayColor = MaterialStateProperty.all<Color>(
+            Colors.transparent,
+          );
+    final textStyle = MaterialStateProperty.all<TextStyle>(
+            Theme.of(context).textTheme.bodyText2.copyWith(
+                  decoration: TextDecoration.underline,
+                ),
+          );
+    final minimumSize = MaterialStateProperty.all<Size>(Size.zero);
+    const animationDuration2 = Duration(milliseconds: 150);
+
+    return Theme.of(context).copyWith(
+      textButtonTheme: TextButtonThemeData(
+        style: ButtonStyle(
+          foregroundColor: foregroundColor,
+          overlayColor: overlayColor,
+          textStyle: textStyle,
+          minimumSize: minimumSize,
+          animationDuration: animationDuration2,
+        ),
       ),
     );
   }
