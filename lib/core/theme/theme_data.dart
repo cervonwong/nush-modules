@@ -26,9 +26,22 @@ ThemeData init() {
   return ThemeData(
     scaffoldBackgroundColor: Colors.white,
     colorScheme: _createColorScheme(),
+    cardTheme: _createCardTheme(),
     textTheme: _createTextTheme(),
     textButtonTheme: _createTextButtonTheme(),
     elevatedButtonTheme: _createElevatedButtonTheme(),
+  );
+}
+
+CardTheme _createCardTheme() {
+  return CardTheme(
+    margin: const EdgeInsets.all(0.0),
+    color: Colors.white,
+    elevation: 0.0,
+    shape: RoundedRectangleBorder(
+      side: BorderSide(color: kBorderColor, width: 1.0),
+      borderRadius: BorderRadius.circular(kMediumCornerRadius),
+    ),
   );
 }
 

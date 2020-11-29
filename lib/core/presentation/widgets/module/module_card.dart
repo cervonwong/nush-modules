@@ -22,11 +22,12 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants/color_constants.dart';
-import '../../../constants/widget_constants.dart';
 import '../../../domain/entities/module/module.dart';
 import '../../utils/module/module_utils.dart';
 
 class ModuleCard extends StatelessWidget {
+  static const intrinsicHeight = 210.0;
+
   ModuleCard({
     @required this.module,
   }) : assert(module != null);
@@ -35,30 +36,18 @@ class ModuleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const _cardHeight = 210.0;
-
-    return Expanded(
-      child: Material(
-        color: Theme.of(context).colorScheme.surface,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(kMediumCornerRadius),
-        ),
-        child: Container(
-          height: _cardHeight,
-          padding: const EdgeInsets.symmetric(vertical: 16.0),
-          decoration: BoxDecoration(
-            border: Border.all(color: kBorderColor, width: 1.0),
-            borderRadius: BorderRadius.circular(kMediumCornerRadius),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _ModuleCardHeaderBar(module: module),
-              _ModuleCardNameText(module: module),
-              Spacer(),
-              _ModuleCardFooterText(module: module),
-            ],
-          ),
+    return Card(
+      child: Container(
+        height: intrinsicHeight,
+        padding: const EdgeInsets.symmetric(vertical: 16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _ModuleCardHeaderBar(module: module),
+            _ModuleCardNameText(module: module),
+            Spacer(),
+            _ModuleCardFooterText(module: module),
+          ],
         ),
       ),
     );
@@ -113,6 +102,8 @@ class _ModuleCardNameText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const textLineHeight = 1.3;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Text(
@@ -121,6 +112,7 @@ class _ModuleCardNameText extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
         style: Theme.of(context).textTheme.headline6.copyWith(
               color: module.subject.nmColor.s700,
+          height: textLineHeight,
             ),
       ),
     );
