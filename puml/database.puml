@@ -1,0 +1,57 @@
+@startuml
+
+skinparam linetype ortho
+skinparam shadowing false
+
+entity modules {
+	code : TEXT <<PK>>
+	name : TEXT
+	description : TEXT
+	modular_credits : INTEGER
+	workload : REAL
+	criteria : TEXT NULLABLE
+	subject_id : INTEGER <<FK>>
+	semester_type_id : INTEGER <<FK>>
+	module_type_id : INTEGER <<FK>>
+}
+
+entity subjects {
+	id : INTEGER <<PK>>
+	name : TEXT
+	color_id: INTEGER <<FK>>
+}
+
+entity colors {
+	id : INTEGER <<PK>>
+	name : TEXT
+}
+
+entity semester_types {
+	id : INTEGER <<PK>>
+	name : TEXT
+}
+
+entity levels {
+	id : INTEGER <<PK>>
+	year : INTEGER
+}
+
+entity modules_levels {
+	module_id : INTEGER <<FK>>
+	level_id : INTEGER <<FK>>
+}
+
+entity module_types {
+	id : INTEGER <<PK>>
+	name : TEXT
+}
+
+modules }|--|| subjects
+subjects }|--|| colors
+modules }|--|| semester_types
+modules ||-|{ modules_levels
+modules_levels }|-|| levels
+modules }|--|| module_types
+
+@enduml
+
