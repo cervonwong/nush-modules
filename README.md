@@ -6,16 +6,9 @@ NUSH Modules is a web app to help you explore the modules offered by NUS High Sc
 
 This service is not affiliated with NUS High School.
 
-## About NUSH Modules
+## Mission
 
-#### For students
-NUSH Modules helps NUSHS students make informed choices about the modules they will be taking. This includes viewing majoring options, forecasting their future workload in hours, and visualising prerequisite/corequisite graphs.
-
-#### For parents
-NUSH Modules helps parents understand the NUSHS module system, including enrichment, elective, and core modules, as well as NUSHS's specialisation and honours module system.
-
-#### For incoming students
-NUSH Modules helps incoming Primary 6 students explore the range of modules offered in NUSHS. The interactive interface lays out how Da Vinci modules and research opportunities are incorporated into NUSHS's module system.
+NUSH Modules helps NUSHS students make informed choices about the modules they will be taking. This includes viewing majoring options, forecasting their future workload in hours, and visualising prerequisite/corequisite graphs. Students will also get to explore the range of modules offered in NUSHS using the interactive interface. Students can easily get an overview of the specialisation and honours module system, including the possible combinations, tracks, and paths.
 
 ## Motivation
 
