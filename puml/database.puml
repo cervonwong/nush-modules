@@ -1,57 +1,97 @@
 @startuml
 
+skinparam objectFontName Monospaced
+skinparam objectAttributeFontName Monospaced
+skinparam objectStereotypeFontName Monospaced
+
+skinparam objectAttributeFontSize 16
+skinparam objectFontSize 16
+skinparam objectStereotypeFontSize 14
+
+skinparam objectFontStyle bold
+
 skinparam linetype ortho
 skinparam shadowing false
 
-entity modules {
-	code : TEXT <<PK>>
-	name : TEXT
-	description : TEXT
-	modular_credits : INTEGER
-	workload : REAL
-	criteria : TEXT NULLABLE
-	subject_id : INTEGER <<FK>>
+object modules {
+	id               : INTEGER <<PK>>
+	code             : TEXT <<unique>>
+	name             : TEXT
+	description      : TEXT
+	modular_credits  : INTEGER
+	workload         : REAL
+	criteria         : TEXT <<nullable>>
+	subject_id       : INTEGER <<FK>>
 	semester_type_id : INTEGER <<FK>>
-	module_type_id : INTEGER <<FK>>
+	module_type_id   : INTEGER <<FK>>
 }
 
-entity subjects {
-	id : INTEGER <<PK>>
-	name : TEXT
-	color_id: INTEGER <<FK>>
+object subjects {
+	id       : INTEGER <<PK>>
+	name     : TEXT
+	color_id : INTEGER <<FK>>
 }
 
-entity colors {
-	id : INTEGER <<PK>>
-	name : TEXT
-}
-
-entity semester_types {
-	id : INTEGER <<PK>>
+object colors {
+	id   : INTEGER <<PK>>
 	name : TEXT
 }
 
-entity levels {
-	id : INTEGER <<PK>>
+object semester_types {
+	id   : INTEGER <<PK>>
+	name : TEXT
+}
+
+object levels {
+	id   : INTEGER <<PK>>
 	year : INTEGER
 }
 
-entity modules_levels {
+object modules_levels <<junction table>> {
 	module_id : INTEGER <<FK>>
-	level_id : INTEGER <<FK>>
+	level_id  : INTEGER <<FK>>
 }
 
-entity module_types {
-	id : INTEGER <<PK>>
+object module_types {
+	id   : INTEGER <<PK>>
 	name : TEXT
 }
 
-modules }|--|| subjects
+object pinned_modules {
+	id        : INTEGER <<PK, autoincrement>>
+	position  : INTEGER
+	module_id : INTEGER <<FK>>
+}
+
+modules }|---|| subjects
 subjects }|--|| colors
 modules }|--|| semester_types
 modules ||-|{ modules_levels
 modules_levels }|-|| levels
 modules }|--|| module_types
+modules ||---o| pinned_modules
+
+object prerequisites {
+	dependent_module_id    : INTEGER <<FK>>
+	prerequisite_module_id : INTEGER <<FK>>
+}
+
+object corequisites {
+	dependent_module_id   : INTEGER <<FK>>
+	corequisite_module_id : INTEGER <<FK>>
+}
+
+object preclusions {
+	precluder_module_id : INTEGER <<FK>>
+	precluded_module_id : INTEGER <<FK>>
+}
+
+modules ||--|{ prerequisites
+prerequisites }|--|| modules
+modules ||--|{ corequisites
+corequisites }|--|| modules
+modules ||--|{ preclusions
+preclusions }|--|| modules
 
 @enduml
 
