@@ -1,0 +1,108 @@
+{
+  "version": 1,
+  "modules": [
+    {
+      "id": 1,
+      "code": "MA1131",
+      "name": "Foundations in Math IA",
+      "description": "This module aims to develop some understanding of the essential concepts of mathematics. The basic operations of numbers, fundamental concepts of algebra and geometry will be discussed. Topics include whole numbers, factors and multiples, fractions and decimals, approximation and estimation. This module also covers concepts of algebraic expressions, equations and manipulation, standard form, rules of indices and graphs of linear equations.",
+      "mc": 3,
+      "workload": 3.0,
+      "subject": "MATH",
+      "semesterType": "FIRST",
+      "moduleType": "CORE",
+      "levels": [
+        1
+      ],
+      "prerequisites": [],
+      "corequisites": [],
+      "preclusions": []
+    },
+    {
+      "id": 2,
+      "code": "MA1231",
+      "name": "Math Olympiad Training I",
+      "description": "This module provides students with a taste of Olympiad-type mathematics. Students are expected to participate in the Singapore Mathematical Olympiad (Junior).",
+      "mc": 2,
+      "workload": 3.0,
+      "subject": "MATH",
+      "semesterType": "FIRST",
+      "moduleType": "ELECTIVE",
+      "levels": [
+        1
+      ],
+      "prerequisites": [],
+      "corequisites": [
+        "MA1131"
+      ],
+      "preclusions": []
+    },
+    {
+      "id": 3,
+      "code": "MA1132",
+      "name": "Foundations in Math IB",
+      "description": "This module aims to further develop an understanding of the essential concepts of foundational mathematics. Topics included are simultaneous linear equations, direct and inverse proportions, angle properties of triangles, quadrilaterals and polygons. This module also covers perimeter, area, volume and surface area of simple geometrical figures, symmetry, construction and loci. Coordinate geometry will be further developed as well. Students will also learn about various problem-solving heuristics and techniques.",
+      "mc": 3,
+      "workload": 3.0,
+      "subject": "MATH",
+      "semesterType": "SECOND",
+      "moduleType": "CORE",
+      "levels": [
+        1
+      ],
+      "prerequisites": [
+        "MA1131"
+      ],
+      "corequisites": [],
+      "preclusions": []
+    },
+    {
+      "id": 4,
+      "code": "MA1232",
+      "name": "Math Olympiad Training II",
+      "description": "This module targets high ability students who are keen to prepare themselves rigorously for the Singapore Mathematical Olympiad (Junior).",
+      "remarks": "Requires department approval.",
+      "mc": 2,
+      "workload": 1.5,
+      "subject": "MATH",
+      "semesterType": "SECOND",
+      "moduleType": "ELECTIVE",
+      "levels": [
+        1
+      ],
+      "prerequisites": [
+        "MA1231"
+      ],
+      "corequisites": [
+        "MA1132"
+      ],
+      "preclusions": [
+        "MA1232V"
+      ]
+    },
+    {
+      "id": 5,
+      "code": "MA1232V",
+      "name": "Math Olympiad Training II",
+      "description": "This module targets high ability students who are keen to prepare themselves rigorously for the Singapore Mathematical Olympiad (Junior). The course is taught by an external trainer.",
+      "remarks": "Requires department approval.",
+      "mc": 2,
+      "workload": 1.5,
+      "subject": "MATH",
+      "semesterType": "SECOND",
+      "moduleType": "ELECTIVE",
+      "levels": [
+        1
+      ],
+      "prerequisites": [
+        "MA1231"
+      ],
+      "corequisites": [
+        "MA1132"
+      ],
+      "preclusions": [
+        "MA1232"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,446 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://github.com/cervonwong/nush-modules",
+  "type": "object",
+  "title": "The schema for modules.json",
+  "description": "modules.json is an array of objects, with each object representing a module.",
+  "default": {
+    "version": -1,
+    "modules": [
+      {}
+    ]
+  },
+  "examples": [
+    {
+      "version": 1,
+      "modules": [
+        {
+          "id": 1,
+          "code": "MA2231V",
+          "name": "Math Olympiad Training III",
+          "description": "This module builds upon the previous Junior Olympiad training. It targets high ability students who are keen to prepare themselves rigorously for the Singapore Mathematical Olympiad (Senior). The course is taught by an external trainer.",
+          "mc": 2,
+          "workload": 1.5,
+          "remarks": "Requires Department Approval.",
+          "subject": "MATH",
+          "semesterType": "FIRST",
+          "moduleType": "ELECTIVE",
+          "levels": [
+            2
+          ],
+          "prerequisites": [
+            "MA2231V"
+          ],
+          "corequisites": [
+            "MA2231V"
+          ],
+          "preclusions": [
+            "MA2231V"
+          ]
+        }
+      ]
+    }
+  ],
+  "required": [
+    "version",
+    "modules"
+  ],
+  "properties": {
+    "version": {
+      "$id": "#/properties/version",
+      "type": "integer",
+      "title": "The current version",
+      "description": "An integer that is bumped up by 1 everytime modules.json is updated after release of the app.",
+      "default": 0,
+      "minimum": 1,
+      "examples": [
+        1
+      ]
+    },
+    "modules": {
+      "$id": "#/properties/modules",
+      "type": "array",
+      "title": "An array of all modules",
+      "description": "",
+      "default": [
+        {}
+      ],
+      "examples": [
+        [
+          {
+            "id": 1,
+            "code": "MA2231V",
+            "name": "Math Olympiad Training III",
+            "description": "This module builds upon the previous Junior Olympiad training. It targets high ability students who are keen to prepare themselves rigorously for the Singapore Mathematical Olympiad (Senior). The course is taught by an external trainer.",
+            "mc": 2,
+            "workload": 1.5,
+            "remarks": "Requires Department Approval.",
+            "subject": "MATH",
+            "semesterType": "FIRST",
+            "moduleType": "ELECTIVE",
+            "levels": [
+              2
+            ],
+            "prerequisites": [
+              "MA2231V"
+            ],
+            "corequisites": [
+              "MA2231V"
+            ],
+            "preclusions": [
+              "MA2231V"
+            ]
+          }
+        ]
+      ],
+      "additionalItems": false,
+      "items": {
+        "$id": "#/properties/modules/items",
+        "anyOf": [
+          {
+            "$id": "#/properties/modules/items/anyOf/0",
+            "type": "object",
+            "title": "Module schema",
+            "description": "This object represents a module.",
+            "default": {},
+            "examples": [
+              {
+                "id": 1,
+                "code": "MA2231V",
+                "name": "Math Olympiad Training III",
+                "description": "This module builds upon the previous Junior Olympiad training. It targets high ability students who are keen to prepare themselves rigorously for the Singapore Mathematical Olympiad (Senior). The course is taught by an external trainer.",
+                "mc": 2,
+                "workload": 1.5,
+                "remarks": "Requires Department Approval.",
+                "subject": "MATH",
+                "semesterType": "FIRST",
+                "moduleType": "ELECTIVE",
+                "levels": [
+                  2
+                ],
+                "prerequisites": [
+                  "MA2231V"
+                ],
+                "corequisites": [
+                  "MA2231V"
+                ],
+                "preclusions": [
+                  "MA2231V"
+                ]
+              }
+            ],
+            "required": [
+              "id",
+              "code",
+              "name",
+              "description",
+              "mc",
+              "workload",
+              "subject",
+              "semesterType",
+              "moduleType",
+              "levels",
+              "prerequisites",
+              "corequisites",
+              "preclusions"
+            ],
+            "properties": {
+              "id": {
+                "$id": "#/properties/modules/items/anyOf/0/properties/id",
+                "type": "integer",
+                "title": "The ID of the module",
+                "description": "An arbitrary assigned integer that should remain constant throughout future versions of the file. This integer should start from 1. No two modules can have the same ID, and no module can have two IDs. If a module is modified, its ID should remain the same. If a module is added, use the smallest integer not used. If a module is deleted, its ID should not be used for new modules.",
+                "default": -1,
+                "minimum": 0,
+                "examples": [
+                  1,
+                  10,
+                  69
+                ]
+              },
+              "code": {
+                "$id": "#/properties/modules/items/anyOf/0/properties/code",
+                "type": "string",
+                "title": "The module code",
+                "description": "A unique string that can represent a module.",
+                "default": "XX9999",
+                "pattern": "^[A-Z]{2}[1-6][0-9]{3}[A-Z]?$",
+                "examples": [
+                  "MA2231V"
+                ]
+              },
+              "name": {
+                "$id": "#/properties/modules/items/anyOf/0/properties/name",
+                "type": "string",
+                "title": "The name of the module",
+                "description": "A human-readable name to identify a module. Multiple modules can have the same name.",
+                "default": "",
+                "minLength": 1,
+                "examples": [
+                  "Math Olympiad Training III"
+                ]
+              },
+              "description": {
+                "$id": "#/properties/modules/items/anyOf/0/properties/description",
+                "type": "string",
+                "title": "The description of the module",
+                "description": "A short paragraph describing what the modules offer and other relevant information.",
+                "default": "",
+                "minLength": 1,
+                "examples": [
+                  "This module builds upon the previous Junior Olympiad training. It targets high ability students who are keen to prepare themselves rigorously for the Singapore Mathematical Olympiad (Senior). The course is taught by an external trainer."
+                ]
+              },
+              "mc": {
+                "$id": "#/properties/modules/items/anyOf/0/properties/mc",
+                "type": "integer",
+                "title": "The number of modular credits of the module",
+                "description": "A unit of effort, stated in terms of time, expected of a typical student in managing his/her workload. The MC-value of a module is derived by dividing the estimated total number of workload hours per week for this module by two.",
+                "default": -1,
+                "minimum": 0,
+                "maximum": 20,
+                "examples": [
+                  2,
+                  4
+                ]
+              },
+              "workload": {
+                "$id": "#/properties/modules/items/anyOf/0/properties/workload",
+                "type": "number",
+                "title": "The workload of the module",
+                "description": "The unit is hours per week.",
+                "default": 0.0,
+                "multipleOf": 0.5,
+                "exclusiveMinimum": 0.0,
+                "maximum": 20,
+                "examples": [
+                  1.5,
+                  3.0
+                ]
+              },
+              "remarks": {
+                "$id": "#/properties/modules/items/anyOf/0/properties/remarks",
+                "type": "string",
+                "title": "Additional remarks about the modules",
+                "description": "An optional phrase or sentence describing additional criteria needed to take this module, or additional information to note about this module.",
+                "default": "",
+                "minLength": 1,
+                "examples": [
+                  "Requires Department Approval."
+                ]
+              },
+              "subject": {
+                "$id": "#/properties/modules/items/anyOf/0/properties/subject",
+                "type": "string",
+                "title": "The subject this module belongs to",
+                "description": "",
+                "default": "SubjectX",
+                "enum": [
+                  "ART",
+                  "BENGALI",
+                  "BIOLOGY",
+                  "CCE",
+                  "HIGHER CHINESE",
+                  "CHINESE",
+                  "CHEMISTRY",
+                  "CS",
+                  "DA VINCI",
+                  "ENGLISH",
+                  "ENG LIT",
+                  "FRENCH",
+                  "GEOGRAPHY",
+                  "GUJARATI",
+                  "GERMAN",
+                  "HINDI",
+                  "HISTORY",
+                  "HUMANITIES",
+                  "JAPANESE",
+                  "MATH",
+                  "HIGHER MALAY",
+                  "MALAY",
+                  "MUSIC",
+                  "PHYSICS",
+                  "PUNJABI",
+                  "HIGHER TAMIL",
+                  "TAMIL",
+                  "URDU"
+                ],
+                "examples": [
+                  "MATH"
+                ]
+              },
+              "semesterType": {
+                "$id": "#/properties/modules/items/anyOf/0/properties/semesterType",
+                "type": "string",
+                "title": "The semester type of this module",
+                "description": "",
+                "default": "",
+                "enum": [
+                  "FIRST",
+                  "SECOND",
+                  "EITHER",
+                  "BOTH"
+                ],
+                "examples": [
+                  "FIRST"
+                ]
+              },
+              "moduleType": {
+                "$id": "#/properties/modules/items/anyOf/0/properties/moduleType",
+                "type": "string",
+                "title": "The module type of this module",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "enum": [
+                  "CORE",
+                  "ELECTIVE",
+                  "ENRICHMENT",
+                  "MAJOR",
+                  "HONOURS",
+                  "HONOURS IN LIEU"
+                ],
+                "examples": [
+                  "ELECTIVE"
+                ]
+              },
+              "levels": {
+                "$id": "#/properties/modules/items/anyOf/0/properties/levels",
+                "type": "array",
+                "title": "The levels that this module can be taken.",
+                "description": "Usually an array with a single value, but in exceptional cases, can contain two levels.",
+                "default": [],
+                "minItems": 1,
+                "maxItems": 2,
+                "uniqueItems": true,
+                "examples": [
+                  [
+                    2
+                  ]
+                ],
+                "additionalItems": false,
+                "items": {
+                  "$id": "#/properties/modules/items/anyOf/0/properties/levels/items",
+                  "anyOf": [
+                    {
+                      "$id": "#/items/anyOf/0/properties/levels/items/anyOf/0",
+                      "type": "integer",
+                      "title": "A level",
+                      "description": "An integer between 1 to 6.",
+                      "default": 0,
+                      "enum": [
+                        1,
+                        2,
+                        3,
+                        4,
+                        5,
+                        6
+                      ],
+                      "examples": [
+                        2
+                      ]
+                    }
+                  ]
+                }
+              },
+              "prerequisites": {
+                "$id": "#/properties/modules/items/anyOf/0/properties/prerequisites",
+                "type": "array",
+                "title": "The array of pre-requisites",
+                "description": "This module, the dependent module, will require either one of the modules with the specified module codes to be taken before this module.",
+                "uniqueItems": true,
+                "default": [
+                ],
+                "examples": [
+                  [
+                    "MA2231V"
+                  ]
+                ],
+                "additionalItems": false,
+                "items": {
+                  "$id": "#/properties/modules/items/anyOf/0/properties/prerequisites/items",
+                  "anyOf": [
+                    {
+                      "$id": "#/items/anyOf/0/properties/prerequisites/items/anyOf/0",
+                      "type": "string",
+                      "title": "A pre-requisite",
+                      "description": "This module, the dependent module, will require the module with the specified module code to be taken before this module, or any of at least one prerequisites it has.",
+                      "default": "XX9999",
+                      "pattern": "^[A-Z]{2}[1-6][0-9]{3}[A-Z]?$",
+                      "examples": [
+                        "MA2231V"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "corequisites": {
+                "$id": "#/properties/modules/items/anyOf/0/properties/corequisites",
+                "type": "array",
+                "title": "The array of co-requisites",
+                "description": "This module, the dependent module, will require all the modules with the specified module codes to be taken concurrently with this module.",
+                "uniqueItems": true,
+                "default": [
+                ],
+                "examples": [
+                  [
+                    "MA2231V"
+                  ]
+                ],
+                "additionalItems": true,
+                "items": {
+                  "$id": "#/properties/modules/items/anyOf/0/properties/corequisites/items",
+                  "anyOf": [
+                    {
+                      "$id": "#/items/anyOf/0/properties/corequisites/items/anyOf/0",
+                      "type": "string",
+                      "title": "A co-requisite",
+                      "description": "This module, the dependent module, will require the module with the specified module code to be taken concurrently with this module.",
+                      "default": "XX9999",
+                      "pattern": "^[A-Z]{2}[1-6][0-9]{3}[A-Z]?$",
+                      "examples": [
+                        "MA2231V"
+                      ]
+                    }
+                  ]
+                }
+              },
+              "preclusions": {
+                "$id": "#/properties/modules/items/anyOf/0/properties/preclusions",
+                "type": "array",
+                "title": "The array of preclusions",
+                "description": "This module, the precluder module, will preclude the modules with the specified module codes. That is, once a student has taken this module, he/she will not be able to take the precluded modules.",
+                "uniqueItems": true,
+                "default": [
+                ],
+                "examples": [
+                  [
+                    "MA2231V"
+                  ]
+                ],
+                "additionalItems": false,
+                "items": {
+                  "$id": "#/properties/modules/items/anyOf/0/properties/preclusions/items",
+                  "anyOf": [
+                    {
+                      "$id": "#/items/anyOf/0/properties/preclusions/items/anyOf/0",
+                      "type": "string",
+                      "title": "A preclusion",
+                      "description": "This module, the precluder module, will preclude the module with the specified module code. That is, once a student has taken this module, he/she will not be able to take the precluded module.",
+                      "default": "XX9999",
+                      "pattern": "^[A-Z]{2}[1-6][0-9]{3}[A-Z]?$",
+                      "examples": [
+                        "MA2231V"
+                      ]
+                    }
+                  ]
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      }
+    }
+  },
+  "additionalProperties": false
+}
