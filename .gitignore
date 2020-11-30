@@ -13,7 +13,13 @@
 *.iml
 *.ipr
 *.iws
-.idea/
+.idea/libraries
+.idea/runConfigurations
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
+.idea/.gitignore
 
 # The .vscode folder contains launch configuration and tasks you configure in
 # VS Code which you may wish to be included in version control, so this line
