@@ -149,7 +149,7 @@
                 "$id": "#/properties/modules/items/anyOf/0/properties/id",
                 "type": "integer",
                 "title": "The ID of the module",
-                "description": "An arbitrary assigned integer that should remain constant throughout future versions of the file. This integer should start from 1. No two modules can have the same ID, and no module can have two IDs. If a module is modified, its ID should remain the same. If a module is added, use the smallest integer not used. If a module is deleted, its ID should not be used for new modules.",
+                "description": "An arbitrary assigned integer that should remain constant throughout future versions of the file. This integer should start from 1. No two modules can have the same ID, and no module can have two IDs. If a module is modified, its ID should remain the same. If a module is added, use the next ID which has never been used (this is usually the largest ID + 1). If a module is deleted, its ID should not be used for new modules.",
                 "default": -1,
                 "minimum": 0,
                 "examples": [
