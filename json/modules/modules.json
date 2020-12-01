@@ -103,6 +103,25 @@
       "preclusions": [
         "MA1232"
       ]
+    },
+    {
+      "id": 6,
+      "code": "MA1331",
+      "name": "Fun with Fractals",
+      "description": "This enrichment module explores the topic of fractals through a series of hands‐on activities and experimentation. Students are expected to work in groups to produce a product demonstrating fractal properties by the end of the module.",
+      "mc": 2,
+      "workload": 1.5,
+      "subject": "MATH",
+      "semesterType": "EITHER",
+      "moduleType": "ENRICHMENT",
+      "levels": [
+        1
+      ],
+      "prerequisites": [],
+      "corequisites": [
+        "MA1131", "MA1132"
+      ],
+      "preclusions": []
     }
   ]
 }
