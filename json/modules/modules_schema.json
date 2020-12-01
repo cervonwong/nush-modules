@@ -15,13 +15,13 @@
       "version": 1,
       "modules": [
         {
-          "id": 1,
           "code": "MA2231V",
-          "name": "Math Olympiad Training III",
+          "moduleId": 1,
+          "moduleName": "Math Olympiad Training III",
           "description": "This module builds upon the previous Junior Olympiad training. It targets high ability students who are keen to prepare themselves rigorously for the Singapore Mathematical Olympiad (Senior). The course is taught by an external trainer.",
+          "remarks": "Requires Department Approval.",
           "mc": 2,
           "workload": 1.5,
-          "remarks": "Requires Department Approval.",
           "subject": "MATH",
           "semesterType": "FIRST",
           "moduleType": "ELECTIVE",
@@ -68,13 +68,13 @@
       "examples": [
         [
           {
-            "id": 1,
             "code": "MA2231V",
-            "name": "Math Olympiad Training III",
+            "moduleId": 1,
+            "moduleName": "Math Olympiad Training III",
             "description": "This module builds upon the previous Junior Olympiad training. It targets high ability students who are keen to prepare themselves rigorously for the Singapore Mathematical Olympiad (Senior). The course is taught by an external trainer.",
+            "remarks": "Requires Department Approval.",
             "mc": 2,
             "workload": 1.5,
-            "remarks": "Requires Department Approval.",
             "subject": "MATH",
             "semesterType": "FIRST",
             "moduleType": "ELECTIVE",
@@ -105,13 +105,13 @@
             "default": {},
             "examples": [
               {
-                "id": 1,
                 "code": "MA2231V",
-                "name": "Math Olympiad Training III",
+                "moduleId": 1,
+                "moduleName": "Math Olympiad Training III",
                 "description": "This module builds upon the previous Junior Olympiad training. It targets high ability students who are keen to prepare themselves rigorously for the Singapore Mathematical Olympiad (Senior). The course is taught by an external trainer.",
+                "remarks": "Requires Department Approval.",
                 "mc": 2,
                 "workload": 1.5,
-                "remarks": "Requires Department Approval.",
                 "subject": "MATH",
                 "semesterType": "FIRST",
                 "moduleType": "ELECTIVE",
@@ -130,9 +130,9 @@
               }
             ],
             "required": [
-              "id",
               "code",
-              "name",
+              "moduleId",
+              "moduleName",
               "description",
               "mc",
               "workload",
@@ -145,19 +145,6 @@
               "preclusions"
             ],
             "properties": {
-              "id": {
-                "$id": "#/properties/modules/items/anyOf/0/properties/id",
-                "type": "integer",
-                "title": "The ID of the module",
-                "description": "An arbitrary assigned integer that should remain constant throughout future versions of the file. This integer should start from 1. No two modules can have the same ID, and no module can have two IDs. If a module is modified, its ID should remain the same. If a module is added, use the next ID which has never been used (this is usually the largest ID + 1). If a module is deleted, its ID should not be used for new modules.",
-                "default": -1,
-                "minimum": 0,
-                "examples": [
-                  1,
-                  10,
-                  69
-                ]
-              },
               "code": {
                 "$id": "#/properties/modules/items/anyOf/0/properties/code",
                 "type": "string",
@@ -169,8 +156,21 @@
                   "MA2231V"
                 ]
               },
-              "name": {
-                "$id": "#/properties/modules/items/anyOf/0/properties/name",
+              "moduleId": {
+                "$id": "#/properties/modules/items/anyOf/0/properties/moduleId",
+                "type": "integer",
+                "title": "The ID of the module",
+                "description": "An arbitrary assigned integer that should remain constant throughout future versions of the file. This integer should start from 1. No two modules can have the same ID, and no module can have two IDs. If a module is modified, its ID should remain the same. If a module is added, use the next ID which has never been used (this is usually the largest ID + 1). If a module is deleted, its ID should not be used for new modules.",
+                "default": -1,
+                "minimum": 0,
+                "examples": [
+                  1,
+                  10,
+                  69
+                ]
+              },
+              "moduleName": {
+                "$id": "#/properties/modules/items/anyOf/0/properties/moduleName",
                 "type": "string",
                 "title": "The name of the module",
                 "description": "A human-readable name to identify a module. Multiple modules can have the same name.",
@@ -189,6 +189,17 @@
                 "minLength": 1,
                 "examples": [
                   "This module builds upon the previous Junior Olympiad training. It targets high ability students who are keen to prepare themselves rigorously for the Singapore Mathematical Olympiad (Senior). The course is taught by an external trainer."
+                ]
+              },
+              "remarks": {
+                "$id": "#/properties/modules/items/anyOf/0/properties/remarks",
+                "type": "string",
+                "title": "Additional remarks about the modules",
+                "description": "An optional phrase or sentence describing additional criteria needed to take this module, or additional information to note about this module.",
+                "default": "",
+                "minLength": 1,
+                "examples": [
+                  "Requires Department Approval."
                 ]
               },
               "mc": {
@@ -216,17 +227,6 @@
                 "examples": [
                   1.5,
                   3.0
-                ]
-              },
-              "remarks": {
-                "$id": "#/properties/modules/items/anyOf/0/properties/remarks",
-                "type": "string",
-                "title": "Additional remarks about the modules",
-                "description": "An optional phrase or sentence describing additional criteria needed to take this module, or additional information to note about this module.",
-                "default": "",
-                "minLength": 1,
-                "examples": [
-                  "Requires Department Approval."
                 ]
               },
               "subject": {
