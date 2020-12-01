@@ -149,7 +149,7 @@
                 "$id": "#/properties/modules/items/anyOf/0/properties/code",
                 "type": "string",
                 "title": "The module code",
-                "description": "A unique string that can represent a module.",
+                "description": "A unique string that can identify a module.",
                 "default": "XX9999",
                 "pattern": "^[A-Z]{2}[1-6][0-9]{3}[A-Z]?$",
                 "examples": [
@@ -184,7 +184,7 @@
                 "$id": "#/properties/modules/items/anyOf/0/properties/description",
                 "type": "string",
                 "title": "The description of the module",
-                "description": "A short paragraph describing what the modules offer and other relevant information.",
+                "description": "A short paragraph describing what the module offers and other relevant information.",
                 "default": "",
                 "minLength": 1,
                 "examples": [
@@ -232,7 +232,7 @@
               "subject": {
                 "$id": "#/properties/modules/items/anyOf/0/properties/subject",
                 "type": "string",
-                "title": "The subject this module belongs to",
+                "title": "The subject this module belongs to.",
                 "description": "",
                 "default": "SubjectX",
                 "enum": [
@@ -273,7 +273,7 @@
                 "$id": "#/properties/modules/items/anyOf/0/properties/semesterType",
                 "type": "string",
                 "title": "The semester type of this module",
-                "description": "",
+                "description": "The semester(s) which this module can be taken in.",
                 "default": "",
                 "enum": [
                   "FIRST",
@@ -289,7 +289,7 @@
                 "$id": "#/properties/modules/items/anyOf/0/properties/moduleType",
                 "type": "string",
                 "title": "The module type of this module",
-                "description": "An explanation about the purpose of this instance.",
+                "description": "",
                 "default": "",
                 "enum": [
                   "CORE",
