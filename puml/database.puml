@@ -18,9 +18,9 @@ object modules {
 	code             : TEXT <<unique>>
 	name             : TEXT
 	description      : TEXT
+	remarks          : TEXT <<nullable>>
 	modular_credits  : INTEGER
 	workload         : REAL
-	criteria         : TEXT <<nullable>>
 	subject_id       : INTEGER <<FK>>
 	semester_type_id : INTEGER <<FK>>
 	module_type_id   : INTEGER <<FK>>
@@ -71,17 +71,17 @@ modules_levels }|-|| levels
 modules }|--|| module_types
 modules ||---o| pinned_modules
 
-object prerequisites {
+object prerequisites <<self junction table>> {
 	dependent_module_id    : INTEGER <<FK>>
 	prerequisite_module_id : INTEGER <<FK>>
 }
 
-object corequisites {
+object corequisites <<self junction table>> {
 	dependent_module_id   : INTEGER <<FK>>
 	corequisite_module_id : INTEGER <<FK>>
 }
 
-object preclusions {
+object preclusions <<self junction table>> {
 	precluder_module_id : INTEGER <<FK>>
 	precluded_module_id : INTEGER <<FK>>
 }
