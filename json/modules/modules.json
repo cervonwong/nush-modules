@@ -119,8 +119,309 @@
       ],
       "prerequisites": [],
       "corequisites": [
-        "MA1131", "MA1132"
+        "MA1131",
+        "MA1132"
       ],
+      "preclusions": []
+    },
+    {
+      "code": "MA2131",
+      "moduleId": 7,
+      "moduleName": "Foundations in Math IIA",
+      "description": "This module builds upon the previous foundation. Topics covered include quadratic functions and inequalities, graphs of simple polynomials, congruency and similarity. Circle geometry, basic set language and notation will also be introduced. Topics like simple trigonometrical ratios, bearings and 3‐dimensional problems are covered too.",
+      "mc": 4,
+      "workload": 4.0,
+      "subject": "MATH",
+      "semesterType": "FIRST",
+      "moduleType": "CORE",
+      "levels": [
+        2
+      ],
+      "prerequisites": [
+        "MA1132"
+      ],
+      "corequisites": [],
+      "preclusions": []
+    },
+    {
+      "code": "MA2231",
+      "moduleId": 8,
+      "moduleName": "Math Olympiad Training III",
+      "description": "This module builds upon the previous Junior Olympiad training. It targets high ability students who are keen to prepare themselves rigorously for the Singapore Mathematical Olympiad (Senior).",
+      "mc": 2,
+      "remarks": "Requires department approval.",
+      "workload": 1.5,
+      "subject": "MATH",
+      "semesterType": "FIRST",
+      "moduleType": "ELECTIVE",
+      "levels": [
+        2
+      ],
+      "prerequisites": [
+        "MA1232"
+      ],
+      "corequisites": [
+        "MA2131"
+      ],
+      "preclusions": [
+        "MA2231V"
+      ]
+    },
+    {
+      "code": "MA2231V",
+      "moduleId": 9,
+      "moduleName": "Math Olympiad Training III",
+      "description": "This module builds upon the previous Junior Olympiad training. It targets high ability students who are keen to prepare themselves rigorously for the Singapore Mathematical Olympiad (Senior). The course is taught by an external trainer.",
+      "remarks": "Requires department approval.",
+      "mc": 2,
+      "workload": 1.5,
+      "subject": "MATH",
+      "semesterType": "FIRST",
+      "moduleType": "ELECTIVE",
+      "levels": [
+        2
+      ],
+      "prerequisites": [
+        "MA1232V"
+      ],
+      "corequisites": [
+        "MA2131"
+      ],
+      "preclusions": [
+        "MA2231"
+      ]
+    },
+    {
+      "code": "MA2132",
+      "moduleId": 10,
+      "moduleName": "Foundations in Math IIB",
+      "description": "This module covers the essential concepts of basic data analysis, permutations and combinations, probability and surds. Circle geometry is further developed. Students will also learn about matrices and 2D vectors.",
+      "mc": 4,
+      "workload": 4.0,
+      "subject": "MATH",
+      "semesterType": "SECOND",
+      "moduleType": "CORE",
+      "levels": [
+        2
+      ],
+      "prerequisites": [
+        "MA2131"
+      ],
+      "corequisites": [],
+      "preclusions": []
+    },
+    {
+      "code": "MA2232",
+      "moduleId": 11,
+      "moduleName": "Math Olympiad Training IV",
+      "description": "This module targets high ability students who are keen to prepare themselves rigorously for the Singapore Mathematical Olympiad (Senior).",
+      "mc": 2,
+      "remarks": "Requires department approval.",
+      "workload": 1.5,
+      "subject": "MATH",
+      "semesterType": "SECOND",
+      "moduleType": "ELECTIVE",
+      "levels": [
+        2
+      ],
+      "prerequisites": [
+        "MA2231"
+      ],
+      "corequisites": [
+        "MA2132"
+      ],
+      "preclusions": [
+        "MA2232V"
+      ]
+    },
+    {
+      "code": "MA2232V",
+      "moduleId": 12,
+      "moduleName": "Math Olympiad Training IV",
+      "description": "This module targets high ability students who are keen to prepare themselves rigorously for the Singapore Mathematical Olympiad (Senior). The course is taught by an external trainer.",
+      "remarks": "Requires department approval.",
+      "mc": 2,
+      "workload": 1.5,
+      "subject": "MATH",
+      "semesterType": "SECOND",
+      "moduleType": "ELECTIVE",
+      "levels": [
+        2
+      ],
+      "prerequisites": [
+        "MA2231V"
+      ],
+      "corequisites": [
+        "MA2132"
+      ],
+      "preclusions": [
+        "MA2232"
+      ]
+    },
+    {
+      "code": "MA3131",
+      "moduleId": 13,
+      "moduleName": "Foundations in Math IIIA",
+      "description": "This is an important pre‐calculus course that is a prerequisite for many advanced modules. It aims to model and solve problems involving quadratic equations using algebraic approach. Other solutions of equations will also be discussed through the use of remainder and factor theorem and partial fractions. Students will also solve inequalities involving absolute‐valued functions. Exponential, logarithmic and trigonometric functions will also be explored in further details.",
+      "mc": 4,
+      "workload": 4.0,
+      "subject": "MATH",
+      "semesterType": "FIRST",
+      "moduleType": "CORE",
+      "levels": [
+        3
+      ],
+      "prerequisites": [
+        "MA2132"
+      ],
+      "corequisites": [],
+      "preclusions": []
+    },
+    {
+      "code": "MA3231",
+      "moduleId": 14,
+      "moduleName": "Math Olympiad Training V",
+      "description": "This module builds upon the previous Senior Olympiad training.",
+      "mc": 2,
+      "remarks": "Requires department approval.",
+      "workload": 1.5,
+      "subject": "MATH",
+      "semesterType": "FIRST",
+      "moduleType": "ELECTIVE",
+      "levels": [
+        3
+      ],
+      "prerequisites": [
+        "MA2232"
+      ],
+      "corequisites": [
+        "MA3131"
+      ],
+      "preclusions": [
+        "MA3231V"
+      ]
+    },
+    {
+      "code": "MA3231V",
+      "moduleId": 15,
+      "moduleName": "Math Olympiad Training V",
+      "description": "This module builds upon the previous Senior Olympiad training. The course is taught by an external trainer.",
+      "mc": 2,
+      "remarks": "Requires department approval.",
+      "workload": 1.5,
+      "subject": "MATH",
+      "semesterType": "FIRST",
+      "moduleType": "ELECTIVE",
+      "levels": [
+        3
+      ],
+      "prerequisites": [
+        "MA2232V"
+      ],
+      "corequisites": [
+        "MA3131"
+      ],
+      "preclusions": [
+        "MA3231"
+      ]
+    },
+    {
+      "code": "MA3331",
+      "moduleId": 16,
+      "moduleName": "Foundation Mathematics (Bridging Module)",
+      "description": "This bridging module is compulsory for second intake students. It covers concepts like rules of indices, surds, set theory and geometric properties of circle. Students will perform simple operations with indices and surds, including rationalizing the denominator. The Cartesian coordinates system will be used to analyze geometrical situations and solve related problems. Basic counting techniques, probability and data analysis are taught too.",
+      "remarks": "Bridging module (for new Yr 3 intake only).",
+      "mc": 3,
+      "workload": 1.5,
+      "subject": "MATH",
+      "semesterType": "FIRST",
+      "moduleType": "ENRICHMENT",
+      "levels": [
+        3
+      ],
+      "prerequisites": [],
+      "corequisites": [
+        "MA3131"
+      ],
+      "preclusions": []
+    },
+    {
+      "code": "MA3132",
+      "moduleId": 17,
+      "moduleName": "Foundations in Math IIIB",
+      "description": "Students will be familiarized with the properties of functions, the algebra of functions and the graphs of functions. These functions include inverse functions, absolute value functions and piecewise functions. Students will be taught graphs of various functions and the solving of inequalities involving rational functions. Further trigonometrical identities and calculus are introduced, as well as Binomial Theorem.",
+      "mc": 4,
+      "workload": 4.0,
+      "subject": "MATH",
+      "semesterType": "SECOND",
+      "moduleType": "CORE",
+      "levels": [
+        3
+      ],
+      "prerequisites": [
+        "MA3131"
+      ],
+      "corequisites": [],
+      "preclusions": []
+    },
+    {
+      "code": "MA4131",
+      "moduleId": 18,
+      "moduleName": "Advanced Math IA",
+      "description": "This module covers topics such as number sequences, summation of series, arithmetic and geometric series. Students will learn to extend the vector approach to 3D. There will also be discussion on the complex numbers system, where numbers can be expressed in Cartesian or polar forms. Students will learn to represent complex numbers in the Argand diagram. Further work will also be done on calculus and various methods of proofs.",
+      "mc": 5,
+      "workload": 5.0,
+      "subject": "MATH",
+      "semesterType": "FIRST",
+      "moduleType": "MAJOR",
+      "levels": [
+        4
+      ],
+      "prerequisites": [
+        "MA3132"
+      ],
+      "corequisites": [],
+      "preclusions": []
+    },
+    {
+      "code": "MA4231V",
+      "moduleId": 19,
+      "moduleName": "Math Olympiad Training VI",
+      "description": "This module targets high ability students who are keen to prepare themselves rigorously for the Singapore Mathematical Olympiad (Senior and Open).",
+      "mc": 2,
+      "remarks": "Requires department approval.",
+      "workload": 1.5,
+      "subject": "MATH",
+      "semesterType": "FIRST",
+      "moduleType": "ELECTIVE",
+      "levels": [
+        4
+      ],
+      "prerequisites": [
+        "MA3231V"
+      ],
+      "corequisites": [
+        "MA4131"
+      ],
+      "preclusions": []
+    },
+    {
+      "code": "MA4132",
+      "moduleId": 20,
+      "moduleName": "Advanced Math IB",
+      "description": "Transformation of graphs and vectors in 3D are introduced in this module. The method of difference and proof by mathematical induction will also be taught. Further topics in calculus that will be covered include analysis of graphs, Maclaurin series (including binomial), integration techniques and applications of integrals to find area and volume.",
+      "mc": 5,
+      "workload": 5.0,
+      "subject": "MATH",
+      "semesterType": "SECOND",
+      "moduleType": "MAJOR",
+      "levels": [
+        4
+      ],
+      "prerequisites": [
+        "MA4131"
+      ],
+      "corequisites": [],
       "preclusions": []
     }
   ]
