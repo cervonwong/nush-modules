@@ -71,27 +71,27 @@ modules_levels }|-|| levels
 modules }|--|| module_types
 modules ||---o| pinned_modules
 
-object prerequisites <<self junction table>> {
-	dependent_module_id    : INTEGER <<FK>>
-	prerequisite_module_id : INTEGER <<FK>>
-}
-
-object corequisites <<self junction table>> {
-	dependent_module_id   : INTEGER <<FK>>
-	corequisite_module_id : INTEGER <<FK>>
-}
-
-object preclusions <<self junction table>> {
-	precluder_module_id : INTEGER <<FK>>
-	precluded_module_id : INTEGER <<FK>>
-}
-
-modules ||--|{ prerequisites
-prerequisites }|--|| modules
-modules ||--|{ corequisites
-corequisites }|--|| modules
-modules ||--|{ preclusions
-preclusions }|--|| modules
+'object prerequisites <<self junction table>> {
+'	dependent_module_id    : INTEGER <<FK>>
+'	prerequisite_module_id : INTEGER <<FK>>
+'}
+'
+'object corequisites <<self junction table>> {
+'	dependent_module_id   : INTEGER <<FK>>
+'	corequisite_module_id : INTEGER <<FK>>
+'}
+'
+'object preclusions <<self junction table>> {
+'	precluder_module_id : INTEGER <<FK>>
+'	precluded_module_id : INTEGER <<FK>>
+'}
+'
+'modules ||--|{ prerequisites
+'prerequisites }|--|| modules
+'modules ||--|{ corequisites
+'corequisites }|--|| modules
+'modules ||--|{ preclusions
+'preclusions }|--|| modules
 
 @enduml
 
