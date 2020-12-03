@@ -387,7 +387,7 @@
       "code": "MA4231V",
       "moduleId": 19,
       "moduleName": "Math Olympiad Training VI",
-      "description": "This module targets high ability students who are keen to prepare themselves rigorously for the Singapore Mathematical Olympiad (Senior and Open).",
+      "description": "This module targets high ability students who are keen to prepare themselves rigorously for the Singapore Mathematical Olympiad (Senior and Open). This course is taught by an external trainer.",
       "mc": 2,
       "remarks": "Requires department approval.",
       "workload": 1.5,
@@ -398,6 +398,7 @@
         4
       ],
       "prerequisites": [
+        "MA3231",
         "MA3231V"
       ],
       "corequisites": [
