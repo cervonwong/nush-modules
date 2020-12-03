@@ -385,7 +385,7 @@ class $ModulesTable extends Modules with TableInfo<$ModulesTable, ModuleModel> {
   GeneratedIntColumn get id => _id ??= _constructId();
   GeneratedIntColumn _constructId() {
     return GeneratedIntColumn('id', $tableName, false,
-        $customConstraints: 'UNIQUE');
+        $customConstraints: 'NOT NULL UNIQUE');
   }
 
   final VerificationMeta _codeMeta = const VerificationMeta('code');
@@ -473,11 +473,8 @@ class $ModulesTable extends Modules with TableInfo<$ModulesTable, ModuleModel> {
   GeneratedIntColumn get semesterTypeId =>
       _semesterTypeId ??= _constructSemesterTypeId();
   GeneratedIntColumn _constructSemesterTypeId() {
-    return GeneratedIntColumn(
-      'semester_type_id',
-      $tableName,
-      false,
-    );
+    return GeneratedIntColumn('semester_type_id', $tableName, false,
+        $customConstraints: 'NOT NULL REFERENCES semester_types(id)');
   }
 
   final VerificationMeta _moduleTypeIdMeta =
@@ -487,11 +484,8 @@ class $ModulesTable extends Modules with TableInfo<$ModulesTable, ModuleModel> {
   GeneratedIntColumn get moduleTypeId =>
       _moduleTypeId ??= _constructModuleTypeId();
   GeneratedIntColumn _constructModuleTypeId() {
-    return GeneratedIntColumn(
-      'module_type_id',
-      $tableName,
-      false,
-    );
+    return GeneratedIntColumn('module_type_id', $tableName, false,
+        $customConstraints: 'NOT NULL REFERENCES module_types(id)');
   }
 
   @override
@@ -761,7 +755,7 @@ class $SubjectsTable extends Subjects
   GeneratedIntColumn get id => _id ??= _constructId();
   GeneratedIntColumn _constructId() {
     return GeneratedIntColumn('id', $tableName, false,
-        $customConstraints: 'UNIQUE');
+        $customConstraints: 'NOT NULL UNIQUE');
   }
 
   final VerificationMeta _nameMeta = const VerificationMeta('name');
@@ -770,7 +764,7 @@ class $SubjectsTable extends Subjects
   GeneratedTextColumn get name => _name ??= _constructName();
   GeneratedTextColumn _constructName() {
     return GeneratedTextColumn('name', $tableName, false,
-        $customConstraints: 'UNIQUE');
+        $customConstraints: 'NOT NULL UNIQUE');
   }
 
   final VerificationMeta _subjectColorIdMeta =
@@ -967,7 +961,7 @@ class $SubjectColorsTable extends SubjectColors
   GeneratedIntColumn get id => _id ??= _constructId();
   GeneratedIntColumn _constructId() {
     return GeneratedIntColumn('id', $tableName, false,
-        $customConstraints: 'UNIQUE');
+        $customConstraints: 'NOT NULL UNIQUE');
   }
 
   final VerificationMeta _nameMeta = const VerificationMeta('name');
@@ -976,7 +970,7 @@ class $SubjectColorsTable extends SubjectColors
   GeneratedTextColumn get name => _name ??= _constructName();
   GeneratedTextColumn _constructName() {
     return GeneratedTextColumn('name', $tableName, false,
-        $customConstraints: 'UNIQUE');
+        $customConstraints: 'NOT NULL UNIQUE');
   }
 
   @override
@@ -1018,6 +1012,757 @@ class $SubjectColorsTable extends SubjectColors
   }
 }
 
+class SemesterTypeModel extends DataClass
+    implements Insertable<SemesterTypeModel> {
+  final int id;
+  final String name;
+  SemesterTypeModel({@required this.id, @required this.name});
+  factory SemesterTypeModel.fromData(
+      Map<String, dynamic> data, GeneratedDatabase db,
+      {String prefix}) {
+    final effectivePrefix = prefix ?? '';
+    final intType = db.typeSystem.forDartType<int>();
+    final stringType = db.typeSystem.forDartType<String>();
+    return SemesterTypeModel(
+      id: intType.mapFromDatabaseResponse(data['${effectivePrefix}id']),
+      name: stringType.mapFromDatabaseResponse(data['${effectivePrefix}name']),
+    );
+  }
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (!nullToAbsent || id != null) {
+      map['id'] = Variable<int>(id);
+    }
+    if (!nullToAbsent || name != null) {
+      map['name'] = Variable<String>(name);
+    }
+    return map;
+  }
+
+  SemesterTypesCompanion toCompanion(bool nullToAbsent) {
+    return SemesterTypesCompanion(
+      id: id == null && nullToAbsent ? const Value.absent() : Value(id),
+      name: name == null && nullToAbsent ? const Value.absent() : Value(name),
+    );
+  }
+
+  factory SemesterTypeModel.fromJson(Map<String, dynamic> json,
+      {ValueSerializer serializer}) {
+    serializer ??= moorRuntimeOptions.defaultSerializer;
+    return SemesterTypeModel(
+      id: serializer.fromJson<int>(json['id']),
+      name: serializer.fromJson<String>(json['name']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer serializer}) {
+    serializer ??= moorRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'name': serializer.toJson<String>(name),
+    };
+  }
+
+  SemesterTypeModel copyWith({int id, String name}) => SemesterTypeModel(
+        id: id ?? this.id,
+        name: name ?? this.name,
+      );
+  @override
+  String toString() {
+    return (StringBuffer('SemesterTypeModel(')
+          ..write('id: $id, ')
+          ..write('name: $name')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => $mrjf($mrjc(id.hashCode, name.hashCode));
+  @override
+  bool operator ==(dynamic other) =>
+      identical(this, other) ||
+      (other is SemesterTypeModel &&
+          other.id == this.id &&
+          other.name == this.name);
+}
+
+class SemesterTypesCompanion extends UpdateCompanion<SemesterTypeModel> {
+  final Value<int> id;
+  final Value<String> name;
+  const SemesterTypesCompanion({
+    this.id = const Value.absent(),
+    this.name = const Value.absent(),
+  });
+  SemesterTypesCompanion.insert({
+    this.id = const Value.absent(),
+    @required String name,
+  }) : name = Value(name);
+  static Insertable<SemesterTypeModel> custom({
+    Expression<int> id,
+    Expression<String> name,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (name != null) 'name': name,
+    });
+  }
+
+  SemesterTypesCompanion copyWith({Value<int> id, Value<String> name}) {
+    return SemesterTypesCompanion(
+      id: id ?? this.id,
+      name: name ?? this.name,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SemesterTypesCompanion(')
+          ..write('id: $id, ')
+          ..write('name: $name')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $SemesterTypesTable extends SemesterTypes
+    with TableInfo<$SemesterTypesTable, SemesterTypeModel> {
+  final GeneratedDatabase _db;
+  final String _alias;
+  $SemesterTypesTable(this._db, [this._alias]);
+  final VerificationMeta _idMeta = const VerificationMeta('id');
+  GeneratedIntColumn _id;
+  @override
+  GeneratedIntColumn get id => _id ??= _constructId();
+  GeneratedIntColumn _constructId() {
+    return GeneratedIntColumn('id', $tableName, false,
+        $customConstraints: 'NOT NULL UNIQUE');
+  }
+
+  final VerificationMeta _nameMeta = const VerificationMeta('name');
+  GeneratedTextColumn _name;
+  @override
+  GeneratedTextColumn get name => _name ??= _constructName();
+  GeneratedTextColumn _constructName() {
+    return GeneratedTextColumn('name', $tableName, false,
+        $customConstraints: 'NOT NULL UNIQUE');
+  }
+
+  @override
+  List<GeneratedColumn> get $columns => [id, name];
+  @override
+  $SemesterTypesTable get asDslTable => this;
+  @override
+  String get $tableName => _alias ?? 'semester_types';
+  @override
+  final String actualTableName = 'semester_types';
+  @override
+  VerificationContext validateIntegrity(Insertable<SemesterTypeModel> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id'], _idMeta));
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+          _nameMeta, name.isAcceptableOrUnknown(data['name'], _nameMeta));
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  SemesterTypeModel map(Map<String, dynamic> data, {String tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : null;
+    return SemesterTypeModel.fromData(data, _db, prefix: effectivePrefix);
+  }
+
+  @override
+  $SemesterTypesTable createAlias(String alias) {
+    return $SemesterTypesTable(_db, alias);
+  }
+}
+
+class ModuleTypeModel extends DataClass implements Insertable<ModuleTypeModel> {
+  final int id;
+  final String name;
+  ModuleTypeModel({@required this.id, @required this.name});
+  factory ModuleTypeModel.fromData(
+      Map<String, dynamic> data, GeneratedDatabase db,
+      {String prefix}) {
+    final effectivePrefix = prefix ?? '';
+    final intType = db.typeSystem.forDartType<int>();
+    final stringType = db.typeSystem.forDartType<String>();
+    return ModuleTypeModel(
+      id: intType.mapFromDatabaseResponse(data['${effectivePrefix}id']),
+      name: stringType.mapFromDatabaseResponse(data['${effectivePrefix}name']),
+    );
+  }
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (!nullToAbsent || id != null) {
+      map['id'] = Variable<int>(id);
+    }
+    if (!nullToAbsent || name != null) {
+      map['name'] = Variable<String>(name);
+    }
+    return map;
+  }
+
+  ModuleTypesCompanion toCompanion(bool nullToAbsent) {
+    return ModuleTypesCompanion(
+      id: id == null && nullToAbsent ? const Value.absent() : Value(id),
+      name: name == null && nullToAbsent ? const Value.absent() : Value(name),
+    );
+  }
+
+  factory ModuleTypeModel.fromJson(Map<String, dynamic> json,
+      {ValueSerializer serializer}) {
+    serializer ??= moorRuntimeOptions.defaultSerializer;
+    return ModuleTypeModel(
+      id: serializer.fromJson<int>(json['id']),
+      name: serializer.fromJson<String>(json['name']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer serializer}) {
+    serializer ??= moorRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'name': serializer.toJson<String>(name),
+    };
+  }
+
+  ModuleTypeModel copyWith({int id, String name}) => ModuleTypeModel(
+        id: id ?? this.id,
+        name: name ?? this.name,
+      );
+  @override
+  String toString() {
+    return (StringBuffer('ModuleTypeModel(')
+          ..write('id: $id, ')
+          ..write('name: $name')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => $mrjf($mrjc(id.hashCode, name.hashCode));
+  @override
+  bool operator ==(dynamic other) =>
+      identical(this, other) ||
+      (other is ModuleTypeModel &&
+          other.id == this.id &&
+          other.name == this.name);
+}
+
+class ModuleTypesCompanion extends UpdateCompanion<ModuleTypeModel> {
+  final Value<int> id;
+  final Value<String> name;
+  const ModuleTypesCompanion({
+    this.id = const Value.absent(),
+    this.name = const Value.absent(),
+  });
+  ModuleTypesCompanion.insert({
+    this.id = const Value.absent(),
+    @required String name,
+  }) : name = Value(name);
+  static Insertable<ModuleTypeModel> custom({
+    Expression<int> id,
+    Expression<String> name,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (name != null) 'name': name,
+    });
+  }
+
+  ModuleTypesCompanion copyWith({Value<int> id, Value<String> name}) {
+    return ModuleTypesCompanion(
+      id: id ?? this.id,
+      name: name ?? this.name,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ModuleTypesCompanion(')
+          ..write('id: $id, ')
+          ..write('name: $name')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $ModuleTypesTable extends ModuleTypes
+    with TableInfo<$ModuleTypesTable, ModuleTypeModel> {
+  final GeneratedDatabase _db;
+  final String _alias;
+  $ModuleTypesTable(this._db, [this._alias]);
+  final VerificationMeta _idMeta = const VerificationMeta('id');
+  GeneratedIntColumn _id;
+  @override
+  GeneratedIntColumn get id => _id ??= _constructId();
+  GeneratedIntColumn _constructId() {
+    return GeneratedIntColumn('id', $tableName, false,
+        $customConstraints: 'NOT NULL UNIQUE');
+  }
+
+  final VerificationMeta _nameMeta = const VerificationMeta('name');
+  GeneratedTextColumn _name;
+  @override
+  GeneratedTextColumn get name => _name ??= _constructName();
+  GeneratedTextColumn _constructName() {
+    return GeneratedTextColumn('name', $tableName, false,
+        $customConstraints: 'NOT NULL UNIQUE');
+  }
+
+  @override
+  List<GeneratedColumn> get $columns => [id, name];
+  @override
+  $ModuleTypesTable get asDslTable => this;
+  @override
+  String get $tableName => _alias ?? 'module_types';
+  @override
+  final String actualTableName = 'module_types';
+  @override
+  VerificationContext validateIntegrity(Insertable<ModuleTypeModel> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id'], _idMeta));
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+          _nameMeta, name.isAcceptableOrUnknown(data['name'], _nameMeta));
+    } else if (isInserting) {
+      context.missing(_nameMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  ModuleTypeModel map(Map<String, dynamic> data, {String tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : null;
+    return ModuleTypeModel.fromData(data, _db, prefix: effectivePrefix);
+  }
+
+  @override
+  $ModuleTypesTable createAlias(String alias) {
+    return $ModuleTypesTable(_db, alias);
+  }
+}
+
+class LevelModel extends DataClass implements Insertable<LevelModel> {
+  final int id;
+  final int year;
+  LevelModel({@required this.id, @required this.year});
+  factory LevelModel.fromData(Map<String, dynamic> data, GeneratedDatabase db,
+      {String prefix}) {
+    final effectivePrefix = prefix ?? '';
+    final intType = db.typeSystem.forDartType<int>();
+    return LevelModel(
+      id: intType.mapFromDatabaseResponse(data['${effectivePrefix}id']),
+      year: intType.mapFromDatabaseResponse(data['${effectivePrefix}year']),
+    );
+  }
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (!nullToAbsent || id != null) {
+      map['id'] = Variable<int>(id);
+    }
+    if (!nullToAbsent || year != null) {
+      map['year'] = Variable<int>(year);
+    }
+    return map;
+  }
+
+  LevelsCompanion toCompanion(bool nullToAbsent) {
+    return LevelsCompanion(
+      id: id == null && nullToAbsent ? const Value.absent() : Value(id),
+      year: year == null && nullToAbsent ? const Value.absent() : Value(year),
+    );
+  }
+
+  factory LevelModel.fromJson(Map<String, dynamic> json,
+      {ValueSerializer serializer}) {
+    serializer ??= moorRuntimeOptions.defaultSerializer;
+    return LevelModel(
+      id: serializer.fromJson<int>(json['id']),
+      year: serializer.fromJson<int>(json['year']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer serializer}) {
+    serializer ??= moorRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'year': serializer.toJson<int>(year),
+    };
+  }
+
+  LevelModel copyWith({int id, int year}) => LevelModel(
+        id: id ?? this.id,
+        year: year ?? this.year,
+      );
+  @override
+  String toString() {
+    return (StringBuffer('LevelModel(')
+          ..write('id: $id, ')
+          ..write('year: $year')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => $mrjf($mrjc(id.hashCode, year.hashCode));
+  @override
+  bool operator ==(dynamic other) =>
+      identical(this, other) ||
+      (other is LevelModel && other.id == this.id && other.year == this.year);
+}
+
+class LevelsCompanion extends UpdateCompanion<LevelModel> {
+  final Value<int> id;
+  final Value<int> year;
+  const LevelsCompanion({
+    this.id = const Value.absent(),
+    this.year = const Value.absent(),
+  });
+  LevelsCompanion.insert({
+    this.id = const Value.absent(),
+    @required int year,
+  }) : year = Value(year);
+  static Insertable<LevelModel> custom({
+    Expression<int> id,
+    Expression<int> year,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (year != null) 'year': year,
+    });
+  }
+
+  LevelsCompanion copyWith({Value<int> id, Value<int> year}) {
+    return LevelsCompanion(
+      id: id ?? this.id,
+      year: year ?? this.year,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (year.present) {
+      map['year'] = Variable<int>(year.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('LevelsCompanion(')
+          ..write('id: $id, ')
+          ..write('year: $year')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $LevelsTable extends Levels with TableInfo<$LevelsTable, LevelModel> {
+  final GeneratedDatabase _db;
+  final String _alias;
+  $LevelsTable(this._db, [this._alias]);
+  final VerificationMeta _idMeta = const VerificationMeta('id');
+  GeneratedIntColumn _id;
+  @override
+  GeneratedIntColumn get id => _id ??= _constructId();
+  GeneratedIntColumn _constructId() {
+    return GeneratedIntColumn('id', $tableName, false,
+        $customConstraints: 'NOT NULL UNIQUE');
+  }
+
+  final VerificationMeta _yearMeta = const VerificationMeta('year');
+  GeneratedIntColumn _year;
+  @override
+  GeneratedIntColumn get year => _year ??= _constructYear();
+  GeneratedIntColumn _constructYear() {
+    return GeneratedIntColumn('year', $tableName, false,
+        $customConstraints: 'NOT NULL UNIQUE');
+  }
+
+  @override
+  List<GeneratedColumn> get $columns => [id, year];
+  @override
+  $LevelsTable get asDslTable => this;
+  @override
+  String get $tableName => _alias ?? 'levels';
+  @override
+  final String actualTableName = 'levels';
+  @override
+  VerificationContext validateIntegrity(Insertable<LevelModel> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id'], _idMeta));
+    }
+    if (data.containsKey('year')) {
+      context.handle(
+          _yearMeta, year.isAcceptableOrUnknown(data['year'], _yearMeta));
+    } else if (isInserting) {
+      context.missing(_yearMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  LevelModel map(Map<String, dynamic> data, {String tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : null;
+    return LevelModel.fromData(data, _db, prefix: effectivePrefix);
+  }
+
+  @override
+  $LevelsTable createAlias(String alias) {
+    return $LevelsTable(_db, alias);
+  }
+}
+
+class ModulesLevelsModel extends DataClass
+    implements Insertable<ModulesLevelsModel> {
+  final int moduleId;
+  final int levelId;
+  ModulesLevelsModel({@required this.moduleId, @required this.levelId});
+  factory ModulesLevelsModel.fromData(
+      Map<String, dynamic> data, GeneratedDatabase db,
+      {String prefix}) {
+    final effectivePrefix = prefix ?? '';
+    final intType = db.typeSystem.forDartType<int>();
+    return ModulesLevelsModel(
+      moduleId:
+          intType.mapFromDatabaseResponse(data['${effectivePrefix}module_id']),
+      levelId:
+          intType.mapFromDatabaseResponse(data['${effectivePrefix}level_id']),
+    );
+  }
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (!nullToAbsent || moduleId != null) {
+      map['module_id'] = Variable<int>(moduleId);
+    }
+    if (!nullToAbsent || levelId != null) {
+      map['level_id'] = Variable<int>(levelId);
+    }
+    return map;
+  }
+
+  ModulesLevelsCompanion toCompanion(bool nullToAbsent) {
+    return ModulesLevelsCompanion(
+      moduleId: moduleId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(moduleId),
+      levelId: levelId == null && nullToAbsent
+          ? const Value.absent()
+          : Value(levelId),
+    );
+  }
+
+  factory ModulesLevelsModel.fromJson(Map<String, dynamic> json,
+      {ValueSerializer serializer}) {
+    serializer ??= moorRuntimeOptions.defaultSerializer;
+    return ModulesLevelsModel(
+      moduleId: serializer.fromJson<int>(json['moduleId']),
+      levelId: serializer.fromJson<int>(json['levelId']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer serializer}) {
+    serializer ??= moorRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'moduleId': serializer.toJson<int>(moduleId),
+      'levelId': serializer.toJson<int>(levelId),
+    };
+  }
+
+  ModulesLevelsModel copyWith({int moduleId, int levelId}) =>
+      ModulesLevelsModel(
+        moduleId: moduleId ?? this.moduleId,
+        levelId: levelId ?? this.levelId,
+      );
+  @override
+  String toString() {
+    return (StringBuffer('ModulesLevelsModel(')
+          ..write('moduleId: $moduleId, ')
+          ..write('levelId: $levelId')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => $mrjf($mrjc(moduleId.hashCode, levelId.hashCode));
+  @override
+  bool operator ==(dynamic other) =>
+      identical(this, other) ||
+      (other is ModulesLevelsModel &&
+          other.moduleId == this.moduleId &&
+          other.levelId == this.levelId);
+}
+
+class ModulesLevelsCompanion extends UpdateCompanion<ModulesLevelsModel> {
+  final Value<int> moduleId;
+  final Value<int> levelId;
+  const ModulesLevelsCompanion({
+    this.moduleId = const Value.absent(),
+    this.levelId = const Value.absent(),
+  });
+  ModulesLevelsCompanion.insert({
+    @required int moduleId,
+    @required int levelId,
+  })  : moduleId = Value(moduleId),
+        levelId = Value(levelId);
+  static Insertable<ModulesLevelsModel> custom({
+    Expression<int> moduleId,
+    Expression<int> levelId,
+  }) {
+    return RawValuesInsertable({
+      if (moduleId != null) 'module_id': moduleId,
+      if (levelId != null) 'level_id': levelId,
+    });
+  }
+
+  ModulesLevelsCompanion copyWith({Value<int> moduleId, Value<int> levelId}) {
+    return ModulesLevelsCompanion(
+      moduleId: moduleId ?? this.moduleId,
+      levelId: levelId ?? this.levelId,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (moduleId.present) {
+      map['module_id'] = Variable<int>(moduleId.value);
+    }
+    if (levelId.present) {
+      map['level_id'] = Variable<int>(levelId.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ModulesLevelsCompanion(')
+          ..write('moduleId: $moduleId, ')
+          ..write('levelId: $levelId')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $ModulesLevelsTable extends ModulesLevels
+    with TableInfo<$ModulesLevelsTable, ModulesLevelsModel> {
+  final GeneratedDatabase _db;
+  final String _alias;
+  $ModulesLevelsTable(this._db, [this._alias]);
+  final VerificationMeta _moduleIdMeta = const VerificationMeta('moduleId');
+  GeneratedIntColumn _moduleId;
+  @override
+  GeneratedIntColumn get moduleId => _moduleId ??= _constructModuleId();
+  GeneratedIntColumn _constructModuleId() {
+    return GeneratedIntColumn('module_id', $tableName, false,
+        $customConstraints: 'NOT NULL REFERENCES modules(id)');
+  }
+
+  final VerificationMeta _levelIdMeta = const VerificationMeta('levelId');
+  GeneratedIntColumn _levelId;
+  @override
+  GeneratedIntColumn get levelId => _levelId ??= _constructLevelId();
+  GeneratedIntColumn _constructLevelId() {
+    return GeneratedIntColumn('level_id', $tableName, false,
+        $customConstraints: 'NOT NULL REFERENCES levels(id)');
+  }
+
+  @override
+  List<GeneratedColumn> get $columns => [moduleId, levelId];
+  @override
+  $ModulesLevelsTable get asDslTable => this;
+  @override
+  String get $tableName => _alias ?? 'modules_levels';
+  @override
+  final String actualTableName = 'modules_levels';
+  @override
+  VerificationContext validateIntegrity(Insertable<ModulesLevelsModel> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('module_id')) {
+      context.handle(_moduleIdMeta,
+          moduleId.isAcceptableOrUnknown(data['module_id'], _moduleIdMeta));
+    } else if (isInserting) {
+      context.missing(_moduleIdMeta);
+    }
+    if (data.containsKey('level_id')) {
+      context.handle(_levelIdMeta,
+          levelId.isAcceptableOrUnknown(data['level_id'], _levelIdMeta));
+    } else if (isInserting) {
+      context.missing(_levelIdMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => <GeneratedColumn>{};
+  @override
+  ModulesLevelsModel map(Map<String, dynamic> data, {String tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : null;
+    return ModulesLevelsModel.fromData(data, _db, prefix: effectivePrefix);
+  }
+
+  @override
+  $ModulesLevelsTable createAlias(String alias) {
+    return $ModulesLevelsTable(_db, alias);
+  }
+}
+
 abstract class _$MoorDatabase extends GeneratedDatabase {
   _$MoorDatabase(QueryExecutor e) : super(SqlTypeSystem.defaultInstance, e);
   $ModulesTable _modules;
@@ -1027,9 +1772,26 @@ abstract class _$MoorDatabase extends GeneratedDatabase {
   $SubjectColorsTable _subjectColors;
   $SubjectColorsTable get subjectColors =>
       _subjectColors ??= $SubjectColorsTable(this);
+  $SemesterTypesTable _semesterTypes;
+  $SemesterTypesTable get semesterTypes =>
+      _semesterTypes ??= $SemesterTypesTable(this);
+  $ModuleTypesTable _moduleTypes;
+  $ModuleTypesTable get moduleTypes => _moduleTypes ??= $ModuleTypesTable(this);
+  $LevelsTable _levels;
+  $LevelsTable get levels => _levels ??= $LevelsTable(this);
+  $ModulesLevelsTable _modulesLevels;
+  $ModulesLevelsTable get modulesLevels =>
+      _modulesLevels ??= $ModulesLevelsTable(this);
   @override
   Iterable<TableInfo> get allTables => allSchemaEntities.whereType<TableInfo>();
   @override
-  List<DatabaseSchemaEntity> get allSchemaEntities =>
-      [modules, subjects, subjectColors];
+  List<DatabaseSchemaEntity> get allSchemaEntities => [
+        modules,
+        subjects,
+        subjectColors,
+        semesterTypes,
+        moduleTypes,
+        levels,
+        modulesLevels
+      ];
 }

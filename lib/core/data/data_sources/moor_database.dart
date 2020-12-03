@@ -17,6 +17,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import 'package:meta/meta.dart';
 import 'package:moor/moor.dart';
 import 'package:moor/moor_web.dart';
 
@@ -29,11 +30,11 @@ part 'moor_database.g.dart';
 /// or there was a mistake in this table. The modules in this table is generated
 /// from a JSON file which contains all the information about all modules
 /// offered.
-@DataClassName('ModuleModel') // To remove conflict with Model entity.
+@DataClassName('ModuleModel')
 class Modules extends Table {
   /// An arbitrarily assigned integer that should remain constant throyhout
   /// future versions of the module.
-  IntColumn get id => integer().customConstraint('UNIQUE')();
+  IntColumn get id => integer().customConstraint('NOT NULL UNIQUE')();
 
   /// A unique string that can identify the module.
   TextColumn get code => text().withLength(min: 6, max: 7)();
@@ -64,21 +65,23 @@ class Modules extends Table {
 
   /// The foreign key which refers to the semester(s) which the module can be
   /// taken in.
-  IntColumn get semesterTypeId => integer()();
+  IntColumn get semesterTypeId =>
+      integer().customConstraint('NOT NULL REFERENCES semester_types(id)')();
 
   /// The foreign key which refers to the module type (core, elective,
   /// enrichment, etc.) of the module.
-  IntColumn get moduleTypeId => integer()();
+  IntColumn get moduleTypeId =>
+      integer().customConstraint('NOT NULL REFERENCES module_types(id)')();
 
   @override
   Set<Column> get primaryKey => {id};
 }
 
-@DataClassName('SubjectModel') // To remove conflict with Subject entity.
+@DataClassName('SubjectModel')
 class Subjects extends Table {
-  IntColumn get id => integer().customConstraint('UNIQUE')();
+  IntColumn get id => integer().customConstraint('NOT NULL UNIQUE')();
 
-  TextColumn get name => text().customConstraint('UNIQUE')();
+  TextColumn get name => text().customConstraint('NOT NULL UNIQUE')();
 
   IntColumn get subjectColorId =>
       integer().customConstraint('NOT NULL REFERENCES subject_colors(id)')();
@@ -89,15 +92,74 @@ class Subjects extends Table {
 
 @DataClassName('SubjectColorModel')
 class SubjectColors extends Table {
-  IntColumn get id => integer().customConstraint('UNIQUE')();
+  IntColumn get id => integer().customConstraint('NOT NULL UNIQUE')();
 
-  TextColumn get name => text().customConstraint('UNIQUE')();
+  TextColumn get name => text().customConstraint('NOT NULL UNIQUE')();
 
   @override
   Set<Column> get primaryKey => {id};
 }
 
-@UseMoor(tables: [Modules, Subjects, SubjectColors])
+@DataClassName('SemesterTypeModel')
+class SemesterTypes extends Table {
+  IntColumn get id => integer().customConstraint('NOT NULL UNIQUE')();
+
+  TextColumn get name => text().customConstraint('NOT NULL UNIQUE')();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+@DataClassName('ModuleTypeModel')
+class ModuleTypes extends Table {
+  IntColumn get id => integer().customConstraint('NOT NULL UNIQUE')();
+
+  TextColumn get name => text().customConstraint('NOT NULL UNIQUE')();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+@DataClassName('LevelModel')
+class Levels extends Table {
+  IntColumn get id => integer().customConstraint('NOT NULL UNIQUE')();
+
+  IntColumn get year => integer().customConstraint('NOT NULL UNIQUE')();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+@DataClassName('ModulesLevelsModel')
+class ModulesLevels extends Table {
+  IntColumn get moduleId =>
+      integer().customConstraint('NOT NULL REFERENCES modules(id)')();
+
+  IntColumn get levelId =>
+      integer().customConstraint('NOT NULL REFERENCES levels(id)')();
+}
+
+/// Mappable to a Module entity. This combines data from two tables, [Modules]
+/// and [Levels], in a many-to-many relationship.
+class ModuleWithLevelsModel {
+  final ModuleModel module;
+  final List<LevelModel> levels;
+
+  ModuleWithLevelsModel({
+    @required this.module,
+    @required List<LevelModel> levels,
+  }) : levels = levels.toList();
+}
+
+@UseMoor(tables: [
+  Modules,
+  Subjects,
+  SubjectColors,
+  SemesterTypes,
+  ModuleTypes,
+  Levels,
+  ModulesLevels,
+])
 class MoorDatabase extends _$MoorDatabase {
   MoorDatabase() : super(WebDatabase('db'));
 
