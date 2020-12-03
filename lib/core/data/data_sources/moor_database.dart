@@ -32,7 +32,7 @@ part 'moor_database.g.dart';
 /// offered.
 @DataClassName('ModuleModel')
 class Modules extends Table {
-  /// An arbitrarily assigned integer that should remain constant throyhout
+  /// An arbitrarily assigned integer that should remain constant throughout
   /// future versions of the module.
   IntColumn get id => integer().customConstraint('NOT NULL UNIQUE')();
 
