@@ -20,7 +20,7 @@
 import 'package:flutter/material.dart';
 
 import 'core/theme/theme_data.dart' as theme_data;
-import 'screens/about_screen.dart';
+import 'screens/catalogue_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       title: 'NUSH Modules',
       theme: theme_data.init(),
       debugShowCheckedModeBanner: false,
-      home: AboutScreen(),
+      home: CatalogueScreen(),
     );
   }
 }

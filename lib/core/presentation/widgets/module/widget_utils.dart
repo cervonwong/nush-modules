@@ -29,3 +29,10 @@ EdgeInsets getContentHorizontalPadding(BuildContext context) {
           ? (screenWidth - kMaxContentWidth) / 2
           : kMinContentPadding);
 }
+
+int getGridColumnCount(BoxConstraints constraints) {
+  var width = constraints.maxWidth;
+  var count = (width / 230.0).round();
+  return count;
+}
+

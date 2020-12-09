@@ -30,6 +30,7 @@ ThemeData init() {
     textTheme: _createTextTheme(),
     textButtonTheme: _createTextButtonTheme(),
     elevatedButtonTheme: _createElevatedButtonTheme(),
+    outlinedButtonTheme: _createOutlinedButtonTheme(),
   );
 }
 
@@ -150,6 +151,19 @@ ElevatedButtonThemeData _createElevatedButtonTheme() {
       ),
       textStyle: MaterialStateProperty.all<TextStyle>(
         _createTextTheme().button,
+      ),
+    ),
+  );
+}
+
+OutlinedButtonThemeData _createOutlinedButtonTheme() {
+  return OutlinedButtonThemeData(
+    style: ButtonStyle(
+      backgroundColor: MaterialStateProperty.all<Color>(
+        Colors.white,
+      ),
+      padding: MaterialStateProperty.all<EdgeInsets>(
+        EdgeInsets.symmetric(horizontal: 22.0, vertical: 16.0),
       ),
     ),
   );
