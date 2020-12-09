@@ -13,10 +13,10 @@ dependencies:
   flutter:
     sdk: flutter
   fluentui_system_icons: ^1.1.83
+  flutter_bloc: ^6.0.0
   moor: ^3.4.0
   moor_flutter: ^3.1.0
   validators: ^2.0.1
-  flutter_bloc: ^6.0.0
 
 
 dev_dependencies:
