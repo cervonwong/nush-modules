@@ -29,8 +29,7 @@ String _readFixture() {
   try {
     jsonString = File('test/fixtures/modules_fixture.json').readAsStringSync();
   } on FileSystemException {
-    jsonString =
-        File('../../../fixtures/modules_fixture.json').readAsStringSync();
+    return null;
   }
 
   return jsonString;

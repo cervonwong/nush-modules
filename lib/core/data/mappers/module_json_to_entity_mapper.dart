@@ -42,7 +42,7 @@ class ModuleJsonToEntityMapper {
   /// unparsable due to an unexpected character. This method also throws
   /// [FormatException] if [jsonString] is a valid JSON but has properties with
   /// unexpected values. Note that JSON with different structures than expected
-  /// can lead to unexpected behaviour. [jsonString] should abide bya JSON
+  /// can lead to unexpected behaviour. [jsonString] should abide by a JSON
   /// schema. It is recommended to wrap this method around a try-catch
   /// block to catch this exception and recover from it if needed.
   List<Module> call({@required String jsonString}) {
