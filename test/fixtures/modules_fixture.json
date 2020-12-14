@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "modules": [
+    {
+      "code": "MA1131",
+      "moduleId": 1,
+      "moduleName": "Foundations in Math IA",
+      "description": "Description 1",
+      "mc": 3,
+      "workload": 3.0,
+      "subject": "MATH",
+      "semesterType": "FIRST",
+      "moduleType": "CORE",
+      "levels": [
+        1
+      ],
+      "prerequisites": [],
+      "corequisites": [],
+      "preclusions": []
+    },
+    {
+      "code": "BL1322V",
+      "moduleId": 2,
+      "moduleName": "Math Olympiad Training I",
+      "description": "Description 2",
+      "remarks": "Random remark",
+      "mc": 2,
+      "workload": 3.0,
+      "subject": "BIOLOGY",
+      "semesterType": "BOTH",
+      "moduleType": "ELECTIVE",
+      "levels": [
+        1,
+        2
+      ],
+      "prerequisites": [],
+      "corequisites": [
+        "MA1131"
+      ],
+      "preclusions": []
+    }
+  ]
+}
