@@ -21,10 +21,10 @@ import '../domain/entities/module/module.dart';
 
 abstract class CatalogueEvent {}
 
-class SearchModule extends CatalogueEvent {
+class SearchCatalogue extends CatalogueEvent {
   final String input;
 
-  SearchModule(this.input);
+  SearchCatalogue(this.input);
 }
 
 class CustomizeFilters extends CatalogueEvent {

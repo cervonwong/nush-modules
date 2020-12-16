@@ -17,8 +17,11 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import 'dart:io';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../data/mappers/module_json_to_entity_mapper.dart';
 import '../domain/entities/module/module.dart';
 import 'catalogue_event.dart';
 import 'catalogue_state.dart';
@@ -28,9 +31,26 @@ class CatalogueBloc extends Bloc<CatalogueEvent, CatalogueState> {
 
   @override
   Stream<CatalogueState> mapEventToState(CatalogueEvent event) async* {
-    if (event is SearchModule) {
+    if (event is SearchCatalogue) {
       var matchingNameModules = <Module>{};
       var matchingDescriptionModules = <Module>{};
+
+      final mapper = ModuleJsonToEntityMapper();
+      final moduleList = mapper.call(
+          jsonString:
+              File('../../json/modules/modules.json').readAsStringSync());
+
+      for (var module in moduleList) {
+        if (module.name.toLowerCase().contains(event.input.toLowerCase())) {
+          matchingNameModules.add(module);
+        }
+        if (module.description
+            .toLowerCase()
+            .contains(event.input.toLowerCase())) {
+          matchingDescriptionModules.add(module);
+        }
+      }
+
       yield CatalogueSearched(
         matchingNameModules: matchingNameModules,
         matchingDescriptionModules: matchingDescriptionModules,
