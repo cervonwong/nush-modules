@@ -21,8 +21,8 @@ import 'dart:io';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../data/mappers/module_json_to_entity_mapper.dart';
-import '../domain/entities/module/module.dart';
+import '../../data/mappers/module_json_to_entity_mapper.dart';
+import '../../domain/entities/module/module.dart';
 import 'catalogue_event.dart';
 import 'catalogue_state.dart';
 

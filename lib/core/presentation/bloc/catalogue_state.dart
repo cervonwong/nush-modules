@@ -19,7 +19,7 @@
 
 import 'package:meta/meta.dart';
 
-import '../domain/entities/module/module.dart';
+import '../../domain/entities/module/module.dart';
 
 abstract class CatalogueState {
   const CatalogueState();

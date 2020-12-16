@@ -17,7 +17,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import '../domain/entities/module/module.dart';
+import '../../domain/entities/module/module.dart';
 
 abstract class CatalogueEvent {}
 
