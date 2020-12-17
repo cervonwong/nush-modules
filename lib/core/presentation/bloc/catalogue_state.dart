@@ -25,40 +25,22 @@ abstract class CatalogueState {
   const CatalogueState();
 }
 
-class CatalogueSearched extends CatalogueState {
-  final Set<Module> matchingNameModules;
-  final Set<Module> matchingDescriptionModules;
+class CatalogueLoading extends CatalogueState {}
 
-  const CatalogueSearched({
-    @required this.matchingNameModules,
-    @required this.matchingDescriptionModules,
+class CatalogueLoaded extends CatalogueState {
+  final List<Module> modules;
+  final List<Module> starredModules;
+
+  const CatalogueLoaded({
+    this.modules,
+    this.starredModules,
   });
 }
 
-class CatalogueFiltered extends CatalogueState {
-  //TODO: Do this after filter screen and parameters are finalised.
-}
-
-class ModuleStarred extends CatalogueState {
-  final Module module;
-
-  const ModuleStarred(this.module);
-}
-
-class ModuleUnstarred extends CatalogueState {
-  final Module module;
-
-  const ModuleUnstarred(this.module);
-}
-
-class ModuleInfoShown extends CatalogueState {
-  final Module module;
-
-  const ModuleInfoShown(this.module);
-}
+class CatalogueLoadFailed extends CatalogueState {}
 
 class ModuleReported extends CatalogueState {
-  final Module module;
+  final bool isSuccessful;
 
-  const ModuleReported(this.module);
+  const ModuleReported({@required this.isSuccessful});
 }

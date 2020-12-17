@@ -17,36 +17,30 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
 import '../../domain/entities/module/module.dart';
+import '../utils/module/module_filter.dart';
 
-abstract class CatalogueEvent {}
-
-class SearchCatalogue extends CatalogueEvent {
-  final String input;
-
-  SearchCatalogue({@required this.input});
+abstract class FilteredCatalogueEvent extends Equatable {
+  const FilteredCatalogueEvent();
 }
 
-class StarModule extends CatalogueEvent {
-  final Module module;
+class FilterUpdated extends FilteredCatalogueEvent {
+  final ModuleFilter filter;
 
-  StarModule({@required this.module});
+  const FilterUpdated({@required this.filter});
+
+  @override
+  List<Object> get props => [filter];
 }
 
-class UnstarModule extends CatalogueEvent {
-  final Module module;
+class ModulesUpdated extends FilteredCatalogueEvent {
+  final List<Module> modules;
 
-  UnstarModule({@required this.module});
-}
+  const ModulesUpdated({@required this.modules});
 
-class ReportModule extends CatalogueEvent {
-  final Module module;
-  final String message;
-
-  ReportModule({
-    @required this.module,
-    @required this.message,
-  });
+  @override
+  List<Object> get props => [modules];
 }

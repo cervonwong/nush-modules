@@ -17,36 +17,28 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-import '../../domain/entities/module/module.dart';
+import '../../../domain/entities/module/module.dart';
 
-abstract class CatalogueEvent {}
+class ModuleFilter extends Equatable {
+  //TODO: add Department, as well as in _mapModulesToFilteredModules in FilteredCatalogueBloc too.
+  final Level level;
+  final ModuleType moduleType;
+  final SemesterType semesterType;
+  static const ModuleFilter none = ModuleFilter(
+    level: null,
+    moduleType: null,
+    semesterType: null,
+  );
 
-class SearchCatalogue extends CatalogueEvent {
-  final String input;
-
-  SearchCatalogue({@required this.input});
-}
-
-class StarModule extends CatalogueEvent {
-  final Module module;
-
-  StarModule({@required this.module});
-}
-
-class UnstarModule extends CatalogueEvent {
-  final Module module;
-
-  UnstarModule({@required this.module});
-}
-
-class ReportModule extends CatalogueEvent {
-  final Module module;
-  final String message;
-
-  ReportModule({
-    @required this.module,
-    @required this.message,
+  const ModuleFilter({
+    @required this.level,
+    @required this.moduleType,
+    @required this.semesterType,
   });
+
+  @override
+  List<Object> get props => [level, moduleType, semesterType];
 }

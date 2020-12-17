@@ -32,39 +32,48 @@ class CatalogueBloc extends Bloc<CatalogueEvent, CatalogueState> {
   @override
   Stream<CatalogueState> mapEventToState(CatalogueEvent event) async* {
     if (event is SearchCatalogue) {
-      var matchingNameModules = <Module>{};
-      var matchingDescriptionModules = <Module>{};
+      yield CatalogueLoading();
+      try {
+        final matchingNameModules = <Module>{};
+        final matchingDescriptionModules = <Module>{};
+        final mapper = ModuleJsonToEntityMapper();
+        final moduleList = mapper.call(
+            jsonString:
+                File('../../../json/modules/modules.json').readAsStringSync());
 
-      final mapper = ModuleJsonToEntityMapper();
-      final moduleList = mapper.call(
-          jsonString:
-              File('../../json/modules/modules.json').readAsStringSync());
+        for (var module in moduleList) {
+          if (module.name.toLowerCase().contains(event.input.toLowerCase())) {
+            matchingNameModules.add(module);
+          }
+          if (module.description
+              .toLowerCase()
+              .contains(event.input.toLowerCase())) {
+            matchingDescriptionModules.add(module);
+          }
+        }
 
-      for (var module in moduleList) {
-        if (module.name.toLowerCase().contains(event.input.toLowerCase())) {
-          matchingNameModules.add(module);
-        }
-        if (module.description
-            .toLowerCase()
-            .contains(event.input.toLowerCase())) {
-          matchingDescriptionModules.add(module);
-        }
+        yield CatalogueLoaded();
+      } catch (_) {
+        yield CatalogueLoadFailed();
       }
-
-      yield CatalogueSearched(
-        matchingNameModules: matchingNameModules,
-        matchingDescriptionModules: matchingDescriptionModules,
-      );
-    } else if (event is CustomizeFilters) {
-      yield CatalogueFiltered();
     } else if (event is StarModule) {
-      yield ModuleStarred(event.module);
+      yield CatalogueLoading();
+      try {
+        yield CatalogueLoaded();
+      } catch (_) {
+        yield CatalogueLoadFailed();
+      }
+      yield CatalogueLoaded();
     } else if (event is UnstarModule) {
-      yield ModuleUnstarred(event.module);
-    } else if (event is ShowMoreModuleInfo) {
-      yield ModuleInfoShown(event.module);
+      yield CatalogueLoading();
+      try {
+        yield CatalogueLoaded();
+      } catch (_) {
+        yield CatalogueLoadFailed();
+      }
+      yield CatalogueLoaded();
     } else if (event is ReportModule) {
-      yield ModuleReported(event.module);
+      yield ModuleReported(isSuccessful: true);
     }
   }
 }
