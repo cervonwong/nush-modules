@@ -384,8 +384,11 @@ class $ModulesTable extends Modules with TableInfo<$ModulesTable, ModuleModel> {
   @override
   GeneratedIntColumn get id => _id ??= _constructId();
   GeneratedIntColumn _constructId() {
-    return GeneratedIntColumn('id', $tableName, false,
-        $customConstraints: 'NOT NULL UNIQUE');
+    return GeneratedIntColumn(
+      'id',
+      $tableName,
+      false,
+    );
   }
 
   final VerificationMeta _codeMeta = const VerificationMeta('code');
@@ -394,7 +397,9 @@ class $ModulesTable extends Modules with TableInfo<$ModulesTable, ModuleModel> {
   GeneratedTextColumn get code => _code ??= _constructCode();
   GeneratedTextColumn _constructCode() {
     return GeneratedTextColumn('code', $tableName, false,
-        minTextLength: 6, maxTextLength: 7);
+        minTextLength: 6,
+        maxTextLength: 7,
+        $customConstraints: 'NOT NULL UNIQUE');
   }
 
   final VerificationMeta _nameMeta = const VerificationMeta('name');
@@ -754,8 +759,11 @@ class $SubjectsTable extends Subjects
   @override
   GeneratedIntColumn get id => _id ??= _constructId();
   GeneratedIntColumn _constructId() {
-    return GeneratedIntColumn('id', $tableName, false,
-        $customConstraints: 'NOT NULL UNIQUE');
+    return GeneratedIntColumn(
+      'id',
+      $tableName,
+      false,
+    );
   }
 
   final VerificationMeta _nameMeta = const VerificationMeta('name');
@@ -960,8 +968,11 @@ class $SubjectColorsTable extends SubjectColors
   @override
   GeneratedIntColumn get id => _id ??= _constructId();
   GeneratedIntColumn _constructId() {
-    return GeneratedIntColumn('id', $tableName, false,
-        $customConstraints: 'NOT NULL UNIQUE');
+    return GeneratedIntColumn(
+      'id',
+      $tableName,
+      false,
+    );
   }
 
   final VerificationMeta _nameMeta = const VerificationMeta('name');
@@ -1147,8 +1158,11 @@ class $SemesterTypesTable extends SemesterTypes
   @override
   GeneratedIntColumn get id => _id ??= _constructId();
   GeneratedIntColumn _constructId() {
-    return GeneratedIntColumn('id', $tableName, false,
-        $customConstraints: 'NOT NULL UNIQUE');
+    return GeneratedIntColumn(
+      'id',
+      $tableName,
+      false,
+    );
   }
 
   final VerificationMeta _nameMeta = const VerificationMeta('name');
@@ -1333,8 +1347,11 @@ class $ModuleTypesTable extends ModuleTypes
   @override
   GeneratedIntColumn get id => _id ??= _constructId();
   GeneratedIntColumn _constructId() {
-    return GeneratedIntColumn('id', $tableName, false,
-        $customConstraints: 'NOT NULL UNIQUE');
+    return GeneratedIntColumn(
+      'id',
+      $tableName,
+      false,
+    );
   }
 
   final VerificationMeta _nameMeta = const VerificationMeta('name');
@@ -1386,24 +1403,19 @@ class $ModuleTypesTable extends ModuleTypes
 }
 
 class LevelModel extends DataClass implements Insertable<LevelModel> {
-  final int id;
   final int year;
-  LevelModel({@required this.id, @required this.year});
+  LevelModel({@required this.year});
   factory LevelModel.fromData(Map<String, dynamic> data, GeneratedDatabase db,
       {String prefix}) {
     final effectivePrefix = prefix ?? '';
     final intType = db.typeSystem.forDartType<int>();
     return LevelModel(
-      id: intType.mapFromDatabaseResponse(data['${effectivePrefix}id']),
       year: intType.mapFromDatabaseResponse(data['${effectivePrefix}year']),
     );
   }
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (!nullToAbsent || id != null) {
-      map['id'] = Variable<int>(id);
-    }
     if (!nullToAbsent || year != null) {
       map['year'] = Variable<int>(year);
     }
@@ -1412,7 +1424,6 @@ class LevelModel extends DataClass implements Insertable<LevelModel> {
 
   LevelsCompanion toCompanion(bool nullToAbsent) {
     return LevelsCompanion(
-      id: id == null && nullToAbsent ? const Value.absent() : Value(id),
       year: year == null && nullToAbsent ? const Value.absent() : Value(year),
     );
   }
@@ -1421,7 +1432,6 @@ class LevelModel extends DataClass implements Insertable<LevelModel> {
       {ValueSerializer serializer}) {
     serializer ??= moorRuntimeOptions.defaultSerializer;
     return LevelModel(
-      id: serializer.fromJson<int>(json['id']),
       year: serializer.fromJson<int>(json['year']),
     );
   }
@@ -1429,56 +1439,45 @@ class LevelModel extends DataClass implements Insertable<LevelModel> {
   Map<String, dynamic> toJson({ValueSerializer serializer}) {
     serializer ??= moorRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
-      'id': serializer.toJson<int>(id),
       'year': serializer.toJson<int>(year),
     };
   }
 
-  LevelModel copyWith({int id, int year}) => LevelModel(
-        id: id ?? this.id,
+  LevelModel copyWith({int year}) => LevelModel(
         year: year ?? this.year,
       );
   @override
   String toString() {
-    return (StringBuffer('LevelModel(')
-          ..write('id: $id, ')
-          ..write('year: $year')
-          ..write(')'))
+    return (StringBuffer('LevelModel(')..write('year: $year')..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode => $mrjf($mrjc(id.hashCode, year.hashCode));
+  int get hashCode => $mrjf(year.hashCode);
   @override
   bool operator ==(dynamic other) =>
       identical(this, other) ||
-      (other is LevelModel && other.id == this.id && other.year == this.year);
+      (other is LevelModel && other.year == this.year);
 }
 
 class LevelsCompanion extends UpdateCompanion<LevelModel> {
-  final Value<int> id;
   final Value<int> year;
   const LevelsCompanion({
-    this.id = const Value.absent(),
     this.year = const Value.absent(),
   });
   LevelsCompanion.insert({
-    this.id = const Value.absent(),
-    @required int year,
-  }) : year = Value(year);
+    this.year = const Value.absent(),
+  });
   static Insertable<LevelModel> custom({
-    Expression<int> id,
     Expression<int> year,
   }) {
     return RawValuesInsertable({
-      if (id != null) 'id': id,
       if (year != null) 'year': year,
     });
   }
 
-  LevelsCompanion copyWith({Value<int> id, Value<int> year}) {
+  LevelsCompanion copyWith({Value<int> year}) {
     return LevelsCompanion(
-      id: id ?? this.id,
       year: year ?? this.year,
     );
   }
@@ -1486,9 +1485,6 @@ class LevelsCompanion extends UpdateCompanion<LevelModel> {
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (id.present) {
-      map['id'] = Variable<int>(id.value);
-    }
     if (year.present) {
       map['year'] = Variable<int>(year.value);
     }
@@ -1497,10 +1493,7 @@ class LevelsCompanion extends UpdateCompanion<LevelModel> {
 
   @override
   String toString() {
-    return (StringBuffer('LevelsCompanion(')
-          ..write('id: $id, ')
-          ..write('year: $year')
-          ..write(')'))
+    return (StringBuffer('LevelsCompanion(')..write('year: $year')..write(')'))
         .toString();
   }
 }
@@ -1509,26 +1502,20 @@ class $LevelsTable extends Levels with TableInfo<$LevelsTable, LevelModel> {
   final GeneratedDatabase _db;
   final String _alias;
   $LevelsTable(this._db, [this._alias]);
-  final VerificationMeta _idMeta = const VerificationMeta('id');
-  GeneratedIntColumn _id;
-  @override
-  GeneratedIntColumn get id => _id ??= _constructId();
-  GeneratedIntColumn _constructId() {
-    return GeneratedIntColumn('id', $tableName, false,
-        $customConstraints: 'NOT NULL UNIQUE');
-  }
-
   final VerificationMeta _yearMeta = const VerificationMeta('year');
   GeneratedIntColumn _year;
   @override
   GeneratedIntColumn get year => _year ??= _constructYear();
   GeneratedIntColumn _constructYear() {
-    return GeneratedIntColumn('year', $tableName, false,
-        $customConstraints: 'NOT NULL UNIQUE');
+    return GeneratedIntColumn(
+      'year',
+      $tableName,
+      false,
+    );
   }
 
   @override
-  List<GeneratedColumn> get $columns => [id, year];
+  List<GeneratedColumn> get $columns => [year];
   @override
   $LevelsTable get asDslTable => this;
   @override
@@ -1540,20 +1527,15 @@ class $LevelsTable extends Levels with TableInfo<$LevelsTable, LevelModel> {
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
-    if (data.containsKey('id')) {
-      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id'], _idMeta));
-    }
     if (data.containsKey('year')) {
       context.handle(
           _yearMeta, year.isAcceptableOrUnknown(data['year'], _yearMeta));
-    } else if (isInserting) {
-      context.missing(_yearMeta);
     }
     return context;
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {id};
+  Set<GeneratedColumn> get $primaryKey => {year};
   @override
   LevelModel map(Map<String, dynamic> data, {String tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : null;
@@ -1569,8 +1551,8 @@ class $LevelsTable extends Levels with TableInfo<$LevelsTable, LevelModel> {
 class ModulesLevelsModel extends DataClass
     implements Insertable<ModulesLevelsModel> {
   final int moduleId;
-  final int levelId;
-  ModulesLevelsModel({@required this.moduleId, @required this.levelId});
+  final int levelYear;
+  ModulesLevelsModel({@required this.moduleId, @required this.levelYear});
   factory ModulesLevelsModel.fromData(
       Map<String, dynamic> data, GeneratedDatabase db,
       {String prefix}) {
@@ -1579,8 +1561,8 @@ class ModulesLevelsModel extends DataClass
     return ModulesLevelsModel(
       moduleId:
           intType.mapFromDatabaseResponse(data['${effectivePrefix}module_id']),
-      levelId:
-          intType.mapFromDatabaseResponse(data['${effectivePrefix}level_id']),
+      levelYear:
+          intType.mapFromDatabaseResponse(data['${effectivePrefix}level_year']),
     );
   }
   @override
@@ -1589,8 +1571,8 @@ class ModulesLevelsModel extends DataClass
     if (!nullToAbsent || moduleId != null) {
       map['module_id'] = Variable<int>(moduleId);
     }
-    if (!nullToAbsent || levelId != null) {
-      map['level_id'] = Variable<int>(levelId);
+    if (!nullToAbsent || levelYear != null) {
+      map['level_year'] = Variable<int>(levelYear);
     }
     return map;
   }
@@ -1600,9 +1582,9 @@ class ModulesLevelsModel extends DataClass
       moduleId: moduleId == null && nullToAbsent
           ? const Value.absent()
           : Value(moduleId),
-      levelId: levelId == null && nullToAbsent
+      levelYear: levelYear == null && nullToAbsent
           ? const Value.absent()
-          : Value(levelId),
+          : Value(levelYear),
     );
   }
 
@@ -1611,7 +1593,7 @@ class ModulesLevelsModel extends DataClass
     serializer ??= moorRuntimeOptions.defaultSerializer;
     return ModulesLevelsModel(
       moduleId: serializer.fromJson<int>(json['moduleId']),
-      levelId: serializer.fromJson<int>(json['levelId']),
+      levelYear: serializer.fromJson<int>(json['levelYear']),
     );
   }
   @override
@@ -1619,60 +1601,60 @@ class ModulesLevelsModel extends DataClass
     serializer ??= moorRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
       'moduleId': serializer.toJson<int>(moduleId),
-      'levelId': serializer.toJson<int>(levelId),
+      'levelYear': serializer.toJson<int>(levelYear),
     };
   }
 
-  ModulesLevelsModel copyWith({int moduleId, int levelId}) =>
+  ModulesLevelsModel copyWith({int moduleId, int levelYear}) =>
       ModulesLevelsModel(
         moduleId: moduleId ?? this.moduleId,
-        levelId: levelId ?? this.levelId,
+        levelYear: levelYear ?? this.levelYear,
       );
   @override
   String toString() {
     return (StringBuffer('ModulesLevelsModel(')
           ..write('moduleId: $moduleId, ')
-          ..write('levelId: $levelId')
+          ..write('levelYear: $levelYear')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode => $mrjf($mrjc(moduleId.hashCode, levelId.hashCode));
+  int get hashCode => $mrjf($mrjc(moduleId.hashCode, levelYear.hashCode));
   @override
   bool operator ==(dynamic other) =>
       identical(this, other) ||
       (other is ModulesLevelsModel &&
           other.moduleId == this.moduleId &&
-          other.levelId == this.levelId);
+          other.levelYear == this.levelYear);
 }
 
 class ModulesLevelsCompanion extends UpdateCompanion<ModulesLevelsModel> {
   final Value<int> moduleId;
-  final Value<int> levelId;
+  final Value<int> levelYear;
   const ModulesLevelsCompanion({
     this.moduleId = const Value.absent(),
-    this.levelId = const Value.absent(),
+    this.levelYear = const Value.absent(),
   });
   ModulesLevelsCompanion.insert({
     @required int moduleId,
-    @required int levelId,
+    @required int levelYear,
   })  : moduleId = Value(moduleId),
-        levelId = Value(levelId);
+        levelYear = Value(levelYear);
   static Insertable<ModulesLevelsModel> custom({
     Expression<int> moduleId,
-    Expression<int> levelId,
+    Expression<int> levelYear,
   }) {
     return RawValuesInsertable({
       if (moduleId != null) 'module_id': moduleId,
-      if (levelId != null) 'level_id': levelId,
+      if (levelYear != null) 'level_year': levelYear,
     });
   }
 
-  ModulesLevelsCompanion copyWith({Value<int> moduleId, Value<int> levelId}) {
+  ModulesLevelsCompanion copyWith({Value<int> moduleId, Value<int> levelYear}) {
     return ModulesLevelsCompanion(
       moduleId: moduleId ?? this.moduleId,
-      levelId: levelId ?? this.levelId,
+      levelYear: levelYear ?? this.levelYear,
     );
   }
 
@@ -1682,8 +1664,8 @@ class ModulesLevelsCompanion extends UpdateCompanion<ModulesLevelsModel> {
     if (moduleId.present) {
       map['module_id'] = Variable<int>(moduleId.value);
     }
-    if (levelId.present) {
-      map['level_id'] = Variable<int>(levelId.value);
+    if (levelYear.present) {
+      map['level_year'] = Variable<int>(levelYear.value);
     }
     return map;
   }
@@ -1692,7 +1674,7 @@ class ModulesLevelsCompanion extends UpdateCompanion<ModulesLevelsModel> {
   String toString() {
     return (StringBuffer('ModulesLevelsCompanion(')
           ..write('moduleId: $moduleId, ')
-          ..write('levelId: $levelId')
+          ..write('levelYear: $levelYear')
           ..write(')'))
         .toString();
   }
@@ -1712,17 +1694,17 @@ class $ModulesLevelsTable extends ModulesLevels
         $customConstraints: 'NOT NULL REFERENCES modules(id)');
   }
 
-  final VerificationMeta _levelIdMeta = const VerificationMeta('levelId');
-  GeneratedIntColumn _levelId;
+  final VerificationMeta _levelYearMeta = const VerificationMeta('levelYear');
+  GeneratedIntColumn _levelYear;
   @override
-  GeneratedIntColumn get levelId => _levelId ??= _constructLevelId();
-  GeneratedIntColumn _constructLevelId() {
-    return GeneratedIntColumn('level_id', $tableName, false,
-        $customConstraints: 'NOT NULL REFERENCES levels(id)');
+  GeneratedIntColumn get levelYear => _levelYear ??= _constructLevelYear();
+  GeneratedIntColumn _constructLevelYear() {
+    return GeneratedIntColumn('level_year', $tableName, false,
+        $customConstraints: 'NOT NULL REFERENCES levels(year)');
   }
 
   @override
-  List<GeneratedColumn> get $columns => [moduleId, levelId];
+  List<GeneratedColumn> get $columns => [moduleId, levelYear];
   @override
   $ModulesLevelsTable get asDslTable => this;
   @override
@@ -1740,17 +1722,17 @@ class $ModulesLevelsTable extends ModulesLevels
     } else if (isInserting) {
       context.missing(_moduleIdMeta);
     }
-    if (data.containsKey('level_id')) {
-      context.handle(_levelIdMeta,
-          levelId.isAcceptableOrUnknown(data['level_id'], _levelIdMeta));
+    if (data.containsKey('level_year')) {
+      context.handle(_levelYearMeta,
+          levelYear.isAcceptableOrUnknown(data['level_year'], _levelYearMeta));
     } else if (isInserting) {
-      context.missing(_levelIdMeta);
+      context.missing(_levelYearMeta);
     }
     return context;
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => <GeneratedColumn>{};
+  Set<GeneratedColumn> get $primaryKey => {moduleId, levelYear};
   @override
   ModulesLevelsModel map(Map<String, dynamic> data, {String tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : null;

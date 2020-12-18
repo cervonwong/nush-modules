@@ -28,39 +28,37 @@ object modules {
 
 object subjects {
 	id       : INTEGER <<PK>>
-	name     : TEXT
+	name     : TEXT <<unique>>
 	color_id : INTEGER <<FK>>
 }
 
 object colors {
 	id   : INTEGER <<PK>>
-	name : TEXT
+	name : TEXT <<unique>>
 }
 
 object semester_types {
 	id   : INTEGER <<PK>>
-	name : TEXT
+	name : TEXT <<unique>>
 }
 
 object levels {
-	id   : INTEGER <<PK>>
-	year : INTEGER
+	year : INTEGER <<PK>>
 }
 
 object modules_levels <<junction table>> {
-	module_id : INTEGER <<FK>>
-	level_id  : INTEGER <<FK>>
+	module_id : INTEGER <<FK, cPK>>
+	level_year  : INTEGER <<FK, cPK>>
 }
 
 object module_types {
 	id   : INTEGER <<PK>>
-	name : TEXT
+	name : TEXT <<unique>>
 }
 
 object pinned_modules {
-	id        : INTEGER <<PK, autoincrement>>
-	position  : INTEGER
-	module_id : INTEGER <<FK>>
+	module_id : INTEGER <<PK, FK>>
+	position  : INTEGER <<unique>>
 }
 
 modules }|---|| subjects

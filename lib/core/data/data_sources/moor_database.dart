@@ -20,6 +20,10 @@
 import 'package:meta/meta.dart';
 import 'package:moor/moor.dart';
 import 'package:moor/moor_web.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../constants/lookup_constants.dart';
+import 'json/module_json_data_source.dart';
 
 part 'moor_database.g.dart';
 
@@ -34,10 +38,17 @@ part 'moor_database.g.dart';
 class Modules extends Table {
   /// An arbitrarily assigned integer that should remain constant throughout
   /// future versions of the module.
-  IntColumn get id => integer().customConstraint('NOT NULL UNIQUE')();
+  IntColumn get id => integer()();
 
   /// A unique string that can identify the module.
-  TextColumn get code => text().withLength(min: 6, max: 7)();
+  TextColumn get code => text()
+      .withLength(
+        min: 6,
+        max: 7,
+      )
+      .customConstraint(
+        'NOT NULL UNIQUE',
+      )();
 
   /// A human-readable name to identify the module. Multiple modules can have
   /// the same name.
@@ -79,7 +90,7 @@ class Modules extends Table {
 
 @DataClassName('SubjectModel')
 class Subjects extends Table {
-  IntColumn get id => integer().customConstraint('NOT NULL UNIQUE')();
+  IntColumn get id => integer()();
 
   TextColumn get name => text().customConstraint('NOT NULL UNIQUE')();
 
@@ -92,7 +103,7 @@ class Subjects extends Table {
 
 @DataClassName('SubjectColorModel')
 class SubjectColors extends Table {
-  IntColumn get id => integer().customConstraint('NOT NULL UNIQUE')();
+  IntColumn get id => integer()();
 
   TextColumn get name => text().customConstraint('NOT NULL UNIQUE')();
 
@@ -102,7 +113,7 @@ class SubjectColors extends Table {
 
 @DataClassName('SemesterTypeModel')
 class SemesterTypes extends Table {
-  IntColumn get id => integer().customConstraint('NOT NULL UNIQUE')();
+  IntColumn get id => integer()();
 
   TextColumn get name => text().customConstraint('NOT NULL UNIQUE')();
 
@@ -112,7 +123,7 @@ class SemesterTypes extends Table {
 
 @DataClassName('ModuleTypeModel')
 class ModuleTypes extends Table {
-  IntColumn get id => integer().customConstraint('NOT NULL UNIQUE')();
+  IntColumn get id => integer()();
 
   TextColumn get name => text().customConstraint('NOT NULL UNIQUE')();
 
@@ -122,12 +133,10 @@ class ModuleTypes extends Table {
 
 @DataClassName('LevelModel')
 class Levels extends Table {
-  IntColumn get id => integer().customConstraint('NOT NULL UNIQUE')();
-
-  IntColumn get year => integer().customConstraint('NOT NULL UNIQUE')();
+  IntColumn get year => integer()();
 
   @override
-  Set<Column> get primaryKey => {id};
+  Set<Column> get primaryKey => {year};
 }
 
 @DataClassName('ModulesLevelsModel')
@@ -135,8 +144,11 @@ class ModulesLevels extends Table {
   IntColumn get moduleId =>
       integer().customConstraint('NOT NULL REFERENCES modules(id)')();
 
-  IntColumn get levelId =>
-      integer().customConstraint('NOT NULL REFERENCES levels(id)')();
+  IntColumn get levelYear =>
+      integer().customConstraint('NOT NULL REFERENCES levels(year)')();
+
+  @override
+  Set<Column> get primaryKey => {moduleId, levelYear};
 }
 
 /// Mappable to a Module entity. This combines data from two tables, [Modules]
@@ -161,10 +173,314 @@ class ModuleWithLevelsModel {
   ModulesLevels,
 ])
 class MoorDatabase extends _$MoorDatabase {
-  MoorDatabase() : super(WebDatabase('db'));
+  final SharedPreferences sharedPreferences;
+  final ModuleJsonDataSource moduleJsonDataSource;
+
+  MoorDatabase({
+    @required this.sharedPreferences,
+    @required this.moduleJsonDataSource,
+  }) : super(WebDatabase('db'));
+
+  @override
+  MigrationStrategy get migration => MigrationStrategy(
+        beforeOpen: (details) async {
+          // Checks if this is the first time the app is being run by checking
+          // if the database is newly created.
+          if (details.wasCreated) {
+            // Then, initialize the database with initial values!
+            // Initialize reference/look-up tables:
+            await batch((batch) {
+              _insertAllSubjectColors(batch);
+              _insertAllSubjects(batch);
+              _insertAllModuleTypes(batch);
+              _insertAllSemesterTypes(batch);
+              _insertAllLevels(batch);
+            });
+          }
+
+          await _upsertModulesIfNeeded();
+        },
+      );
 
   // Should update this each time the schema of the tables is updated.
   // Also consider creating a migration strategy.
   @override
   int get schemaVersion => 1;
+
+  void _insertAllSubjectColors(Batch batch) async {
+    batch.insertAll(
+      subjectColors,
+      [
+        SubjectColorModel(id: kColorRoseId, name: kColorRoseName),
+        SubjectColorModel(id: kColorPinkId, name: kColorPinkName),
+        SubjectColorModel(id: kColorFuchsiaId, name: kColorFuchsiaName),
+        SubjectColorModel(id: kColorPurpleId, name: kColorPurpleName),
+        SubjectColorModel(id: kColorVioletId, name: kColorVioletName),
+        SubjectColorModel(id: kColorIndigoId, name: kColorIndigoName),
+        SubjectColorModel(id: kColorBlueId, name: kColorBlueName),
+        SubjectColorModel(id: kColorSkyId, name: kColorSkyName),
+        SubjectColorModel(id: kColorCyanId, name: kColorCyanName),
+        SubjectColorModel(id: kColorTealId, name: kColorTealName),
+        SubjectColorModel(id: kColorEmeraldId, name: kColorEmeraldName),
+        SubjectColorModel(id: kColorGreenId, name: kColorGreenName),
+        SubjectColorModel(id: kColorLimeId, name: kColorLimeName),
+        SubjectColorModel(id: kColorYellowId, name: kColorYellowName),
+        SubjectColorModel(id: kColorAmberId, name: kColorAmberName),
+        SubjectColorModel(id: kColorOrangeId, name: kColorOrangeName),
+        SubjectColorModel(id: kColorRedId, name: kColorRedName),
+      ],
+    );
+  }
+
+  void _insertAllSubjects(Batch batch) async {
+    batch.insertAll(
+      subjects,
+      [
+        SubjectModel(
+          id: kSubjectArtId,
+          name: kSubjectArtName,
+          subjectColorId: 1,
+        ),
+        SubjectModel(
+          id: kSubjectBengaliId,
+          name: kSubjectBengaliName,
+          subjectColorId: 1,
+        ),
+        SubjectModel(
+          id: kSubjectBiologyId,
+          name: kSubjectBiologyName,
+          subjectColorId: 1,
+        ),
+        SubjectModel(
+          id: kSubjectCceId,
+          name: kSubjectCceName,
+          subjectColorId: 1,
+        ),
+        SubjectModel(
+          id: kSubjectHigherChineseId,
+          name: kSubjectHigherChineseName,
+          subjectColorId: 1,
+        ),
+        SubjectModel(
+          id: kSubjectChineseId,
+          name: kSubjectChineseName,
+          subjectColorId: 1,
+        ),
+        SubjectModel(
+          id: kSubjectChemistryId,
+          name: kSubjectChemistryName,
+          subjectColorId: 1,
+        ),
+        SubjectModel(
+          id: kSubjectCsId,
+          name: kSubjectCsName,
+          subjectColorId: 1,
+        ),
+        SubjectModel(
+          id: kSubjectDaVinciId,
+          name: kSubjectDaVinciName,
+          subjectColorId: 1,
+        ),
+        SubjectModel(
+          id: kSubjectEnglishId,
+          name: kSubjectEnglishName,
+          subjectColorId: 1,
+        ),
+        SubjectModel(
+          id: kSubjectEnglishLiteratureId,
+          name: kSubjectEnglishLiteratureName,
+          subjectColorId: 1,
+        ),
+        SubjectModel(
+          id: kSubjectFrenchId,
+          name: kSubjectFrenchName,
+          subjectColorId: 1,
+        ),
+        SubjectModel(
+          id: kSubjectGeographyId,
+          name: kSubjectGeographyName,
+          subjectColorId: 1,
+        ),
+        SubjectModel(
+          id: kSubjectGujaratiId,
+          name: kSubjectGujaratiName,
+          subjectColorId: 1,
+        ),
+        SubjectModel(
+          id: kSubjectGermanId,
+          name: kSubjectGermanName,
+          subjectColorId: 1,
+        ),
+        SubjectModel(
+          id: kSubjectHindiId,
+          name: kSubjectHindiName,
+          subjectColorId: 1,
+        ),
+        SubjectModel(
+          id: kSubjectHistoryId,
+          name: kSubjectHistoryName,
+          subjectColorId: 1,
+        ),
+        SubjectModel(
+          id: kSubjectHumanitiesId,
+          name: kSubjectHumanitiesName,
+          subjectColorId: 1,
+        ),
+        SubjectModel(
+          id: kSubjectJapaneseId,
+          name: kSubjectJapaneseName,
+          subjectColorId: 1,
+        ),
+        SubjectModel(
+          id: kSubjectMathematicsId,
+          name: kSubjectMathematicsName,
+          subjectColorId: 1,
+        ),
+        SubjectModel(
+          id: kSubjectHigherMalayId,
+          name: kSubjectHigherMalayName,
+          subjectColorId: 1,
+        ),
+        SubjectModel(
+          id: kSubjectMalayId,
+          name: kSubjectMalayName,
+          subjectColorId: 1,
+        ),
+        SubjectModel(
+          id: kSubjectMusicId,
+          name: kSubjectMusicName,
+          subjectColorId: 1,
+        ),
+        SubjectModel(
+          id: kSubjectPhysicsId,
+          name: kSubjectPhysicsName,
+          subjectColorId: 1,
+        ),
+        SubjectModel(
+          id: kSubjectPunjabiId,
+          name: kSubjectPunjabiName,
+          subjectColorId: 1,
+        ),
+        SubjectModel(
+          id: kSubjectHigherTamilId,
+          name: kSubjectHigherTamilName,
+          subjectColorId: 1,
+        ),
+        SubjectModel(
+          id: kSubjectTamilId,
+          name: kSubjectTamilName,
+          subjectColorId: 1,
+        ),
+        SubjectModel(
+          id: kSubjectUrduId,
+          name: kSubjectUrduName,
+          subjectColorId: 1,
+        ),
+      ],
+    );
+  }
+
+  void _insertAllModuleTypes(Batch batch) async {
+    batch.insertAll(
+      moduleTypes,
+      [
+        ModuleTypeModel(
+          id: kModuleTypeCoreId,
+          name: kModuleTypeCodeName,
+        ),
+        ModuleTypeModel(
+          id: kModuleTypeElectiveId,
+          name: kModuleTypeElectiveName,
+        ),
+        ModuleTypeModel(
+          id: kModuleTypeEnrichmentId,
+          name: kModuleTypeEnrichmentName,
+        ),
+        ModuleTypeModel(
+          id: kModuleTypeMajorId,
+          name: kModuleTypeMajorName,
+        ),
+        ModuleTypeModel(
+          id: kModuleTypeHonours,
+          name: kModuleTypeHonoursName,
+        ),
+        ModuleTypeModel(
+          id: kModuleTypeHonoursInLieu,
+          name: kModuleTypeHonoursInLieuName,
+        ),
+      ],
+    );
+  }
+
+  void _insertAllSemesterTypes(Batch batch) async {
+    batch.insertAll(
+      semesterTypes,
+      [
+        SemesterTypeModel(
+          id: kSemesterTypeFirstId,
+          name: kSemesterTypeFirstName,
+        ),
+        SemesterTypeModel(
+          id: kSemesterTypeSecondId,
+          name: kSemesterTypeSecondName,
+        ),
+        SemesterTypeModel(
+          id: kSemesterTypeEitherId,
+          name: kSemesterTypeEitherName,
+        ),
+        SemesterTypeModel(
+          id: kSemesterTypeBothId,
+          name: kSemesterTypeBothName,
+        ),
+      ],
+    );
+  }
+
+  void _insertAllLevels(Batch batch) async {
+    batch.insertAll(
+      levels,
+      [
+        LevelModel(year: 1),
+        LevelModel(year: 2),
+        LevelModel(year: 3),
+        LevelModel(year: 4),
+        LevelModel(year: 5),
+        LevelModel(year: 6),
+      ],
+    );
+  }
+
+  Future<void> _upsertModulesIfNeeded() async {
+    if (!_shouldUpsertModules()) return;
+
+    final models = moduleJsonDataSource.getAll();
+
+    final List<ModuleModel> moduleModels = models.map((model) => model.module);
+
+    List<ModulesLevelsModel> modulesLevelsModels;
+
+    for (var model in models) {
+      for (var level in model.levels) {
+        modulesLevelsModels.add(
+          ModulesLevelsModel(
+            moduleId: model.module.id,
+            levelYear: level.year,
+          ),
+        );
+      }
+    }
+
+    await batch((batch) {
+      batch.insertAllOnConflictUpdate(modules, moduleModels);
+      batch.insertAllOnConflictUpdate(modulesLevels, modulesLevelsModels);
+    });
+  }
+
+  bool _shouldUpsertModules() {
+    const key = 'MODULES VERSION';
+    final currentVersion = sharedPreferences.getInt(key);
+    final latestVersion = moduleJsonDataSource.getVersion();
+
+    return latestVersion != currentVersion;
+  }
 }
