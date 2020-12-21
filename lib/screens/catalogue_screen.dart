@@ -160,8 +160,11 @@ class _ModulesStarredSection extends StatelessWidget {
                   ),
             ),
           ]),
+          SizedBox(height: 24.0),
           LayoutBuilder(builder: (context, constraints) {
             return GridView.count(
+              crossAxisSpacing: 40.0,
+              mainAxisSpacing: 32.0,
               shrinkWrap: true,
               crossAxisCount: getGridColumnCount(constraints),
               children: [
@@ -256,8 +259,11 @@ class _ModulesAllSection extends StatelessWidget {
                   ),
             ),
           ]),
+          SizedBox(height: 24.0),
           LayoutBuilder(builder: (context, constraints) {
             return GridView.count(
+              crossAxisSpacing: 40.0,
+              mainAxisSpacing: 32.0,
               shrinkWrap: true,
               crossAxisCount: getGridColumnCount(constraints),
               children: [

@@ -112,7 +112,7 @@ class _ModuleCardNameText extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
         style: Theme.of(context).textTheme.headline6.copyWith(
               color: module.subject.nmColor.s700,
-          height: textLineHeight,
+              height: textLineHeight,
             ),
       ),
     );

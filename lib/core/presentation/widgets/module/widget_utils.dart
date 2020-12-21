@@ -32,7 +32,7 @@ EdgeInsets getContentHorizontalPadding(BuildContext context) {
 
 int getGridColumnCount(BoxConstraints constraints) {
   var width = constraints.maxWidth;
-  var count = (width / 230.0).round();
+  var count = ((width + 64.0) / 250.0).round();
   return count;
 }
 
