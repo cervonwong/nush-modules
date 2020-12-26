@@ -83,8 +83,8 @@ const int kModuleTypeCoreId = 1;
 const int kModuleTypeElectiveId = 2;
 const int kModuleTypeEnrichmentId = 3;
 const int kModuleTypeMajorId = 4;
-const int kModuleTypeHonours = 5;
-const int kModuleTypeHonoursInLieu = 6;
+const int kModuleTypeHonoursId = 5;
+const int kModuleTypeHonoursInLieuId = 6;
 
 const String kModuleTypeCodeName = 'CORE';
 const String kModuleTypeElectiveName = 'ELECTIVE';

@@ -181,6 +181,31 @@ class MoorDatabase extends _$MoorDatabase {
     @required this.moduleJsonDataSource,
   }) : super(WebDatabase('db'));
 
+  Future<List<ModuleWithLevelsModel>> getAllModules() async {
+    final moduleModels = await select(modules).get();
+
+    final moduleWithLevelModels = <ModuleWithLevelsModel>[];
+    for (final module in moduleModels) {
+      final moduleLevelModels = await (select(modulesLevels)
+            ..where((ml) => ml.moduleId.equals(module.id)))
+          .get();
+
+      final levelModels = <LevelModel>[];
+      for (final ml in moduleLevelModels) {
+        levelModels.add(await (select(levels)
+              ..where((l) => l.year.equals(ml.levelYear)))
+            .getSingle());
+      }
+
+      moduleWithLevelModels.add(ModuleWithLevelsModel(
+        module: module,
+        levels: levelModels,
+      ));
+    }
+
+    return moduleWithLevelModels;
+  }
+
   @override
   MigrationStrategy get migration => MigrationStrategy(
         beforeOpen: (details) async {
@@ -401,11 +426,11 @@ class MoorDatabase extends _$MoorDatabase {
           name: kModuleTypeMajorName,
         ),
         ModuleTypeModel(
-          id: kModuleTypeHonours,
+          id: kModuleTypeHonoursId,
           name: kModuleTypeHonoursName,
         ),
         ModuleTypeModel(
-          id: kModuleTypeHonoursInLieu,
+          id: kModuleTypeHonoursInLieuId,
           name: kModuleTypeHonoursInLieuName,
         ),
       ],

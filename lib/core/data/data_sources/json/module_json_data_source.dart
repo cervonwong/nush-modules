@@ -204,9 +204,9 @@ class ModuleJsonDataSourceImpl implements ModuleJsonDataSource {
       case 'MAJOR':
         return kModuleTypeMajorId;
       case 'HONOURS':
-        return kModuleTypeHonours;
+        return kModuleTypeHonoursId;
       case 'HONOURS IN LIEU':
-        return kModuleTypeHonoursInLieu;
+        return kModuleTypeHonoursInLieuId;
       default:
         throw FormatException('Unable to parse moduleType');
     }
