@@ -96,7 +96,6 @@ class ModuleCode extends Equatable {
         assert(digits > 999 && digits < 7000),
         assert(suffixChar == null || suffixChar.length == 1),
         assert(suffixChar == null ||
-            suffixChar == '+' ||
             (isUppercase(suffixChar) && isAlpha(suffixChar)));
 
   @override

@@ -121,7 +121,7 @@
                 "title": "The module code",
                 "description": "A unique string that can identify a module.",
                 "default": "XX9999",
-                "pattern": "^[A-Z]{2}[1-6][0-9]{3}[A-Z+]?$",
+                "pattern": "^[A-Z]{2}[1-6][0-9]{3}[A-Z]?$",
                 "examples": [
                   "MA2231V"
                 ]

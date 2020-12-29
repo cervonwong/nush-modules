@@ -509,22 +509,9 @@ void main() {
           expect(moduleCode1.suffixChar, null);
 
           final moduleCode2 =
-              ModuleCode(prefixChars: 'MA', digits: 1234, suffixChar: 'V',);
+              ModuleCode(prefixChars: 'MA', digits: 1234, suffixChar: 'V');
 
           expect(moduleCode2.suffixChar, 'V');
-        },
-      );
-
-      test(
-        'should allow \'+\' as suffixChar',
-        () {
-          final moduleCode = ModuleCode(
-            prefixChars: 'MA',
-            digits: 1234,
-            suffixChar: '+'
-          );
-
-          expect(moduleCode.suffixChar, '+');
         },
       );
 
