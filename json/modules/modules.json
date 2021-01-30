@@ -424,6 +424,530 @@
       ],
       "corequisites": [],
       "preclusions": []
+    },
+    {
+      "code": "MA5131",
+      "moduleId": 21,
+      "moduleName": "Advanced Calculus",
+      "description": "This demanding and rigorous course introduces calculus typically covered in a university course. Continuity and differentiability of functions are introduced. Topics include fundamental theorem of calculus, Intermediate Value Theorem, Mean Value Theorem, limits of functions, asymptotic and unbounded behavior. First and second order differential equations and their applications to real‐life problems will also be taught.",
+      "mc": 5,
+      "workload": 5.0,
+      "subject": "MATH",
+      "semesterType": "FIRST",
+      "moduleType": "MAJOR",
+      "levels": [
+        5
+      ]
+    },
+    {
+      "code": "MA5231V",
+      "moduleId": 22,
+      "moduleName": "Math Olympiad Training VII",
+      "description": "This module targets high ability students who are keen to prepare themselves rigorously for the Singapore Mathematical Olympiad (Open).",
+      "mc": 2,
+      "workload": 1.5,
+      "subject": "MATH",
+      "semesterType": "FIRST",
+      "moduleType": "ELECTIVE",
+      "levels": [
+        5
+      ],
+      "remarks": "Requires department approval."
+    },
+    {
+      "code": "MA5431",
+      "moduleId": 23,
+      "moduleName": "Linear Algebra",
+      "description": "This Honours module introduces students to the operations on matrices and its applications to solving system of linear equations. Topics on vector spaces, linear transformations, rank and nullity, eigenvalues and eigenvectors will also be explored.",
+      "mc": 2,
+      "workload": 2.0,
+      "subject": "MATH",
+      "semesterType": "FIRST",
+      "moduleType": "HONOURS",
+      "levels": [
+        5
+      ],
+      "remarks": "Students majoring with Honours in Mathematics must complete at least 8 MCs of the Honours Modules."
+    },
+    {
+      "code": "MA5132",
+      "moduleId": 24,
+      "moduleName": "Statistics",
+      "description": "This module is a comprehensive study of various probability distributions and statistical concepts. Topics include Binomial Distribution, Poisson Distribution, Normal Distribution, Sampling Distribution, t‐distribution, test of significance, correlation and linear regression. Exploring random phenomena using probability and simulation will also be discussed.",
+      "mc": 5,
+      "workload": 5.0,
+      "subject": "MATH",
+      "semesterType": "SECOND",
+      "moduleType": "MAJOR",
+      "levels": [
+        5
+      ]
+    },
+    {
+      "code": "MA5431V",
+      "moduleId": 25,
+      "moduleName": "Linear Algebra",
+      "description": "This is an NUS Module in‐lieu of NUSHS Linear Algebra Module. This module is a first course in linear algebra. Fundamental concepts of linear algebra will be introduced and investigated in the context of the Euclidean spaces R^n.Proofs of results will be presented in the concrete setting.Students are expected to acquire computational facilities and geometric intuition with regard to vectors and matrices. Some applications will be presented. Major topics: Systems of linear equations, matrices, determinants, Euclidean spaces, linear combinations and linear span, subspaces, linear independence, bases and dimension, rank of a matrix, inner products, eigenvalues and eigenvectors, diagonalisation, linear transformations between Euclidean spaces, applications.",
+      "mc": 4,
+      "workload": 4.0,
+      "subject": "MATH",
+      "semesterType": "SECOND",
+      "moduleType": "HONOURS IN LIEU",
+      "levels": [
+        5
+      ],
+      "remarks": "Requires department approval. Students can only take MA5431 or MA5431V to fulfill the Math Honours programme. In order to fulfill Math Honours, a student must take: 1. MA5431V (4MC) and MA6431V (4MC), OR 2. MA5431 (2MC) and MA6431V (4MC) and MA6432/MA6433 (2MC), OR 3. MA5431 (2MC), MA5432 (2MC) and MA6431V (4MC). This totals to 8MC."
+    },
+    {
+      "code": "MA5432",
+      "moduleId": 26,
+      "moduleName": "Polar Coordinates, Parametric Equations and Vector Functions",
+      "description": "In this module, students will explore the polar coordinate system. Parametric equations are introduced. Derivatives and integrals of polar, parametric and vector functions will also be taught.",
+      "mc": 2,
+      "workload": 2.0,
+      "subject": "MATH",
+      "semesterType": "SECOND",
+      "moduleType": "HONOURS",
+      "levels": [
+        5
+      ],
+      "remarks": "Students majoring with Honours in Mathematics must complete at least 8 MCs of the Honours Modules."
+    },
+    {
+      "code": "MA6131",
+      "moduleId": 27,
+      "moduleName": "Advanced Statistics",
+      "description": "This demanding and rigorous course is a continuation of the previous statistics course. Topics include t‐distribution and chi‐square distribution. Estimation, test of significance, correlation and linear regression will be revisited at a deeper level. Design of experiments and survey methodology will also be covered.",
+      "mc": 5,
+      "workload": 5.0,
+      "subject": "MATH",
+      "semesterType": "FIRST",
+      "moduleType": "MAJOR",
+      "levels": [
+        6
+      ]
+    },
+    {
+      "code": "MA6431",
+      "moduleId": 28,
+      "moduleName": "Honours Calculus",
+      "description": "This demanding and rigorous Honours course exposes students to advanced applications of calculus involving parametric, polar and vector functions as well as polynomial approximations and convergence of series. Formal definitions of continuity and differentiability are also introduced. This module is more than sufficiently prepared to take the AP Calculus BC examination. Those who are keen may also try for the NUS Advanced Placement Credit Exam in Calculus.",
+      "mc": 2,
+      "workload": 2.0,
+      "subject": "MATH",
+      "semesterType": "FIRST",
+      "moduleType": "HONOURS",
+      "levels": [
+        6
+      ],
+      "remarks": "Students majoring with Honours in Mathematics must complete at least 8 MCs of the Honours Modules."
+    },
+    {
+      "code": "MA6431V",
+      "moduleId": 29,
+      "moduleName": "Honours Calculus",
+      "description": "This is an NUS Module in‐lieu of NUSHS Honours Calculus Module. This is a course in single‐variable calculus which will introduce precise definitions of limit, continuity, the derivative and the Riemann integral. Students will be exposed to computational techniques and applications of differentiation and integration. This course concludes with an introduction to first order differential equations.",
+      "mc": 4,
+      "workload": 4.0,
+      "subject": "MATH",
+      "semesterType": "FIRST",
+      "moduleType": "HONOURS IN LIEU",
+      "levels": [
+        6
+      ],
+      "remarks": "Requires department approval. Students can only take MA6431 or MA6431V to fulfill the Math Honours programme. In order to fulfill Math Honours, a student must take: 1. MA5431V (4MC) and MA6431V (4MC), OR 2. MA5431 (2MC) and MA6431V (4MC) and MA6432/MA6433 (2MC), OR 3. MA5431 (2MC), MA5432 (2MC) and MA6431V (4MC). This totals to 8MC."
+    },
+    {
+      "code": "MA6132",
+      "moduleId": 30,
+      "moduleName": "Advanced Math II",
+      "description": "This module revisits concepts covered in earlier Advanced Mathematics modules and extends it further. Students will learn to solve 3D vectors problem involving lines and planes. The use of De Moivre’s theorem to find the nth roots of a complex number and to prove mathematical results will also be covered. Theory of equations (up to degree 4) and recurrence relations will be taught too.",
+      "mc": 5,
+      "workload": 5.0,
+      "subject": "MATH",
+      "semesterType": "SECOND",
+      "moduleType": "MAJOR",
+      "levels": [
+        6
+      ]
+    },
+    {
+      "code": "MA6432",
+      "moduleId": 31,
+      "moduleName": "Numerical Analysis",
+      "description": "This module covers a variety of numerical approaches to find approximate solutions to problems that are not open to the analytical approach. Concepts covered include numerical solutions to linear equations, numerical estimation of definite integrals and solving differential equations numerically.",
+      "mc": 2,
+      "workload": 2.0,
+      "subject": "MATH",
+      "semesterType": "SECOND",
+      "moduleType": "HONOURS",
+      "levels": [
+        6
+      ],
+      "remarks": "Students either take MA6432 or MA6433."
+    },
+    {
+      "code": "MA6433",
+      "moduleId": 32,
+      "moduleName": "Graph Theory",
+      "description": "Graph Theory is a branch of discrete mathematics which deals with discrete objects and quantities and has wide applications, particularly in computer science and engineering. In this module, students will learn the nature and properties of simple graphs, and different types of graphs such as connected graphs, regular graphs, complete graphs, bipartite graphs and trees. They will also learn the application of graph theory including tournament, matching, and scheduling problems.",
+      "mc": 2,
+      "workload": 2.0,
+      "subject": "MATH",
+      "semesterType": "SECOND",
+      "moduleType": "HONOURS",
+      "levels": [
+        6
+      ],
+      "remarks": "Students either take MA6432 or MA6433."
+    },
+    {
+      "code": "CS1131",
+      "moduleId": 33,
+      "moduleName": "Computational Thinking",
+      "description": "Computational thinking is taking an approach to solving problems, designing systems and understanding human behaviour that draws on fundamental concepts in computer science. This module consists of three main units: 1) Problem Solving, 2) Programming Principles & Concepts and 3) Data Skills. Students will be able to 1) Learn and apply a variety of problem‐solving techniques to discover a solution to problems that are situated in a variety of contexts. 2) Understand basic programming principles and concepts such as iterations, conditionals and variables using turtle graphics. 3) Perform simple data cleaning, analysis and visualization using various functions in Excel and learn about the importance of data security.",
+      "mc": 2,
+      "workload": 2.0,
+      "subject": "CS",
+      "semesterType": "SECOND",
+      "moduleType": "CORE",
+      "levels": [
+        1
+      ]
+    },
+    {
+      "code": "CS2231",
+      "moduleId": 34,
+      "moduleName": "Introduction to Programming",
+      "description": "This elective will introduce to students basic programming principles and concepts. Students will learn about important programming concepts such as variables, data types, assignment statements and expressions, conditional statements, loops and list. Students who have completed the module would be able to write useful programs to solve problems.",
+      "mc": 2,
+      "workload": 1.5,
+      "subject": "CS",
+      "semesterType": "FIRST",
+      "moduleType": "ELECTIVE",
+      "levels": [
+        2
+      ]
+    },
+    {
+      "code": "CS2233",
+      "moduleId": 35,
+      "moduleName": "Problem Solving in Computing",
+      "description": "The aim of this module is to introduce students to the discipline of computing and to the problem solving process. Students will apply the programming concepts learnt to solve various problems.",
+      "mc": 2,
+      "workload": 1.5,
+      "subject": "CS",
+      "semesterType": "SECOND",
+      "moduleType": "ELECTIVE",
+      "levels": [
+        2
+      ]
+    },
+    {
+      "code": "CS3231",
+      "moduleId": 36,
+      "moduleName": "Object Oriented Programming I",
+      "description": "This module introduces the concepts of Object Oriented Programming (OOP) using Java. Topics include: Introduction to Java and OOP concepts, control flow, use of Java API, the use and design of classes and objects, use of Arrays & ArrayList, simple File IO & Exception handling, and creating Java GUI applications.",
+      "mc": 3,
+      "workload": 3,
+      "subject": "CS",
+      "semesterType": "FIRST",
+      "moduleType": "ELECTIVE",
+      "levels": [
+        3
+      ],
+      "remarks": "Students majoring in Computer Science (CS) in the Specialisation Years will have CS3231 and CS3233 reflected as CS3131 and CS3132 respectively as these electives will be converted to core modules for the CS Major and will be included in their CS Subject CAP."
+    },
+    {
+      "code": "CS3232",
+      "moduleId": 37,
+      "moduleName": " Informatics Olympiad Training I",
+      "description": "The Informatics Olympiad emphasizes creativity in problem solving on one hand, and programming skill and expertise on the other. This module targets high ability computing students who are keen to prepare themselves rigorously for various Informatics Olympiad competitions and at the same time hope to create more awareness among computing students on the finer points of programming, which is not merely writing a piece of code, but involves useful algorithmic techniques and problem‐solving skills.",
+      "mc": 2,
+      "workload": 1.5,
+      "subject": "CS",
+      "semesterType": "FIRST",
+      "moduleType": "ELECTIVE",
+      "levels": [
+        3
+      ]
+    },
+    {
+      "code": "CS3233",
+      "moduleId": 38,
+      "moduleName": "Object Oriented Programming II",
+      "description": "This module is the second part of a two‐part series on introductory programming from an object‐oriented perspective. It continues the introduction to object‐oriented programming begun in CS3204, with an emphasis on more advanced concepts in OOP (e.g. inheritance, abstraction, polymorphism). Students will also learn how to create a Graphical User Interface in Java (JavaFX, Graphics, Animation etc).",
+      "mc": 3,
+      "workload": 3,
+      "subject": "CS",
+      "semesterType": "SECOND",
+      "moduleType": "ELECTIVE",
+      "levels": [
+        3
+      ],
+      "remarks": "Students majoring in Computer Science (CS) in the Specialisation Years will have CS3231 and CS3233 reflected as CS3131 and CS3132 respectively as these electives will be converted to core modules for the CS Major and will be included in their CS Subject CAP."
+    },
+    {
+      "code": "CS3234",
+      "moduleId": 39,
+      "moduleName": "Informatics Olympiad Training II",
+      "description": "This module targets high ability computing students who are keen to prepare themselves rigorously for the National Informatics Olympiad competition. Advanced algorithmic topics such as dynamic programming, graph algorithms, greedy algorithms, trees etc are covered in this module.",
+      "mc": 2,
+      "workload": 1.5,
+      "subject": "CS",
+      "semesterType": "SECOND",
+      "moduleType": "ELECTIVE",
+      "levels": [
+        3
+      ],
+      "remarks": "This module targets high ability computing students who are keen to prepare themselves rigorously for the National Informatics Olympiad competition. Advanced algorithmic topics such as dynamic programming, graph algorithms, greedy algorithms, trees etc are covered in this module."
+    },
+    {
+      "code": "CS4131",
+      "moduleId": 40,
+      "moduleName": "Mobile Application Development",
+      "description": "This course introduces students to the design and implementation of Android applications for mobile devices. Students will develop an App from scratch, assuming a good knowledge of Java, and learn how to set up Android Studio, work with various Android building blocks (Activities, Services, Broadcast, etc) to create simple user interfaces to make Apps run smoothly. At the end of the course, students will learn skills for creating and deploying Android applications.",
+      "mc": 4,
+      "workload": 3.0,
+      "subject": "CS",
+      "semesterType": "FIRST",
+      "moduleType": "MAJOR",
+      "levels": [
+        4
+      ]
+    },
+    {
+      "code": "CS4231",
+      "moduleId": 41,
+      "moduleName": "Informatics Olympiad Training III",
+      "description": "This module targets high ability computing students who are keen to prepare themselves rigorously for the National Olympiad in Informatics. Advanced data structures such as fenwick tree, segment tree and advanced algorithms such as dynamic programming will be discussed in the module.",
+      "mc": 2,
+      "workload": 1.5,
+      "subject": "CS",
+      "semesterType": "FIRST",
+      "moduleType": "ELECTIVE",
+      "levels": [
+        4
+      ]
+    },
+    {
+      "code": "CS4132",
+      "moduleId": 42,
+      "moduleName": "Data Analytics",
+      "description": "This module aims to allow students to understand the foundational skills in data analytics, including preparing and working with data; abstracting and modeling an analytic question; and using tools from statistics, learning and mining to address these questions. Students will study techniques for how to go from raw data to a deeper understanding of the patterns and structures within the data, to support making predictions and decision making.",
+      "mc": 4,
+      "workload": 3.0,
+      "subject": "CS",
+      "semesterType": "SECOND",
+      "moduleType": "MAJOR",
+      "levels": [
+        4
+      ]
+    },
+    {
+      "code": "CS4133V",
+      "moduleId": 43,
+      "moduleName": "Programming Methodology",
+      "description": "This module is offered by NUS School of Computing as CS1010S. This module introduces the fundamental concepts of problem solving by computing and programming using an imperative programming language. It is the first and foremost introductory course to computing. Topics covered include problem solving by computing, writing pseudo‐codes, basic problem formulation and problem solving, program development, coding, testing and debugging, fundamental programming constructs (variables, types, expressions, assignments, functions, control structures, etc.), fundamental data structures: arrays, strings and structures, simple file processing, and basic recursion.",
+      "mc": 4,
+      "workload": 4.0,
+      "subject": "CS",
+      "semesterType": "SECOND",
+      "moduleType": "MAJOR",
+      "levels": [
+        4
+      ],
+      "remarks": "Students majoring with Honours in Computer Science and chosen to read Honours Track from NUS School of Computing (SoC) must read this module."
+    },
+    {
+      "code": "CS4134V",
+      "moduleId": 44,
+      "moduleName": "High‐level Programming II: The C++ Programming Language",
+      "description": "This course introduces the C++ language with particular emphasis on its object‐oriented features. Topics include stylistic and usage differences between C and C++, namespaces, function and operator overloading, classes, inheritance, templates, and fundamental STL components.",
+      "mc": 4,
+      "workload": 4.0,
+      "subject": "CS",
+      "semesterType": "SECOND",
+      "moduleType": "MAJOR",
+      "levels": [
+        4
+      ],
+      "remarks": "Students majoring with Honours in Computer Science and chosen to read Honours Track from DigiPen Institute of Technology Singapore must read this module."
+    },
+    {
+      "code": "CS4232",
+      "moduleId": 45,
+      "moduleName": "Data Analytics",
+      "description": "This module aims to allow students to understand the foundational skills in data analytics, including preparing and working with data; abstracting and modeling an analytic question; and using tools from statistics, learning and mining to address these questions. Students will study techniques for how to go from raw data to a deeper understanding of the patterns and structures within the data, to support making predictions and decision making.",
+      "mc": 4,
+      "workload": 3.0,
+      "subject": "CS",
+      "semesterType": "SECOND",
+      "moduleType": "ELECTIVE",
+      "levels": [
+        4
+      ]
+    },
+    {
+      "code": "CS5131",
+      "moduleId": 46,
+      "moduleName": "Introduction to Artificial Intelligence",
+      "description": "This course aims to introduce techniques to build computers that are capable of exhibiting intelligent behavior. It will cover a wide range of modern Artificial Intelligence topics including search, logic, knowledge representation, etc. The module will provide students with an overview of the applications of Artificial Intelligence.",
+      "mc": 4,
+      "workload": 3.0,
+      "subject": "CS",
+      "semesterType": "FIRST",
+      "moduleType": "MAJOR",
+      "levels": [
+        5
+      ]
+    },
+    {
+      "code": "CS5132",
+      "moduleId": 47,
+      "moduleName": "Data Structures and Algorithms",
+      "description": "This module aims to introduce students to advanced data structures and algorithms in programming. Topics covered include: uses and implementations of abstraction and encapsulation through classic data structures (lists, stacks, queues, trees), basic algorithmic analysis, graph representation and various graph‐search algorithms.",
+      "mc": 4,
+      "workload": 3.0,
+      "subject": "CS",
+      "semesterType": "SECOND",
+      "moduleType": "MAJOR",
+      "levels": [
+        5
+      ]
+    },
+    {
+      "code": "CS5431V",
+      "moduleId": 48,
+      "moduleName": "Discrete Structures",
+      "description": "This module is offered by NUS School of Computing as CS1231. This module introduces mathematical tools required in the study of computer science. Topics include: (1) Logic and proof techniques: propositions, conditionals, quantifications. (2) Relations and Functions: equivalence relations and partitions. Partially ordered sets. Well‐Ordering Principle. Function equality. Boolean/identity/inverse functions. Bijection. (3) Mathematical formulation of data models (linear model, trees, graphs). (4) Counting and Combinatorics: Pigeonhole Principle. Inclusion‐Exclusion Principle. Number of relations on a set, number of injections from one finite set to another, Diagonalisation proof: An infinite countable set has an uncountable power set; Algorithmic proof: An infinite set has a countably infinite subset. Subsets of countable sets are countable.",
+      "mc": 4,
+      "workload": 4.0,
+      "subject": "CS",
+      "semesterType": "EITHER",
+      "moduleType": "HONOURS",
+      "levels": [
+        5
+      ],
+      "remarks": "Students majoring with Honours in Computer Science and chosen to read Honours Track from NUS School of Computing (SoC) must read at least 2 of CS5431V, CS6431V, and CS6432V."
+    },
+    {
+      "code": "CS5433V",
+      "moduleId": 49,
+      "moduleName": "Scripting Languages",
+      "description": "This module is offered by DigiPen Institute of Technology Singapore as UXG1175. Topics may include classes, inheritance, interfaces, polymorphism, and data structures. This module covers the concepts and implementation strategies for using high‐level scripting languages in game development. Students will focus on object‐oriented programming, high‐level Englishlike structure, speed of development, and ease of use. The module includes a survey of commercial languages, as well as proprietary scripting languages from industry applications. Students will examine the process of conceptualizing a syntax for a game‐based scripting language and examine how such a language is compiled and interpreted by a game engine. Using the syntax they have created, they will create a number of scripts that could be used in a game. Additionally, the class will cover such relevant topics as data‐driven technology, modular coding, function calls, and procedures.",
+      "mc": 4,
+      "workload": 4.0,
+      "subject": "CS",
+      "semesterType": "EITHER",
+      "moduleType": "HONOURS",
+      "levels": [
+        5
+      ],
+      "remarks": "Students majoring with Honours in Computer Science and chosen to read Honours Track from DigiPen Institute of Technology Singapore must read at least 2 of CS5433V, CS6433V, CS6434V, and CS6435V."
+    },
+    {
+      "code": "CS6131",
+      "moduleId": 50,
+      "moduleName": "Database Design",
+      "description": "This module aims to equip students with the fundamental concepts of database design. The module covers data definition and modeling, database access and command languages, and design and implementation in the context of the relational database model.",
+      "mc": 4,
+      "workload": 3.0,
+      "subject": "CS",
+      "semesterType": "FIRST",
+      "moduleType": "MAJOR",
+      "levels": [
+        6
+      ]
+    },
+    {
+      "code": "CS6132",
+      "moduleId": 51,
+      "moduleName": "Computer Networking & Security",
+      "description": "This module aims to equip students with the fundamental concepts of computer networking. Students will acquire the basic knowledge of data transmission, TCP/IP protocol architecture, local area network technologies, wireless network and concept of network routing and forwarding. It also teaches the basic concepts and principles of information security, and the fundamental approaches to secure computers and networks.",
+      "mc": 4,
+      "workload": 3.0,
+      "subject": "CS",
+      "semesterType": "SECOND",
+      "moduleType": "MAJOR",
+      "levels": [
+        6
+      ]
+    },
+    {
+      "code": "CS6431V",
+      "moduleId": 52,
+      "moduleName": "Computer Organization",
+      "description": "This module is offered by NUS School of Computing as CS2100. The objective of this module is to familiarise students with the fundamentals of computing devices. Through this module students will understand the basics of data representation, and how the various parts of a computer work, separately and with each other. This allows students to understand the issues in computing devices, and how these issues affect the implementation of solutions. Topics covered include data representation systems, combinational and sequential circuit design techniques, assembly language, processor execution cycles, pipelining, memory hierarchy and input/output systems.",
+      "mc": 4,
+      "workload": 4.0,
+      "subject": "CS",
+      "semesterType": "EITHER",
+      "moduleType": "HONOURS",
+      "levels": [
+        6
+      ],
+      "remarks": "Students majoring with Honours in Computer Science and chosen to read Honours Track from NUS School of Computing (SoC) must read at least 2 of CS5431V, CS6431V, and CS6432V."
+    },
+    {
+      "code": "CS6432V",
+      "moduleId": 53,
+      "moduleName": "Introduction to Operating Systems",
+      "description": "This module is offered by NUS School of Computing as CS2106. This module introduces the basic concepts in operating systems and links it with contemporary operating systems (eg. Unix/Linux and Windows). It focuses on OS structuring and architecture, processes, memory management, concurrency and file systems. Topics include kernel architecture, system calls, interrupts, models of processes, process abstraction and services, scheduling, review of physical memory and memory management hardware, kernel memory management, virtual memory and paging, caches, working set, deadlock, mutual exclusion, synchronization mechanisms, data and metadata in file systems, directories and structure, file system abstraction and operations. Examples will be discussed from contemporary operating systems such as Unix/Linux and/or Windows.",
+      "mc": 4,
+      "workload": 4.0,
+      "subject": "CS",
+      "semesterType": "EITHER",
+      "moduleType": "HONOURS",
+      "levels": [
+        6
+      ],
+      "remarks": "Students majoring with Honours in Computer Science and chosen to read Honours Track from NUS School of Computing (SoC) must read at least 2 of CS5431V, CS6431V, and CS6432V."
+    },
+    {
+      "code": "CS6433V",
+      "moduleId": 54,
+      "moduleName": "Operating Systems I: Man‐Machine Interface",
+      "description": "This module is offered by DigiPen Institute of Technology Singapore as CSD2180. This course presents an overview of modern operating systems as implemented on personal computers. It presents an overview of what an operating system is and does, with emphasis on the following topics: organization and design, process management, threading, interprocess communication, process synchronization, and memory management.",
+      "mc": 4,
+      "workload": 4.0,
+      "subject": "CS",
+      "semesterType": "EITHER",
+      "moduleType": "HONOURS",
+      "levels": [
+        6
+      ],
+      "remarks": "Students majoring with Honours in Computer Science and chosen to read Honours Track from DigiPen Institute of Technology Singapore must read at least 2 of CS5433V, CS6433V, CS6434V, and CS6435V."
+    },
+    {
+      "code": "CS6434V",
+      "moduleId": 55,
+      "moduleName": "Game Implementation Techniques",
+      "description": "This module is offered by DigiPen Institute of Technology Singapore as CSD1130. This presents game implementation techniques and engine architecture. Students investigate foundational concepts of game architecture, such as game‐system component separation and game flow, while learning about essential elements such as the game state manager, input/ output handler, and frame rate controller. CSD1130 introduces Windows programming, state machines, and collision detection algorithms, which students will integrate into their own remakes of classic games. As part of their implementation, students create and expand their own collision, vector, and matrix libraries, enabling them to incorporate basic physics engines. Students survey concepts in space partitioning, particle systems, map editors, and other elements as a bridge to more advanced concepts in implementation techniques and engine architecture.",
+      "mc": 4,
+      "workload": 4.0,
+      "subject": "CS",
+      "semesterType": "EITHER",
+      "moduleType": "HONOURS",
+      "levels": [
+        6
+      ],
+      "remarks": "Students majoring with Honours in Computer Science and chosen to read Honours Track from DigiPen Institute of Technology Singapore must read at least 2 of CS5433V, CS6433V, CS6434V, and CS6435V."
+    },
+    {
+      "code": "CS6435V",
+      "moduleId": 56,
+      "moduleName": "Introduction to Computer Graphics",
+      "description": "This module is offered by DigiPen Institute of Technology Singapore as CSD2100. This module is an introduction to Computer Graphics. It covers the algorithms and mathematical fundamentals needed to generate and render 2D and 3D scenes. The topics include the introduction to graphics pipeline, 2D and 3D coordinate systems and their transformations, homogeneous coordinates and perspective calculations, scan‐conversion and depth algorithms, and basic clipping and culling techniques.",
+      "mc": 4,
+      "workload": 4.0,
+      "subject": "CS",
+      "semesterType": "EITHER",
+      "moduleType": "HONOURS",
+      "levels": [
+        6
+      ],
+      "remarks": "Students majoring with Honours in Computer Science and chosen to read Honours Track from DigiPen Institute of Technology Singapore must read at least 2 of CS5433V, CS6433V, CS6434V, and CS6435V."
     }
   ]
 }
